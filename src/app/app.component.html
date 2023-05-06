@@ -1,5 +1,6 @@
-<menu-component></menu-component>
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened><side-component></side-component></mat-drawer>
-    <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
-</mat-drawer-container>
+<div class="full-size column">
+    <app-toolbar></app-toolbar>
+    <app-sidenav class="full-width flex sidenav-container">
+        <router-outlet></router-outlet>
+    </app-sidenav>
+</div>

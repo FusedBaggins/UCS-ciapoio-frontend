@@ -4,21 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuModule } from './utils/menu/menu.module';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { SideModule } from './utils/side/side.module';
+
+import { ToolbarModule } from './utils/components/toolbar/toolbar.module';
+import { SidenavModule } from './utils/components/sidenav/sidenav.module';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MenuModule,
-    SideModule,
-    MatSidenavModule
+
+    ToolbarModule,
+    SidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
