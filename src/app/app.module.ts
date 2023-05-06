@@ -8,18 +8,20 @@ import { MenuModule } from './utils/components/menu/menu.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SideModule } from './utils/components/side/side.module';
 import { RequestService } from './utils/services/request.service';
+import { ToolbarModule } from './utils/components/toolbar/toolbar.module';
+import { SidenavModule } from './utils/components/sidenav/sidenav.module';
 
 @NgModule({
   declarations: [
-    AppComponent   
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MenuModule,
-    SideModule,
-    MatSidenavModule
+
+    ToolbarModule,
+    SidenavModule
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]

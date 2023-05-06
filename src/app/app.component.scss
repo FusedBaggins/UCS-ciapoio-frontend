@@ -3,3 +3,7 @@
     height: calc(100% - 64px);
     border: 1px solid #555;
   }
+.sidenav-container{
+    height: -webkit-fill-available;
+    overflow-y: hidden;
+}
