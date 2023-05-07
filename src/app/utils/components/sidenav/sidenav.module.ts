@@ -6,11 +6,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { SidenavComponent } from './sidenav.component';
+import { ItemMenuComponent } from './components/item-menu/item-menu.component';
 
 
 @NgModule({
   declarations: [
-    SidenavComponent
+    SidenavComponent,
+    ItemMenuComponent
   ],
   imports: [
     CommonModule,

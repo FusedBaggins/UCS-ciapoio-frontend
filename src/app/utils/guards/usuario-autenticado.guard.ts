@@ -19,8 +19,6 @@ export class UsuarioAutenticadoGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this._autenticacaoService.usuarioEstaAutenticado()) {
-      console.log("oi");
-      
       this._router.navigate(['login']);
       return false;
     }

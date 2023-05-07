@@ -1,7 +1,10 @@
 <mat-drawer-container class="full-size">
     <mat-drawer mode="side" opened>
         <mat-nav-list>
-            <a mat-list-item *ngFor="let link of links" [activated]="link.isActive">{{ link.titulo }}</a>
+            <app-item-menu *ngFor="let item of itensMenu$ | async as itens; index as i" [index]="i" [item]="item"
+                (itemAtivo)="onItemAtivoClicado($event, itens)">
+            </app-item-menu>
+            <!-- <a mat-list-item *ngFor="let link of links" [activated]="link.isActive">{{ link.titulo }}</a> -->
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
