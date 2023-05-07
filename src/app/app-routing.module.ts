@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'ciap',
     loadChildren: () => import('./modules/ciap/ciap.module').then(m => m.CiapModule)
+  },
+  {
+    path: 'prestador',
+    loadChildren: () => import('./modules/prestador/prestador.module').then(m => m.PrestadorModule)
   }
 
 ];

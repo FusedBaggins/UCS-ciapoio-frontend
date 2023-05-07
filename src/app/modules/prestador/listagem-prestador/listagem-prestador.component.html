@@ -1,0 +1,23 @@
+<div class="container-filtros">
+    <mat-form-field>
+        <mat-label>Identificador</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput>
+    </mat-form-field>
+</div>
+
+<h1 class="margem-esquerda">Prestadores encontrados</h1>
+
+
+<mat-nav-list class="listagem-container">
+    <a mat-list-item href="prestador/{{ prestador.id }}" *ngFor="let prestador of listaPrestadores">
+        <div style="padding: 16px;">
+            <span>{{ prestador.nome }}</span>
+            <p>{{ idade(prestador.dt_nascimento) }} anos, {{prestador.endereco.cidade.nome}}, {{prestador.endereco.cidade.unidadeFederativa.sigla}}</p>
+        </div>
+    </a>
+</mat-nav-list>
