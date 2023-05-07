@@ -1,0 +1,14 @@
+<div class="column full-size justify-content-center align-items-center login-container">
+    <div class="mat-headline-5">Bem-vindo!</div>
+    <form id="login" class="column form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input type="text" matInput formControlName="username" autocomplete="username">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput formControlName="password" autocomplete="current-password">
+        </mat-form-field>
+        <button type="submit" mat-flat-button color="primary">OK!</button>
+    </form>
+</div>

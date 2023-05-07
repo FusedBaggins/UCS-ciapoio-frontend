@@ -17,27 +17,27 @@
     flex-wrap: nowrap;
 }
 
-.horizontal-align-center {
+.justify-content-center {
     justify-content: center;
 }
 
-.horizontal-align-start {
+.justify-content-start {
     justify-content: flex-start;
 }
 
-.horizontal-align-end {
+.justify-content-end {
     justify-content: flex-end;
 }
 
-.vertical-align-center {
+.align-items-center {
     align-items: center;
 }
 
-.vertical-align-start {
+.align-items-start {
     align-items: flex-start;
 }
 
-.vertical-align-end {
+.align-items-end {
     align-items: flex-end;
 }
 
