@@ -1,17 +1,24 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
-const routes: Routes = [
-    {
-        path: '',
-        loadChildren: () => import('./listagem-ciap/listagem-ciap.module').then(m => m.ListagemCiapModule)
-    }
-];
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from "@angular/material/button";
+
+import { CiapRoutingModule } from "./ciap-routing.module";
+import { DetalheCiapComponent } from './components/detalhe-ciap/detalhe-ciap.component';
+
 
 @NgModule({
+    declarations: [
+        DetalheCiapComponent
+    ],
+    imports: [
+        CommonModule,
+        CiapRoutingModule,
 
-    imports: [RouterModule.forChild(routes)],
-
+        MatIconModule,
+        MatButtonModule,
+    ]
 })
 
 export class CiapModule { }

@@ -5,6 +5,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { CommonModule } from "@angular/common";
 import { MatListModule } from "@angular/material/list";
 import { ListagemPrestadorComponent } from "./listagem-prestador.component";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 const routes: Routes = [
     {
@@ -20,7 +22,9 @@ const routes: Routes = [
         MatInputModule,
         MatFormFieldModule,
         CommonModule,
-        MatListModule
+        MatListModule,
+        MatButtonModule,
+        MatIconModule,
     ],
     declarations: [
         ListagemPrestadorComponent

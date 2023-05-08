@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
 import { Instituicao } from "src/app/utils/models/instituicao";
 import { Prestador } from "src/app/utils/models/prestador/prestador";
 import { RequestService } from "src/app/utils/services/request.service";
@@ -14,7 +15,10 @@ export class ListagemPrestadorComponent implements OnInit {
 
     public listaPrestadores!: Array<Prestador>;
 
-    constructor(private requestService: RequestService) {
+    constructor(
+        private _router: Router,
+        private requestService: RequestService
+    ) {
     }
 
     ngOnInit(): void {
@@ -31,6 +35,10 @@ export class ListagemPrestadorComponent implements OnInit {
             idade--;
         }
         return idade;
+    }
+
+    onAdicionarNovaEntidade(): void {
+        this._router.navigate(['prestador', 'incluir'])
     }
 
 }

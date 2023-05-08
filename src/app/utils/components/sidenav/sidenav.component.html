@@ -1,4 +1,4 @@
-<mat-drawer-container class="full-size">
+<mat-drawer-container class="full-size" autosize>
     <mat-drawer mode="side" opened>
         <mat-nav-list>
             <app-item-menu *ngFor="let item of itensMenu$ | async as itens; index as i" [index]="i" [item]="item"

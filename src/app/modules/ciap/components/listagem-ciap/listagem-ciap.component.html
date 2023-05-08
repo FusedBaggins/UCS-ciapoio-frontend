@@ -1,0 +1,29 @@
+<div class="column full-size container">
+    <div class="container-filtros">
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput>
+        </mat-form-field>
+    </div>
+
+    <h1 class="margem-esquerda">CIAPs encontradas</h1>
+
+    <mat-nav-list class="listagem-container">
+        <a mat-list-item href="ciap/{{ ciap.id }}" *ngFor="let ciap of listaCiaps">
+            <div style="padding: 16px;">
+                <span>{{ ciap.nome }}</span>
+                <p>{{ ciap.observacao }}</p>
+            </div>
+        </a>
+    </mat-nav-list>
+</div>
+<div class="row full-width justify-content-end align-items-center button-container">
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="onAdicionarNovaEntidade()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
