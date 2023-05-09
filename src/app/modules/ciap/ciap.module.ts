@@ -6,6 +6,7 @@ import { MatButtonModule } from "@angular/material/button";
 
 import { CiapRoutingModule } from "./ciap-routing.module";
 import { DetalheCiapComponent } from './components/detalhe-ciap/detalhe-ciap.component';
+import { ListaEntidadeModule } from "src/app/utils/components/lista-entidade/lista-entidade.module";
 
 
 @NgModule({
@@ -18,6 +19,8 @@ import { DetalheCiapComponent } from './components/detalhe-ciap/detalhe-ciap.com
 
         MatIconModule,
         MatButtonModule,
+
+        ListaEntidadeModule
     ]
 })
 

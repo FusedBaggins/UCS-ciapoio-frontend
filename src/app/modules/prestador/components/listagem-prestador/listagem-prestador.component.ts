@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { Instituicao } from "src/app/utils/models/instituicao";
 import { Prestador } from "src/app/utils/models/prestador/prestador";
 import { RequestService } from "src/app/utils/services/request.service";
+import { PrestadorService } from "../../services/prestador.service";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'listagem-prestador-component',
@@ -15,16 +17,21 @@ export class ListagemPrestadorComponent implements OnInit {
 
     public listaPrestadores!: Array<Prestador>;
 
+    prestadores$!: Observable<Prestador[]>;
+
     constructor(
         private _router: Router,
-        private requestService: RequestService
+        private requestService: RequestService,
+        private _prestadorService: PrestadorService
     ) {
     }
 
     ngOnInit(): void {
-        this.requestService.buscaListaPrestador().subscribe(listaPrestadores => {
-            this.listaPrestadores = listaPrestadores;
-        });
+        // this.requestService.buscaListaPrestador().subscribe(listaPrestadores => {
+        //     this.listaPrestadores = listaPrestadores;
+        // });
+
+        this.prestadores$ = this._prestadorService.getPrestadores();
     }
 
     public idade = (dataNascimento: Date): number => {
