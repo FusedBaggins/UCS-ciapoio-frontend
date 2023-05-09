@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
+
+import { Observable } from "rxjs";
+
 import { Instituicao } from "src/app/utils/models/instituicao";
-import { RequestService } from "src/app/utils/services/request.service";
+import { InstituicaoService } from "src/app/utils/components/instituicao/services/instituicao.service";
 
 @Component({
     selector: 'listagem-ciap-component',
@@ -13,17 +16,16 @@ import { RequestService } from "src/app/utils/services/request.service";
 export class ListagemCiapComponent implements OnInit {
 
     public listaCiaps!: Array<Instituicao>;
+    public instituicoes$!: Observable<Instituicao[]>;
 
     constructor(
         private _router: Router,
-        private requestService: RequestService,
+        private _instituicaoService: InstituicaoService
     ) {
     }
 
     ngOnInit(): void {
-        this.requestService.buscaListaCiap().subscribe(listaCiaps => {
-            this.listaCiaps = listaCiaps;
-        });
+        this.instituicoes$ = this._instituicaoService.getInstituicoes(1);
     }
 
     onAdicionarNovaEntidade(): void {

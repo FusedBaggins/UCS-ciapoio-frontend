@@ -15,13 +15,20 @@
 
 
     <mat-nav-list class="listagem-container">
-        <a mat-list-item href="prestador/{{ prestador.id }}" *ngFor="let prestador of listaPrestadores">
-            <div style="padding: 16px;">
-                <span>{{ prestador.nome }}</span>
-                <p>{{ idade(prestador.dt_nascimento) }} anos, {{prestador.endereco.cidade.nome}},
-                    {{prestador.endereco.cidade.unidadeFederativa.sigla}}</p>
-            </div>
-        </a>
+        <ng-container *ngIf="prestadores$ | async as prestadores; else loading">
+            <a mat-list-item [routerLink]="['prestador', prestador.id]" *ngFor="let prestador of prestadores">
+                <div style="padding: 16px;">
+                    <span>{{prestador.nome}}</span>
+                </div>
+            </a>
+
+            <span *ngIf="!prestadores?.length">
+                Oops! Não encontramos nenhum registro. :(
+            </span>
+        </ng-container>
+        <ng-template #loading>
+            Carregando
+        </ng-template>
     </mat-nav-list>
 </div>
 <div class="row full-width justify-content-end align-items-center button-container">

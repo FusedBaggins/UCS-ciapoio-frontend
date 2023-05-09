@@ -14,16 +14,25 @@
     <h1 class="margem-esquerda">CIAPs encontradas</h1>
 
     <mat-nav-list class="listagem-container">
-        <a mat-list-item href="ciap/{{ ciap.id }}" *ngFor="let ciap of listaCiaps">
-            <div style="padding: 16px;">
-                <span>{{ ciap.nome }}</span>
-                <p>{{ ciap.observacao }}</p>
-            </div>
-        </a>
+        <ng-container *ngIf="instituicoes$ | async as insituicoes; else loading">
+            <a mat-list-item [routerLink]="['prestador', instituicao.id]" *ngFor="let instituicao of insituicoes">
+                <div style="padding: 16px;">
+                    <span>{{instituicao.nome}}</span>
+                </div>
+            </a>
+
+            <span *ngIf="!insituicoes?.length">
+                Oops! Não encontramos nenhum registro. :(
+            </span>
+        </ng-container>
+        <ng-template #loading>
+            Carregando
+        </ng-template>
     </mat-nav-list>
 </div>
 <div class="row full-width justify-content-end align-items-center button-container">
-    <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="onAdicionarNovaEntidade()">
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+        (click)="onAdicionarNovaEntidade()">
         <mat-icon>add</mat-icon>
     </button>
 </div>
