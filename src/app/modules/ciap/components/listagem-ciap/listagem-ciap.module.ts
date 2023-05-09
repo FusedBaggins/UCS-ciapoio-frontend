@@ -7,6 +7,7 @@ import { CommonModule } from "@angular/common";
 import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { ListaEntidadeModule } from "src/app/utils/components/lista-entidade/lista-entidade.module";
 
 const routes: Routes = [
     {
@@ -25,6 +26,8 @@ const routes: Routes = [
         MatListModule,
         MatButtonModule,
         MatIconModule,
+
+        ListaEntidadeModule
     ],
     declarations: [
         ListagemCiapComponent

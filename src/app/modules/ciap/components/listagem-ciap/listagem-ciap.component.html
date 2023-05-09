@@ -14,7 +14,9 @@
     <h1 class="margem-esquerda">CIAPs encontradas</h1>
 
     <mat-nav-list class="listagem-container">
-        <ng-container *ngIf="instituicoes$ | async as insituicoes; else loading">
+        <!--
+            FOrmato não generico
+            <ng-container *ngIf="instituicoes$ | async as insituicoes; else loading">
             <a mat-list-item [routerLink]="['prestador', instituicao.id]" *ngFor="let instituicao of insituicoes">
                 <div style="padding: 16px;">
                     <span>{{instituicao.nome}}</span>
@@ -24,6 +26,14 @@
             <span *ngIf="!insituicoes?.length">
                 Oops! Não encontramos nenhum registro. :(
             </span>
+        </ng-container>
+        <ng-template #loading>
+            Carregando
+        </ng-template>-->
+        <!-- Em teste "generalizando"-->
+        <ng-container *ngIf="instituicoes$ | async as instituicoes; else loading">
+            <app-lista-entidade [entidades]="instituicoes">
+            </app-lista-entidade>
         </ng-container>
         <ng-template #loading>
             Carregando
