@@ -1,68 +1,78 @@
 <mat-vertical-stepper>
     <mat-step>
         <!-- [stepControl]="firstFormGroup" -->
-        <form>
-            <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>face</mat-icon> Dados do prestador</ng-template>
+        <!-- [formGroup]="firstFormGroup" -->
+        <ng-template matStepLabel>
+            <div class="row align-items-center ">
+                <mat-icon>face</mat-icon>
+                <span>Dados do prestador</span>
+            </div>
+        </ng-template>
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="prestador.nome">
+        </mat-form-field>
+        <div>
             <mat-form-field>
-                <mat-label>Nome</mat-label>
-                <input matInput>
+                <mat-label>CPF</mat-label>
+                <input matInput [(ngModel)]="prestador.cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Filiação materna</mat-label>
+                <input matInput [(ngModel)]="prestador.nome_mae">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="prestador.dt_nascimento">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Estado civil</mat-label>
+                <input matInput [(ngModel)]="prestador.estado_civil">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Etinia</mat-label>
+                <input matInput [(ngModel)]="prestador.etnia">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Escolaridade</mat-label>
+                <input matInput [(ngModel)]="prestador.escolaridade">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Renda familiar</mat-label>
+                <input matInput [(ngModel)]="prestador.renda_familiar">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Telefone 1</mat-label>
+                <input matInput [(ngModel)]="prestador.telefone1">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Telefone 2</mat-label>
+                <input matInput [(ngModel)]="prestador.telefone2">
             </mat-form-field>
             <div>
-                <mat-form-field>
-                    <mat-label>CPF</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Filiação materna</mat-label>
-                    <input matInput>
-                </mat-form-field>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-            <div>
-                <mat-form-field>
-                    <mat-label>Data de nascimento</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Estado civil</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Etinia</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <mat-label>Escolaridade</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Renda familiar</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <mat-label>Telefone 1</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Telefone 2</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <div>
-                    <button mat-button matStepperNext type="button">Next</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </mat-step>
 
     <mat-step>
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>medical_information</mat-icon>Ficha médica</ng-template>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>medical_information</mat-icon>
+                    <span>Ficha médica</span>
+                </div>
+            </ng-template>
             <mat-chip-listbox [multiple]="true">
                 <mat-chip-option>Não possui</mat-chip-option>
                 <mat-chip-option>Física</mat-chip-option>
@@ -76,9 +86,9 @@
                 <input matInput>
             </mat-form-field>
             <mat-divider></mat-divider>
-            <button mat-button type="button" (click)="abreDialogDrogaUtilizada()" >Adicionar</button>
+            <button mat-button type="button" (click)="abreDialogDrogaUtilizada()">Adicionar</button>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -86,10 +96,15 @@
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>family_restroom</mat-icon>Família</ng-template>
-            <button mat-button type="button" (click)="abreDialogIntegrante()" >Adicionar</button>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>family_restroom</mat-icon>
+                    <span>Família</span>
+                </div>
+            </ng-template>
+            <button mat-button type="button" (click)="abreDialogIntegrante()">Adicionar</button>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -97,10 +112,15 @@
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>work</mat-icon>Experiência profissional</ng-template>
-            <button mat-button type="button" (click)="abreDialogExperienceiaProfissional()" >Adicionar</button>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>work</mat-icon>
+                    <span>Experiência profissional</span>
+                </div>
+            </ng-template>
+            <button mat-button type="button" (click)="abreDialogExperienceiaProfissional()">Adicionar</button>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -108,10 +128,15 @@
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>school</mat-icon>Cursos</ng-template>
-            <button mat-button type="button" (click)="abreDialogCurso()" >Adicionar</button>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>school</mat-icon>
+                    <span>Cursos</span>
+                </div>
+            </ng-template>
+            <button mat-button type="button" (click)="abreDialogCurso()">Adicionar</button>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -119,10 +144,15 @@
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>auto_stories</mat-icon>Habilidades</ng-template>
-            <button mat-button type="button" (click)="abreDialogHabilidade()" >Adicionar</button>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>auto_stories</mat-icon>
+                    <span>Habilidades</span>
+                </div>
+            </ng-template>
+            <button mat-button type="button" (click)="abreDialogHabilidade()">Adicionar</button>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -130,11 +160,24 @@
         <!-- [stepControl]="firstFormGroup" -->
         <form>
             <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel><mat-icon>psychology_alt</mat-icon>Outras informações</ng-template>
+            <ng-template matStepLabel>
+                <div class="row align-items-center ">
+                    <mat-icon>psychology_alt</mat-icon>
+                    <span>Outras informações</span>
+                </div>
+            </ng-template>
             <div>
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button">Próximo</button>
             </div>
         </form>
     </mat-step>
 
 </mat-vertical-stepper>
+
+<div class="row full-width justify-content-end align-items-center button-container">
+
+    <button mat-raised-button extended color="primary" (click)="adicionaPrestador()">
+        <mat-icon>add</mat-icon>
+        Adicionar
+    </button>
+</div>

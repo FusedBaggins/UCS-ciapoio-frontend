@@ -14,6 +14,9 @@ import { DialogCursoComponent } from "../dialogs/dialog-curso/dialog-curso.compo
 import { DialogExperienciaProfissionaComponent } from "../dialogs/dialog-experiencia-profissiona/dialog-experiencia-profissiona.component";
 import { DialogHabilidadeComponent } from "../dialogs/dialog-habilidade/dialog-habilidade.component";
 import { DialogIntegranteComponent } from "../dialogs/dialog-integrante/dialog-integrante.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 const routes: Routes = [
     {
@@ -33,7 +36,11 @@ const routes: Routes = [
         MatButtonModule,
         MatChipsModule,
         MatDividerModule,
-        MatDialogModule
+        MatDialogModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     declarations: [
         IncluirPrestadorComponent,

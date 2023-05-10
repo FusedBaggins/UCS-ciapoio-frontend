@@ -5,6 +5,8 @@ import { DialogIntegranteComponent } from '../dialogs/dialog-integrante/dialog-i
 import { DialogExperienciaProfissionaComponent } from '../dialogs/dialog-experiencia-profissiona/dialog-experiencia-profissiona.component';
 import { DialogCursoComponent } from '../dialogs/dialog-curso/dialog-curso.component';
 import { DialogHabilidadeComponent } from '../dialogs/dialog-habilidade/dialog-habilidade.component';
+import { Prestador } from 'src/app/utils/models/prestador/prestador';
+import { PrestadorService } from '../../services/prestador.service';
 
 @Component({
   selector: 'app-incluir-prestador',
@@ -13,7 +15,11 @@ import { DialogHabilidadeComponent } from '../dialogs/dialog-habilidade/dialog-h
 })
 export class IncluirPrestadorComponent {
 
-  constructor(public dialog: MatDialog) { }
+  public prestador = new Prestador();
+
+  constructor(
+    public dialog: MatDialog,
+    private _prestadorService: PrestadorService) { }
 
   public abreDialogDrogaUtilizada(): void {
     const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, { data: {}, });
@@ -59,4 +65,10 @@ export class IncluirPrestadorComponent {
       // this.animal = result;
     });
   }
+
+  public adicionaPrestador(): void {
+    console.log(this.prestador);
+    this._prestadorService.addPrestadores(this.prestador);
+  }
+
 }
