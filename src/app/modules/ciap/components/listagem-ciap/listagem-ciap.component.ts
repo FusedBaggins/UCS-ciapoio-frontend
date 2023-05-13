@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 
-import { Observable } from "rxjs";
+import { Observable, debounceTime, startWith, switchMap } from "rxjs";
 
+import { CiapService } from "../../services/ciap.service";
 import { Instituicao } from "src/app/utils/models/instituicao";
-import { InstituicaoService } from "src/app/utils/components/instituicao/services/instituicao.service";
 
 @Component({
     selector: 'listagem-ciap-component',
@@ -15,21 +16,31 @@ import { InstituicaoService } from "src/app/utils/components/instituicao/service
 
 export class ListagemCiapComponent implements OnInit {
 
-    public listaCiaps!: Array<Instituicao>;
+    public filtros: FormGroup;
     public instituicoes$!: Observable<Instituicao[]>;
 
     constructor(
         private _router: Router,
-        private _instituicaoService: InstituicaoService
+        private _ciapService: CiapService,
+        private _formBuilder: FormBuilder,
     ) {
+        this.filtros = this._formBuilder.group({
+            id: [null, []],
+            nome: [null, []]
+        });
     }
 
     ngOnInit(): void {
-        this.instituicoes$ = this._instituicaoService.getInstituicoes(1);
+        this.instituicoes$ = this.filtros.valueChanges.pipe(
+            startWith({}),
+            debounceTime(500),
+            switchMap((filtros: any) => {
+                return this._ciapService.getInstituicoes(filtros)
+            })
+        );
     }
 
     onAdicionarNovaEntidade(): void {
         this._router.navigate(['ciap', 'incluir']);
     }
-
 }

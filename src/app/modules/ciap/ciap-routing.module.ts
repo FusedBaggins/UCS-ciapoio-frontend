@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DetalheCiapComponent } from './components/detalhe-ciap/detalhe-ciap.component';
+import { ListagemCiapComponent } from './components/listagem-ciap/listagem-ciap.component';
 
 const routes: Routes = [
     {
         path: '',
-        // component:DetalheCiapComponent,
-        loadChildren: () => import('./components/listagem-ciap/listagem-ciap.module').then(m => m.ListagemCiapModule)
+        component: ListagemCiapComponent,
     },
     {
         path: ':id',

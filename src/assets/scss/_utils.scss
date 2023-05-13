@@ -1,3 +1,7 @@
 .no-margin {
     margin: 0 !important;
 }
+
+.container .field-margin-left:first-child {
+    margin-left: 0;
+}

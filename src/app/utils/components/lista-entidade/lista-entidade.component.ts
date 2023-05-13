@@ -39,7 +39,6 @@ export class ListaEntidadeComponent implements OnInit, OnChanges {
     if (changes['entidades$'].currentValue && this.config.exibirCarregamento) {
       this.loading = true;
       this.entidades$ = this.entidades$.pipe(
-        delay(5000),
         tap(() => {
           this.loading = false;
         })
