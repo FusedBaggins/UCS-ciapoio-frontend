@@ -1,0 +1,34 @@
+<ng-container *ngIf="entidades$ | async as entidades">
+    <ng-container [ngTemplateOutlet]="tituloTemplate"></ng-container>
+    <mat-list>
+        <mat-list-item *ngFor="let entidade of entidades; index as i" (click)="onEditarEntidade(entidade.id)">
+            <div matListItemAvatar *ngIf="config?.exibirIdentificador">
+                <!-- Faltar colocar a cor padrão do projeto -->
+                <div class="full-height row justify-content-center align-items-center">
+                    {{entidade.id}}
+                </div>
+            </div>
+            <!-- Falta ajustar para o link da imagem correta -->
+            <img *ngIf="config?.exibirAvatar" matListItemAvatar
+                src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" />
+            <div>
+                <ng-container [ngTemplateOutlet]="entidadesTemplate"
+                    [ngTemplateOutletContext]="{$implicit:entidade, idx:i}">
+                </ng-container>
+            </div>
+            <div matListItemMeta *ngIf="config.exibirEdicao">
+                <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="!entidades?.length">
+            <span class="full-width row">
+                <ng-container [ngTemplateOutlet]="nenhumaEntidadeTemplate"></ng-container>
+            </span>
+        </mat-list-item>
+    </mat-list>
+</ng-container>
+<div class="full-size column justify-content-center align-items-center" *ngIf="loading">
+    <mat-spinner [diameter]="64"></mat-spinner>
+</div>
