@@ -18,4 +18,8 @@ export class PrestadorService {
   getPrestadores(): Observable<Prestador[]> {
     return this._http.get<Prestador[]>(this._url);
   }
+
+  addPrestadores(prestador: Prestador): Observable<void> {
+    return this._http.post<void>(this._url, prestador);
+  }
 }
