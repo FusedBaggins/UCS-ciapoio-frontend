@@ -4,11 +4,10 @@
             <app-item-menu *ngFor="let item of itensMenu$ | async as itens; index as i" [index]="i" [item]="item"
                 (itemAtivo)="onItemAtivoClicado($event, itens)">
             </app-item-menu>
-            <!-- <a mat-list-item *ngFor="let link of links" [activated]="link.isActive">{{ link.titulo }}</a> -->
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
-        <div class="full-size sidenav-container">
+        <div class="full-size default-padding sidenav-container">
             <ng-content></ng-content>
         </div>
     </mat-drawer-content>

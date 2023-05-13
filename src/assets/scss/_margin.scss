@@ -1,3 +1,9 @@
+@use "./vars" as vars;
+
 .field-margin-left{
     margin-left: 16px;
+}
+
+.default-padding {
+    padding: vars.$default-spacing;
 }

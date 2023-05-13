@@ -1,7 +1,16 @@
+@use "./vars" as vars;
+
+
 .no-margin {
     margin: 0 !important;
 }
 
 .container .field-margin-left:first-child {
     margin-left: 0;
+}
+
+.fab-button {
+    position: fixed;
+    bottom: vars.$default-spacing;
+    right: vars.$default-spacing;
 }
