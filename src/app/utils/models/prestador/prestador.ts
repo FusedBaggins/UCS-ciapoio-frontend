@@ -1,5 +1,5 @@
-import Etnia from "../../enums/etnia";
 import Escolaridade from "../../enums/escolaridade";
+import Etnia from "../../enums/etnia";
 import { Endereco } from "../endereco";
 import { Usuario } from "../usuario";
 

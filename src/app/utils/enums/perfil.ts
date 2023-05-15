@@ -3,6 +3,7 @@ enum Perfil {
     usuarioEntidade = 2,
     Administrador = 3,
     deslogado = 4,
+    administrador = 5,
 }
 
   
