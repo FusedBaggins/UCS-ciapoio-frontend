@@ -45,7 +45,7 @@ export class ListagemPrestadorComponent implements OnInit {
     }
 
     onAdicionarNovaEntidade(): void {
-        this._router.navigate(['prestadores', 'incluir'])
+        this._router.navigate(['prestador', 'incluir'])
     }
 
 }
