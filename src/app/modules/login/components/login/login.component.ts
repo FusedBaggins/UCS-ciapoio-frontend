@@ -8,8 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject, takeUntil } from 'rxjs';
 
 import { LoginService } from '../../services/login.service';
-import errorMessages from 'src/app/utils/constants/error-messages';
 import { AutenticacaoService } from 'src/app/utils/services/autenticacao.service';
+import httpErrorMessages from 'src/app/utils/constants/http-error-messages';
 
 
 @Component({
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             return;
           }
 
-          this._matSnackBar.open(errorMessages[`${error.status}`], 'OK');
+          this._matSnackBar.open(httpErrorMessages[`${error.status}`], 'OK');
           this._setUsuarioAutenticado(false);
           this._destoyed$.next();
         }

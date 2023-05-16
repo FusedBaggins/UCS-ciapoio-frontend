@@ -1,0 +1,37 @@
+<div class="column full-width" [formGroup]="form">
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input matInput placeholder="" formControlName="cep">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left">
+            <mat-label>Cidade</mat-label>
+            <mat-select name="cidade" formControlName="cidade">
+                <mat-option value="1">
+                    Cidade 1
+                </mat-option>
+                <mat-option value="2">
+                    Cidade 2
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill" class="w-1">
+            <mat-label>Rua</mat-label>
+            <input matInput placeholder="" formControlName="rua">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-3 field-margin-left">
+            <mat-label>Número</mat-label>
+            <input matInput placeholder="" formControlName="numero">
+        </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Bairro</mat-label>
+        <input matInput placeholder="" formControlName="bairro">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Complemento</mat-label>
+        <textarea matInput formControlName="complemento"></textarea>
+    </mat-form-field>
+</div>
