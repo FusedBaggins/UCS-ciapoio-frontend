@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Observable, debounceTime, startWith, switchMap } from "rxjs";
 
 import { CiapService } from "../../services/ciap.service";
-import { Instituicao } from "src/app/utils/models/instituicao";
+import { Instituicao } from "src/app/utils/components/instituicao/models/instituicao";
 
 @Component({
     selector: 'listagem-ciap-component',

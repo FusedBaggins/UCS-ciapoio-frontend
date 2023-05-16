@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { Instituicao } from '../../models/instituicao';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { cnpjValidator } from 'src/app/utils/validators/cnpj';
 
 @Component({
   selector: 'app-instituicao',
@@ -14,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() tipo!: number;
+  @Input() instituicao!: Instituicao;
   @Output('instituicaoAtualizada') instituicaoEmmiter!: EventEmitter<Instituicao>;
 
   form!: FormGroup;
@@ -34,6 +36,10 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
     if (changes['tipo'].currentValue) {
       this.criarForm();
     }
+
+    if (changes['instituicao'].currentValue) {
+      this.form.patchValue(changes['instituicao'].currentValue)
+    }
   }
 
   ngOnDestroy(): void {
@@ -45,7 +51,7 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
     this.form = this._formBuilder.group({
       id: [null, []],
       nome: [null, [Validators.required]],
-      cnpj: [null, [Validators.required]],
+      cnpj: [null, [Validators.required, cnpjValidator()]],
       email: [null, [Validators.required]],
       telefone1: [null, [Validators.required]],
       telefone2: [null, []],
@@ -67,8 +73,6 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
 
   onSubmit(): void {
     try {
-      console.log(this.form);
-      
       if (this.form.invalid) {
         this.form.markAllAsTouched();
         throw new Error('Campos obrigatórios devem ser preenchidos!');
@@ -78,7 +82,7 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
 
     }
     catch (e: any) {
-      this._matSnackBar.open(e.message, 'OK', { duration: 2000 })
+      this._matSnackBar.open(e.message, 'OK', { duration: 2000 });
     }
 
   }

@@ -10,14 +10,13 @@ const routes: Routes = [
         component: ListagemCiapComponent,
     },
     {
-        path: ':id',
-        component: DetalheCiapComponent
-    }
-    ,
-    {
         path: 'incluir',
         component: DetalheCiapComponent
-    }
+    },
+    {
+        path: ':id',
+        component: DetalheCiapComponent
+    },
 ];
 
 @NgModule({
