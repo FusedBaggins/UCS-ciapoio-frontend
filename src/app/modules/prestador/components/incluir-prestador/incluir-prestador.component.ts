@@ -68,7 +68,7 @@ export class IncluirPrestadorComponent {
 
   public adicionaPrestador(): void {
     console.log(this.prestador);
-    this._prestadorService.addPrestadores(this.prestador);
+    this._prestadorService.addPrestadores(this.prestador).subscribe(() => {});
   }
 
 }
