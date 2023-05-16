@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RequestService } from './utils/services/request.service';
 import { ToolbarModule } from './utils/components/toolbar/toolbar.module';
 import { SidenavModule } from './utils/components/sidenav/sidenav.module';
 import { HttpInterceptorService } from './utils/interceptors/http-interceptor.service';
@@ -26,8 +25,7 @@ import { HttpInterceptorService } from './utils/interceptors/http-interceptor.se
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true
-    },
-    RequestService
+    }
   ],
   bootstrap: [AppComponent]
 })
