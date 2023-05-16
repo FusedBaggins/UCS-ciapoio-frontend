@@ -1,1 +1,56 @@
-<p>entidade works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+    <h2 class="mat-headline-6">Informações iniciais</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="" formControlName="nome">
+    </mat-form-field>
+
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill">
+            <mat-label>CNPJ</mat-label>
+            <input matInput placeholder="" formControlName="cnpj">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="" formControlName="email">
+        </mat-form-field>
+    </div>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill">
+            <mat-label>Telefone 1</mat-label>
+            <input matInput placeholder="" formControlName="telefone1">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left">
+            <mat-label>Telefone 2</mat-label>
+            <input matInput placeholder="" formControlName="telefone2">
+        </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Observações</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+    <h2 class="mat-headline-6">Endereço</h2>
+    <app-endereco class="row full-width" [form]="this.form.controls['endereco']"></app-endereco>
+    <h2 class="mat-headline-6">Situação</h2>
+    <div class="row no-wrap full-width">
+        <mat-form-field appearance="fill" class="w-2 ">
+            <mat-label>Credenciamento</mat-label>
+            <input matInput [matDatepicker]="credenciamentoPicker" formControlName="data_credenciamento">
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="credenciamentoPicker"></mat-datepicker-toggle>
+            <mat-datepicker #credenciamentoPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-2 field-margin-left">
+            <mat-label>Descredenciamento</mat-label>
+            <input matInput [matDatepicker]="descredenciamentoPicker" formControlName="data_descredenciamento">
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="descredenciamentoPicker"></mat-datepicker-toggle>
+            <mat-datepicker #descredenciamentoPicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="row fab-button">
+        <button mat-fab type="submit" color="primary" aria-label="Submit button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</form>

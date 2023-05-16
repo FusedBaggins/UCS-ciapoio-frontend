@@ -13,6 +13,7 @@ import { DetalheCiapComponent } from './components/detalhe-ciap/detalhe-ciap.com
 import { ListagemCiapComponent } from './components/listagem-ciap/listagem-ciap.component';
 import { ListaEntidadeModule } from "src/app/utils/components/lista-entidade/lista-entidade.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { InstituicaoModule } from "src/app/utils/components/instituicao/instituicao.module";
 
 
 @NgModule({
@@ -24,9 +25,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
-        
+
         CiapRoutingModule,
-        
+
         MatIconModule,
         MatListModule,
         MatInputModule,
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         MatFormFieldModule,
 
         FormModule,
+        InstituicaoModule,
         ListaEntidadeModule
     ]
 })
