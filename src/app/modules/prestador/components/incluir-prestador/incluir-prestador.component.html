@@ -1,7 +1,5 @@
 <mat-vertical-stepper>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
-        <!-- [formGroup]="firstFormGroup" -->
         <ng-template matStepLabel>
             <div class="row align-items-center ">
                 <mat-icon>face</mat-icon>
@@ -68,44 +66,46 @@
     </mat-step>
 
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
-        <form>
-            <!-- [formGroup]="firstFormGroup" -->
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>medical_information</mat-icon>
-                    <span>Ficha médica</span>
-                </div>
-            </ng-template>
-            <mat-chip-listbox [multiple]="true">
-                <mat-chip-option>Não possui</mat-chip-option>
-                <mat-chip-option>Física</mat-chip-option>
-                <mat-chip-option>Visual</mat-chip-option>
-                <mat-chip-option>Auditiva</mat-chip-option>
-                <mat-chip-option>Intelectual</mat-chip-option>
-                <mat-chip-option>Psicossocial</mat-chip-option>
-            </mat-chip-listbox>
-            <mat-form-field>
-                <mat-label>Observação</mat-label>
-                <input matInput>
-            </mat-form-field>
-            <mat-divider></mat-divider>
-            <button mat-button type="button" (click)="abreDialogDrogaUtilizada()">Adicionar</button>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
+        <ng-template matStepLabel>
+            <div class="row align-items-center ">
+                <mat-icon>medical_information</mat-icon>
+                <span>Ficha médica</span>
             </div>
-        </form>
+        </ng-template>
+        <mat-chip-listbox [multiple]="true" (change)="deficienciaMudou($event)">
+            <mat-chip-option *ngFor="let deficiencia of deficiencias" [value]="deficiencia">{{ deficiencia.nome
+                }}</mat-chip-option>
+        </mat-chip-listbox>
+        <mat-form-field>
+            <mat-label>Observação</mat-label>
+            <input matInput [(ngModel)]="prestador.fichaMedica.descricao">
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item *ngFor="let usoDroga of prestador.fichaMedica.usoDrogas">
+                <div matListItemTitle>{{usoDroga.droga}}</div>
+                <div matListItemLine>{{usoDroga.observacao}}</div>
+            </mat-list-item>
+        </mat-list>
+        <button mat-button type="button" (click)="abreDialogDrogaUtilizada()">Adicionar</button>
+        <div>
+            <button mat-button matStepperNext type="button">Próximo</button>
+        </div>
     </mat-step>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
         <form>
-            <!-- [formGroup]="firstFormGroup" -->
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>family_restroom</mat-icon>
                     <span>Família</span>
                 </div>
             </ng-template>
+            <mat-list>
+                <mat-list-item *ngFor="let familiar of prestador.familiares">
+                    <div matListItemTitle>{{familiar}}</div>
+                    <div matListItemLine></div>
+                </mat-list-item>
+            </mat-list>
             <button mat-button type="button" (click)="abreDialogIntegrante()">Adicionar</button>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
@@ -113,9 +113,7 @@
         </form>
     </mat-step>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
         <form>
-            <!-- [formGroup]="firstFormGroup" -->
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>work</mat-icon>
@@ -129,9 +127,7 @@
         </form>
     </mat-step>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
         <form>
-            <!-- [formGroup]="firstFormGroup" -->
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>school</mat-icon>
@@ -145,9 +141,7 @@
         </form>
     </mat-step>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
         <form>
-            <!-- [formGroup]="firstFormGroup" -->
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>auto_stories</mat-icon>
@@ -161,9 +155,7 @@
         </form>
     </mat-step>
     <mat-step>
-        <!-- [stepControl]="firstFormGroup" -->
         <form>
-            <!-- [formGroup]="firstFormGroup" -->
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>psychology_alt</mat-icon>

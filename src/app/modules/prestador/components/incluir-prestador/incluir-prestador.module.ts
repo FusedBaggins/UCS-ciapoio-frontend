@@ -17,6 +17,8 @@ import { DialogIntegranteComponent } from "../dialogs/dialog-integrante/dialog-i
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MatListModule } from "@angular/material/list";
+import { CommonModule } from "@angular/common";
 
 const routes: Routes = [
     {
@@ -40,7 +42,9 @@ const routes: Routes = [
         ReactiveFormsModule,
         FormsModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatListModule,
+        CommonModule
     ],
     declarations: [
         IncluirPrestadorComponent,
