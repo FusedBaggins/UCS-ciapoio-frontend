@@ -1,0 +1,19 @@
+<ng-container *ngIf="entidade$ | async as entidade">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+        <h2 class="mat-headline-6">Pergunta</h2>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Pergunta</mat-label>
+            <input matInput placeholder="" formControlName="pergunta">
+        </mat-form-field>
+
+        <mat-label>Ativo</mat-label>
+        <mat-slide-toggle formControlName="ativo" color="primary"> </mat-slide-toggle>
+
+        <div class="row fab-button">
+            <button mat-fab type="submit" color="primary" aria-label="Submit button">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </form>
+</ng-container>
