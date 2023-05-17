@@ -34,7 +34,6 @@ export class DetalhesPerguntaComponent {
 
   ngOnInit(): void {
     this.criarForm();
-    //takeUntil(this._destroyed$),
     this.entidade$ = this._activatedRoute.params.pipe(
       takeUntil(this._destroyed$),
       switchMap((params: Params) => {
