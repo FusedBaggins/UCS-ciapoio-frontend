@@ -10,7 +10,7 @@ export class AutenticacaoService {
 
 
   constructor() {
-    this._autenticado$ = new BehaviorSubject(true);
+    this._autenticado$ = new BehaviorSubject(false);
   }
 
   setUsuarioAutenticado(autenticado: boolean): void {

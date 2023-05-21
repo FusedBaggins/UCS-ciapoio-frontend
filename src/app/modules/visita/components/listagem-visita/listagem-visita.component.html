@@ -1,0 +1,42 @@
+<div class="column full-size container">
+    <app-form [formGroup]="filtros">
+        <mat-form-field class="field-margin-left">
+            <mat-label>Identificador</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field class="field-margin-left">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome">
+        </mat-form-field>
+    </app-form>
+
+    <app-lista-entidade [entidades]="visitas$" [rotaEntidade]="['visita']" [config]="{
+        exibirAvatar: false,
+        exibirCarregamento: true,
+        exibirIdentificador: false,
+      }">
+        <ng-template #titulo>
+            <h2 class="mat-headline-6">Visitas agendadas</h2>
+        </ng-template>
+        <ng-template #entidades let-entidade>
+            <span matListItemTitle>{{entidade.prestador?.nome}}</span>
+            <span matListItemLine *ngIf="prazoEmAberto(entidade); else atraso">
+                {{calcularDiasRestante(entidade)}} dias restantes
+            </span>
+            <ng-template #atraso>
+                <span matListItemLine>
+                    {{calcularDiasRestante(entidade) * -1 }} dias em atraso
+                </span>
+            </ng-template>
+        </ng-template>
+        <ng-template #nenhumaEntidade>
+            Oops! Não encontramos nenhuma Visita agendada :(
+        </ng-template>
+    </app-lista-entidade>
+    <div class="row fab-button">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+            (click)="onAdicionarNovaEntidade()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

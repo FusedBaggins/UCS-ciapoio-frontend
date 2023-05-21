@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'ciap', loadChildren: () => import('./modules/ciap/ciap.module').then(m => m.CiapModule) },
   { path: 'prestador', loadChildren: () => import('./modules/prestador/prestador.module').then(m => m.PrestadorModule) },
   { path: 'pergunta', loadChildren: () => import('./modules/pergunta/pergunta.module').then(m => m.PerguntaModule) },
-  { path: 'profissional', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) }
+  { path: 'profissional', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
+  { path: 'visita', loadChildren: () => import('./modules/visita/visita.module').then(m => m.VisitaModule) },
 ];
 
 @NgModule({

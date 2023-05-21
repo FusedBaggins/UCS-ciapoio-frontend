@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
 import { Pergunta } from 'src/app/utils/models/prestador/entidades/pergunta/pergunta';
 import { PerguntaService } from '../../services/pergunta.service';
+import { ListaEntidadeConfiguracao } from 'src/app/utils/components/lista-entidade/models/lista-entidade-configuracao';
 
 @Component({
   selector: 'app-listagem-pergunta',
@@ -14,6 +15,12 @@ export class ListagemPerguntaComponent {
   public filtros: FormGroup;
   public perguntas$!: Observable<Pergunta[]>;
 
+  public entidadeConfig: ListaEntidadeConfiguracao = {
+    exibirAvatar: false,
+    exibirCarregamento: true,
+    exibirIdentificador: false,
+  }
+  
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
