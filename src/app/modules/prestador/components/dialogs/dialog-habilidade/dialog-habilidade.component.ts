@@ -1,5 +1,6 @@
 import { Component, Inject } from "@angular/core"
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Habilidade } from "src/app/utils/models/prestador/entidades/habilidade/habilidade";
 
 @Component({
     selector: 'dialog-habilidade',
@@ -7,17 +8,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 })
 
 export class DialogHabilidadeComponent {
+
+    public habilidade = new Habilidade();
+
     constructor(
-        public dialogRef: MatDialogRef<DialogHabilidadeComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData,
+        public dialogRef: MatDialogRef<DialogHabilidadeComponent>
     ) { }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
-}
 
-export interface DialogData {
-    animal: string;
-    name: string;
+    clickAdicionar(): void {
+        this.dialogRef.close(this.habilidade);
+    }
 }

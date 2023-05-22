@@ -1,8 +1,39 @@
 <h1 mat-dialog-title>Adicionar experiência profissional</h1>
 <div mat-dialog-content>
 
+  <div>
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="trabalho.descricao">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Horário inical</mat-label>
+      <input matInput [(ngModel)]="trabalho.horario_inicio">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Horário final</mat-label>
+      <input matInput [(ngModel)]="trabalho.horario_fim">
+    </mat-form-field>
+  </div>
+  <section>
+    <mat-checkbox [(ngModel)]="trabalho.domingo">D</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.segunda">S</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.terca">T</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.quarta">Q</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.quinta">Q</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.sexta">S</mat-checkbox>
+    <mat-checkbox [(ngModel)]="trabalho.sabado">S</mat-checkbox>
+  </section>
+
+  <mat-form-field>
+    <mat-label>Observação</mat-label>
+    <input matInput [(ngModel)]="trabalho.observacao">
+  </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial>Adicionar</button>
+  <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
   <button mat-button (click)="onNoClick()">Cancelar</button>
 </div>

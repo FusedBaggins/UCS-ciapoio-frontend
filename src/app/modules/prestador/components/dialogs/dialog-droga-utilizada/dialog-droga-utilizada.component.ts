@@ -12,8 +12,7 @@ export class DialogDrogaUtilizadaComponent {
     public usoDroga = new UsoDroga();
 
     constructor(
-        public dialogRef: MatDialogRef<DialogDrogaUtilizadaComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData,
+        public dialogRef: MatDialogRef<DialogDrogaUtilizadaComponent>
     ) { }
 
     clickCancelar(): void {
@@ -24,9 +23,4 @@ export class DialogDrogaUtilizadaComponent {
         this.dialogRef.close(this.usoDroga);
     }
 
-}
-
-export interface DialogData {
-    animal: string;
-    name: string;
 }

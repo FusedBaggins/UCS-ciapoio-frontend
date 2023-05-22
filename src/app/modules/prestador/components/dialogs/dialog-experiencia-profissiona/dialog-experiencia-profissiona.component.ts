@@ -1,5 +1,6 @@
 import { Component, Inject } from "@angular/core"
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Trabalho } from "src/app/utils/models/prestador/entidades/trabalho/trabalho";
 
 @Component({
     selector: 'dialog-experiencia-profissiona',
@@ -7,17 +8,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 })
 
 export class DialogExperienciaProfissionaComponent {
+
+    public trabalho = new Trabalho();
+
     constructor(
-        public dialogRef: MatDialogRef<DialogExperienciaProfissionaComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData,
+        public dialogRef: MatDialogRef<DialogExperienciaProfissionaComponent>
     ) { }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
-}
 
-export interface DialogData {
-    animal: string;
-    name: string;
+    clickAdicionar(): void {
+        this.dialogRef.close(this.trabalho);
+    }
 }

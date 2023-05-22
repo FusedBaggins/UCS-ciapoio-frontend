@@ -2,8 +2,11 @@ import Escolaridade from "../../enums/escolaridade";
 import Etnia from "../../enums/etnia";
 import { Endereco } from "../endereco";
 import { Usuario } from "../usuario";
+import { Curso } from "./entidades/curso/curso";
 import { Familiar } from "./entidades/familiar/familiar";
 import { FichaMedica } from "./entidades/ficha-medica/ficha-medica";
+import { Habilidade } from "./entidades/habilidade/habilidade";
+import { Trabalho } from "./entidades/trabalho/trabalho";
 
 export class Prestador {
     id!: number;
@@ -24,4 +27,7 @@ export class Prestador {
 
     fichaMedica!: FichaMedica;
     familiares!: Array<Familiar>;
+    habilidades!: Array<Habilidade>;
+    cursos!: Array<Curso>;
+    trabalhos!: Array<Trabalho>;
 }

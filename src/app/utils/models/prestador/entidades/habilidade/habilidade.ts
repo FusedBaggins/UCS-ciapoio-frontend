@@ -3,7 +3,7 @@ import { Prestador } from "../../prestador";
 
 export class Habilidade {
     id!: number;
-    instituicao!: string;
+    descricao!: string;
     observacao!: string;
     prestador!: Prestador;
 }

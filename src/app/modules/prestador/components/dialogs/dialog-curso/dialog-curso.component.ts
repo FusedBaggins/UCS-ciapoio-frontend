@@ -1,5 +1,6 @@
 import { Component, Inject } from "@angular/core"
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Curso } from "src/app/utils/models/prestador/entidades/curso/curso";
 
 @Component({
     selector: 'dialog-curso',
@@ -7,17 +8,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 })
 
 export class DialogCursoComponent {
+
+    public curso = new Curso();
+
     constructor(
-        public dialogRef: MatDialogRef<DialogCursoComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData,
+        public dialogRef: MatDialogRef<DialogCursoComponent>
     ) { }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
-}
 
-export interface DialogData {
-    animal: string;
-    name: string;
+    clickAdicionar(): void {
+        this.dialogRef.close(this.curso);
+    }
 }

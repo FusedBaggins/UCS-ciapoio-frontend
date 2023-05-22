@@ -11,6 +11,10 @@ import { FichaMedica } from 'src/app/utils/models/prestador/entidades/ficha-medi
 import { UsoDroga } from 'src/app/utils/models/prestador/entidades/uso-droga/uso-droga';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { Deficiencia } from 'src/app/utils/models/prestador/entidades/deficiencia/deficiencia';
+import { Familiar } from 'src/app/utils/models/prestador/entidades/familiar/familiar';
+import { Habilidade } from 'src/app/utils/models/prestador/entidades/habilidade/habilidade';
+import { Curso } from 'src/app/utils/models/prestador/entidades/curso/curso';
+import { Trabalho } from 'src/app/utils/models/prestador/entidades/trabalho/trabalho';
 
 @Component({
   selector: 'app-incluir-prestador',
@@ -34,13 +38,16 @@ export class IncluirPrestadorComponent {
     private _prestadorService: PrestadorService) {
     this.prestador.fichaMedica = new FichaMedica();
     this.prestador.fichaMedica.usoDrogas = new Array<UsoDroga>();
+    this.prestador.familiares = new Array<Familiar>();
+    this.prestador.habilidades = new Array<Habilidade>();
+    this.prestador.cursos = new Array<Curso>();
+    this.prestador.trabalhos = new Array<Trabalho>();
   }
 
   public abreDialogDrogaUtilizada(): void {
     const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.prestador.fichaMedica.usoDrogas.push(result);
       }
@@ -48,7 +55,6 @@ export class IncluirPrestadorComponent {
   }
 
   public deficienciaMudou(event: MatChipListboxChange): void {
-    console.log(event.value);
     this.prestador.fichaMedica.deficiencias = event.value;
   }
 
@@ -56,8 +62,9 @@ export class IncluirPrestadorComponent {
     const dialogRef = this.dialog.open(DialogIntegranteComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      if (result) {
+        this.prestador.familiares.push(result);
+      }
     });
   }
 
@@ -65,8 +72,9 @@ export class IncluirPrestadorComponent {
     const dialogRef = this.dialog.open(DialogExperienciaProfissionaComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      if (result) {
+        this.prestador.trabalhos.push(result);
+      }
     });
   }
 
@@ -74,8 +82,9 @@ export class IncluirPrestadorComponent {
     const dialogRef = this.dialog.open(DialogCursoComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      if(result) {
+        this.prestador.cursos.push(result);
+      }
     });
   }
 
@@ -83,13 +92,13 @@ export class IncluirPrestadorComponent {
     const dialogRef = this.dialog.open(DialogHabilidadeComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      if (result) {
+        this.prestador.habilidades.push(result);
+      }
     });
   }
 
   public adicionaPrestador(): void {
-    console.log(this.prestador);
     this._prestadorService.addPrestadores(this.prestador).subscribe(() => { });
   }
 

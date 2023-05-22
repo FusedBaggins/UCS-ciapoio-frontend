@@ -3,23 +3,23 @@
   <div>
     <mat-form-field>
       <mat-label>Instituição</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="curso.instituicao">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
       <mat-label>Curso</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="curso.curso">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
       <mat-label>Observação</mat-label>
-      <input matInput>
+      <input matInput [(ngModel)]="curso.observacao">
     </mat-form-field>
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial>Adicionar</button>
+  <button mat-button (click)="clickAdicionar()"  cdkFocusInitial>Adicionar</button>
   <button mat-button (click)="onNoClick()">Cancelar</button>
 </div>

@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatListModule } from "@angular/material/list";
 import { CommonModule } from "@angular/common";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const routes: Routes = [
     {
@@ -44,7 +45,8 @@ const routes: Routes = [
         MatDatepickerModule,
         MatNativeDateModule,
         MatListModule,
-        CommonModule
+        CommonModule,
+        MatCheckboxModule
     ],
     declarations: [
         IncluirPrestadorComponent,

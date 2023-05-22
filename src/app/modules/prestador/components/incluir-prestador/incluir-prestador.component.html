@@ -102,8 +102,8 @@
             </ng-template>
             <mat-list>
                 <mat-list-item *ngFor="let familiar of prestador.familiares">
-                    <div matListItemTitle>{{familiar}}</div>
-                    <div matListItemLine></div>
+                    <div matListItemTitle>{{familiar.nome}}</div>
+                    <div matListItemLine>{{familiar.observacao}}</div>
                 </mat-list-item>
             </mat-list>
             <button mat-button type="button" (click)="abreDialogIntegrante()">Adicionar</button>
@@ -120,6 +120,12 @@
                     <span>Experiência profissional</span>
                 </div>
             </ng-template>
+            <mat-list>
+                <mat-list-item *ngFor="let trabalho of prestador.trabalhos">
+                    <div matListItemTitle>{{trabalho.descricao}}</div>
+                    <div matListItemLine>{{trabalho.observacao}}</div>
+                </mat-list-item>
+            </mat-list>
             <button mat-button type="button" (click)="abreDialogExperienceiaProfissional()">Adicionar</button>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
@@ -134,6 +140,12 @@
                     <span>Cursos</span>
                 </div>
             </ng-template>
+            <mat-list>
+                <mat-list-item *ngFor="let curso of prestador.cursos">
+                    <div matListItemTitle>{{curso.curso}}</div>
+                    <div matListItemLine>{{curso.observacao}}</div>
+                </mat-list-item>
+            </mat-list>
             <button mat-button type="button" (click)="abreDialogCurso()">Adicionar</button>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
@@ -148,6 +160,12 @@
                     <span>Habilidades</span>
                 </div>
             </ng-template>
+            <mat-list>
+                <mat-list-item *ngFor="let habilidade of prestador.habilidades">
+                    <div matListItemTitle>{{habilidade.descricao}}</div>
+                    <div matListItemLine>{{habilidade.observacao}}</div>
+                </mat-list-item>
+            </mat-list>
             <button mat-button type="button" (click)="abreDialogHabilidade()">Adicionar</button>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
