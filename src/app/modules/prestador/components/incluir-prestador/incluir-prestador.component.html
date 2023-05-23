@@ -93,7 +93,6 @@
         </div>
     </mat-step>
     <mat-step>
-        <form>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>family_restroom</mat-icon>
@@ -110,10 +109,8 @@
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-        </form>
     </mat-step>
     <mat-step>
-        <form>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>work</mat-icon>
@@ -130,10 +127,8 @@
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-        </form>
     </mat-step>
     <mat-step>
-        <form>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>school</mat-icon>
@@ -150,10 +145,8 @@
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-        </form>
     </mat-step>
     <mat-step>
-        <form>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>auto_stories</mat-icon>
@@ -170,20 +163,21 @@
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-        </form>
     </mat-step>
     <mat-step>
-        <form>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>psychology_alt</mat-icon>
                     <span>Outras informações</span>
                 </div>
             </ng-template>
+            <mat-form-field *ngFor="let resposta of prestador.respostas">
+                <mat-label>{{ resposta.pergunta.pergunta }}</mat-label>
+                <input matInput [(ngModel)]="resposta.descricao">
+            </mat-form-field>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>
             </div>
-        </form>
     </mat-step>
 
 </mat-vertical-stepper>

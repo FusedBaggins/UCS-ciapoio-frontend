@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDrogaUtilizadaComponent } from '../dialogs/dialog-droga-utilizada/dialog-droga-utilizada.component';
 import { DialogIntegranteComponent } from '../dialogs/dialog-integrante/dialog-integrante.component';
@@ -15,13 +15,16 @@ import { Familiar } from 'src/app/utils/models/prestador/entidades/familiar/fami
 import { Habilidade } from 'src/app/utils/models/prestador/entidades/habilidade/habilidade';
 import { Curso } from 'src/app/utils/models/prestador/entidades/curso/curso';
 import { Trabalho } from 'src/app/utils/models/prestador/entidades/trabalho/trabalho';
+import { PerguntaService } from 'src/app/modules/pergunta/services/pergunta.service';
+import { Pergunta } from 'src/app/utils/models/prestador/entidades/pergunta/pergunta';
+import { Resposta } from 'src/app/utils/models/prestador/entidades/resposta/resposta';
 
 @Component({
   selector: 'app-incluir-prestador',
   templateUrl: './incluir-prestador.component.html',
   styleUrls: ['./incluir-prestador.component.scss']
 })
-export class IncluirPrestadorComponent {
+export class IncluirPrestadorComponent implements OnInit {
 
   public prestador = new Prestador();
 
@@ -35,13 +38,20 @@ export class IncluirPrestadorComponent {
 
   constructor(
     public dialog: MatDialog,
-    private _prestadorService: PrestadorService) {
+    private _prestadorService: PrestadorService,
+    private _perguntaService: PerguntaService) {
     this.prestador.fichaMedica = new FichaMedica();
     this.prestador.fichaMedica.usoDrogas = new Array<UsoDroga>();
     this.prestador.familiares = new Array<Familiar>();
     this.prestador.habilidades = new Array<Habilidade>();
     this.prestador.cursos = new Array<Curso>();
     this.prestador.trabalhos = new Array<Trabalho>();
+  }
+
+  ngOnInit(): void {
+    this._perguntaService.getPerguntas(new Pergunta()).subscribe(perguntas => {
+      this.prestador.respostas = perguntas.map(p =>  new Resposta(p));
+    });
   }
 
   public abreDialogDrogaUtilizada(): void {
@@ -82,7 +92,7 @@ export class IncluirPrestadorComponent {
     const dialogRef = this.dialog.open(DialogCursoComponent, { data: {}, });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+      if (result) {
         this.prestador.cursos.push(result);
       }
     });
