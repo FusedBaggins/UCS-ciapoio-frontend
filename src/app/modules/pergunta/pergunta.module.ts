@@ -8,11 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormModule } from 'src/app/utils/components/form/form.module';
 import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lista-entidade.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
@@ -35,8 +33,6 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatSlideToggleModule,
     MatListModule,
     ListaEntidadeModule

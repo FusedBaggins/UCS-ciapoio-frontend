@@ -39,7 +39,7 @@ export class DetalhesPerguntaComponent {
       switchMap((params: Params) => {
         if (params['id'])
           return this._perguntaService.getPergunta(params['id']);
-        return of(null);
+        return of(new Pergunta());
       })
     )
 

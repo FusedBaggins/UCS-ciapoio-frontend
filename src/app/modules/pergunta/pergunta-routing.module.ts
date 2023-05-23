@@ -9,13 +9,13 @@ const routes: Routes = [
     component: ListagemPerguntaComponent,
   },
   {
-    path: ':id',
+    path: 'incluir',
     component: DetalhesPerguntaComponent
   },
   {
-    path: 'incluir',
+    path: ':id',
     component: DetalhesPerguntaComponent
-  }
+  },
 ];
 
 @NgModule({
