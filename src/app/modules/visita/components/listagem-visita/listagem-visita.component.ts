@@ -53,6 +53,22 @@ export class ListagemVisitaComponent {
     return 0;
   }
 
+  labelDiasRestantes(entidade: Visita): string {
+    const diasRestantes = this.calcularDiasRestante(entidade);
+
+    if(diasRestantes == 0)
+      return 'Último dia';
+
+    if(this.prazoEmAberto(entidade)){
+      return `${diasRestantes} dias restantes`
+    }
+    return `${diasRestantes * -1 } dias em atraso`
+  }
+
+  prazoAceite(entidade: Visita){
+    return moment(entidade.prazoAceite).format('L');
+  }
+
   prazoEmAberto(visita: Visita){
     let dataPrazoAceite = moment(visita.prazoAceite);
     return dataPrazoAceite.isAfter(moment());

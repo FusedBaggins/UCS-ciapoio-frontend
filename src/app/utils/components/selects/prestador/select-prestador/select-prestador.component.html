@@ -1,0 +1,8 @@
+<mat-form-field class="w-1">
+    <mat-label>Prestador</mat-label>
+    <mat-select [(ngModel)]="selectedPrestador" (ngModelChange)="onChange()">
+        <mat-option *ngFor="let prestador of prestadores" [value]="prestador.id">
+            {{ prestador.label }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

@@ -13,6 +13,11 @@ import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lis
 import { PerguntaRoutingModule } from '../pergunta/pergunta-routing.module';
 import { DetalhesVisitaComponent } from './components/detalhes-visita/detalhes-visita.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 
 
 @NgModule({
@@ -28,15 +33,19 @@ import { MatListModule } from '@angular/material/list';
     CommonModule,
     ReactiveFormsModule,
     PerguntaRoutingModule,
-        
-   
+
+    MatSnackBarModule,
     MatListModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatButtonModule,
     MatFormFieldModule,
     FormModule,
-    ListaEntidadeModule
+    ListaEntidadeModule,
+    SelectsModule,
   ]
 })
 export class VisitaModule { }
