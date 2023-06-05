@@ -1,1 +1,59 @@
-<p>detalhes-visita works!</p>
+<ng-container *ngIf="entidade$ | async as entidade">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+    <h2 class="mat-headline-6">Informações iniciais</h2>
+
+    <div class="row no-wrap w-1">
+      <app-select-prestador [selectedPrestador]="prestadorSelecionadoControl.value"
+        class="w-1"
+        (selectedPrestadorChange)="atualizarPrestadorSelecionado($event)"
+      >
+      </app-select-prestador>
+    </div>
+    <div class="row no-wrap w-1">
+      <app-select-instituicao-parceira
+        [selectedInstituicao]="instituicaoSelecionadaControl.value" class="w-1"
+        (selectedInstituicaoChange)="atualizarInstituicaoSelecionada($event)">
+      </app-select-instituicao-parceira>
+
+      <mat-form-field appearance="fill" class="w-2 field-margin-left">
+        <mat-label>Prazo de aceite</mat-label>
+        <input matInput [matDatepicker]="prazoAceitePicker" formControlName="prazoAceite">
+        <mat-datepicker-toggle matIconSuffix [for]="prazoAceitePicker"></mat-datepicker-toggle>
+        <mat-datepicker #prazoAceitePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Observação</mat-label>
+      <input matInput placeholder="" formControlName="observacao">
+    </mat-form-field>
+
+    <h2 class="mat-headline-6">Situação</h2>
+
+    <div class="row no-wrap w-1">
+      <mat-form-field appearance="fill" class="w-1">
+        <mat-label>Data de visita</mat-label>
+        <input matInput [matDatepicker]="dataVisitaPicker" formControlName="prazoAceite">
+        <mat-datepicker-toggle matIconSuffix [for]="dataVisitaPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dataVisitaPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row no-wrap w-1">
+      <app-select-situacao-visita [selectedSituacao]="situacaoSelecionadaControl.value" class="w-1"
+        (selectedSituacaoChange)="atualizarSituacaoSelecionada($event)">
+      </app-select-situacao-visita>
+    </div>
+
+    <mat-form-field appearance="fill" *ngIf="form.controls['status'].value === 2">
+      <mat-label>Motivo de reprovação</mat-label>
+      <input matInput placeholder="" formControlName="motivoReprovacao">
+    </mat-form-field>
+
+    <div class="row fab-button">
+      <button mat-fab type="submit" color="primary" aria-label="Submit button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+</ng-container>

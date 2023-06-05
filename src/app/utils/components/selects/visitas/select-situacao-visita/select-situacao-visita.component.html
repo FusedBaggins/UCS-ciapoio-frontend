@@ -1,0 +1,8 @@
+<mat-form-field class="w-1">
+  <mat-label>Situação</mat-label>
+  <mat-select [(ngModel)]="selectedSituacao" (ngModelChange)="onChange()">
+      <mat-option *ngFor="let situacao of opcoes" [value]="situacao.id">
+          {{ situacao.label }}
+      </mat-option>
+  </mat-select>
+</mat-form-field>

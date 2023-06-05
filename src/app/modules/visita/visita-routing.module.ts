@@ -9,11 +9,11 @@ const routes: Routes = [
     component: ListagemVisitaComponent,
   },
   {
-    path: ':id',
+    path: 'incluir',
     component: DetalhesVisitaComponent
   },
   {
-    path: 'incluir',
+    path: ':id',
     component: DetalhesVisitaComponent
   },
 ];

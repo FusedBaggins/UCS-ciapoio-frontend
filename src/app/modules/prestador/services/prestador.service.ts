@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Prestador } from 'src/app/utils/models/prestador/prestador';
 import { environment } from 'src/environments/environment.development';
+import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,16 @@ import { environment } from 'src/environments/environment.development';
 export class PrestadorService {
 
   private readonly _url: string = `${environment.api}/prestador`;
+  private readonly _selectUrl: string = `${environment.api}/select`;
 
   constructor(private _http: HttpClient) { }
 
   getPrestadores(): Observable<Prestador[]> {
     return this._http.get<Prestador[]>(this._url);
+  }
+
+  getPrestadoresSelect(): Observable<SelectDefault[]> {
+    return this._http.get<SelectDefault[]>(`${this._selectUrl}/prestador`);
   }
 
   addPrestadores(prestador: Prestador): Observable<void> {

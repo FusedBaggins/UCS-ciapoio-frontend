@@ -20,14 +20,9 @@
         </ng-template>
         <ng-template #entidades let-entidade>
             <span matListItemTitle>{{entidade.prestador?.nome}}</span>
-            <span matListItemLine *ngIf="prazoEmAberto(entidade); else atraso">
-                {{calcularDiasRestante(entidade)}} dias restantes
+            <span matListItemLine>
+                {{ labelDiasRestantes(entidade) }} | Prazo:  {{ prazoAceite(entidade)}}
             </span>
-            <ng-template #atraso>
-                <span matListItemLine>
-                    {{calcularDiasRestante(entidade) * -1 }} dias em atraso
-                </span>
-            </ng-template>
         </ng-template>
         <ng-template #nenhumaEntidade>
             Oops! Não encontramos nenhuma Visita agendada :(
