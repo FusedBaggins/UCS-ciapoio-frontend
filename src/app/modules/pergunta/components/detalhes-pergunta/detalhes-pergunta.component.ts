@@ -49,7 +49,7 @@ export class DetalhesPerguntaComponent {
       }
     });
   }
-  
+
   ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();

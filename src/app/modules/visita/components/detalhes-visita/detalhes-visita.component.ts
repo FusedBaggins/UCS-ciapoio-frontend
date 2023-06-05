@@ -120,7 +120,6 @@ export class DetalhesVisitaComponent {
   }
 
   async onSubmit(): Promise<void> {
-    console.log(this.form.value);
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       throw new Error('Campos obrigatórios devem ser preenchidos!');
