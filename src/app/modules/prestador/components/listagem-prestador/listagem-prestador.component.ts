@@ -42,4 +42,8 @@ export class ListagemPrestadorComponent implements OnInit {
         this._router.navigate(['prestador', 'incluir'])
     }
 
+    irDetalheEntidade(id: number): void {
+        this._router.navigate(['prestador', id]);
+      }
+
 }
