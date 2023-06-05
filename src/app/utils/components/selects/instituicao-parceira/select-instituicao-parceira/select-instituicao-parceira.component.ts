@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SelectDefault } from '../../../selectModels/selectDefault';
-import { InstituicaoParceiraServiceService } from 'src/app/modules/instituicao-parceira/services/instituicao-parceira-service.service';
+import { EntidadeParceiraService } from 'src/app/modules/entidade-parceira/services/entidade-parceira.service';
 
 @Component({
   selector: 'app-select-instituicao-parceira',
@@ -13,10 +13,10 @@ export class SelectInstituicaoParceiraComponent {
   @Output() selectedInstituicaoChange = new EventEmitter<SelectDefault>();
   @Output() optionsLoaded = new EventEmitter<void>();
 
-  constructor(private instituicaoParceiraService: InstituicaoParceiraServiceService) {}
+  constructor(private entidadeParceiraService: EntidadeParceiraService) { }
 
   ngOnInit(): void {
-    this.instituicaoParceiraService.getInstituicoesSelect().subscribe((data) => {
+    this.entidadeParceiraService.getInstituicoesSelect().subscribe((data) => {
       this.instituicoes = data;
       this.optionsLoaded.emit();
     });
