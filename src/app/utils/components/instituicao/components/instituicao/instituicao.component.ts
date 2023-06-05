@@ -37,7 +37,7 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
       this.criarForm();
     }
 
-    if (changes['instituicao'].currentValue) {
+    if (changes['instituicao']?.currentValue) {
       this.form.patchValue(changes['instituicao'].currentValue)
     }
   }
@@ -51,7 +51,7 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
     this.form = this._formBuilder.group({
       id: [null, []],
       nome: [null, [Validators.required]],
-      cnpj: [null, [Validators.required, cnpjValidator()]],
+      cnpj: [null, [Validators.required]],
       email: [null, [Validators.required]],
       telefone1: [null, [Validators.required]],
       telefone2: [null, []],
