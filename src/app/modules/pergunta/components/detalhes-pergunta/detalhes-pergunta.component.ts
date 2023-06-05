@@ -49,7 +49,7 @@ export class DetalhesPerguntaComponent {
       }
     });
   }
-  
+
   ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
@@ -59,7 +59,7 @@ export class DetalhesPerguntaComponent {
     this.form = this._formBuilder.group({
       id: [null, []],
       pergunta: [null, [Validators.required]],
-      ativo: [null, [Validators.required]]
+      ativo: [null]
     })
   }
 
