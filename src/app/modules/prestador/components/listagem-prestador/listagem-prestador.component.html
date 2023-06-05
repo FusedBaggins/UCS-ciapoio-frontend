@@ -16,11 +16,11 @@
 
     <mat-nav-list class="listagem-container">
         <ng-container *ngIf="prestadores$ | async as prestadores; else loading">
-            <a mat-list-item [routerLink]="['prestador', prestador.id]" *ngFor="let prestador of prestadores">
+            <mat-list-item (click)="irDetalheEntidade(prestador.id)" *ngFor="let prestador of prestadores">
                 <div style="padding: 16px;">
                     <span>{{prestador.nome}}</span>
                 </div>
-            </a>
+            </mat-list-item>
 
             <span *ngIf="!prestadores?.length">
                 Oops! Não encontramos nenhum registro. :(
