@@ -6,8 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Subject, Observable, takeUntil, switchMap, of } from 'rxjs';
 
-import { CiapService } from 'src/app/modules/ciap/services/ciap.service';
 import httpErrorMessages from 'src/app/utils/constants/http-error-messages';
+import { EntidadeParceiraService } from '../../services/entidade-parceira.service';
 import { Instituicao } from 'src/app/utils/components/instituicao/models/instituicao';
 
 @Component({
@@ -24,7 +24,7 @@ export class DetalheEntidadeParceiraComponent implements OnInit {
   constructor(
     private _router: Router,
     private _matSnackBar: MatSnackBar,
-    private _ciapService: CiapService,
+    private _entidadeParceira: EntidadeParceiraService,
     private _activatedRoute: ActivatedRoute,
   ) {
     this._destroyed$ = new Subject();
@@ -35,14 +35,14 @@ export class DetalheEntidadeParceiraComponent implements OnInit {
       takeUntil(this._destroyed$),
       switchMap((params: Params) => {
         if (params['id'])
-          return this._ciapService.getInstituicao(params['id']);
+          return this._entidadeParceira.getInstituicao(params['id']);
         return of(null);
       })
     );
   }
 
   onAtualizarInstituicao(instituicao: Instituicao): void {
-    this._ciapService.postInstituicao(instituicao).subscribe({
+    this._entidadeParceira.postInstituicao(instituicao).subscribe({
       next: (res) => {
         this._matSnackBar.open(`Instituição parceira ${res?.id} cadastrada! :)`, "OK", { duration: 2000 });
         this._router.navigate([res.id]);

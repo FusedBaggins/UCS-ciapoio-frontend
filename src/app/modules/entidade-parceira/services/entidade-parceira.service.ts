@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Instituicao } from 'src/app/utils/models/instituicao';
+import { Instituicao as IInstituicao } from 'src/app/utils/components/instituicao/models/instituicao';
 import { environment } from 'src/environments/environment.development';
 import { queryParamsSerializer } from 'src/app/utils/functions/query-params-serializer';
 import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
@@ -27,7 +28,7 @@ export class EntidadeParceiraService {
     return this._http.get<Instituicao>(`${this._url}/${id}`);
   }
 
-  public postInstituicao(instituicao: Instituicao): Observable<any> {
+  public postInstituicao(instituicao: IInstituicao): Observable<any> {
     return this._http.post<any>(this._url, instituicao);
   }
 
