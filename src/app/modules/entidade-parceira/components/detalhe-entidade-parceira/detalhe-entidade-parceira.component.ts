@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-
-import { Observable, Subject, of, switchMap, takeUntil } from 'rxjs';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CiapService } from '../../services/ciap.service';
+import { Subject, Observable, takeUntil, switchMap, of } from 'rxjs';
+
+import { CiapService } from 'src/app/modules/ciap/services/ciap.service';
 import httpErrorMessages from 'src/app/utils/constants/http-error-messages';
 import { Instituicao } from 'src/app/utils/components/instituicao/models/instituicao';
 
 @Component({
-  selector: 'app-detalhe-ciap',
-  templateUrl: './detalhe-ciap.component.html',
-  styleUrls: ['./detalhe-ciap.component.scss']
+  selector: 'app-detalhe-entidade-parceira',
+  templateUrl: './detalhe-entidade-parceira.component.html',
+  styleUrls: ['./detalhe-entidade-parceira.component.scss']
 })
-export class DetalheCiapComponent implements OnInit {
+export class DetalheEntidadeParceiraComponent implements OnInit {
 
   private _destroyed$: Subject<void>;
 
@@ -38,14 +38,13 @@ export class DetalheCiapComponent implements OnInit {
           return this._ciapService.getInstituicao(params['id']);
         return of(null);
       })
-    )
-
+    );
   }
 
   onAtualizarInstituicao(instituicao: Instituicao): void {
     this._ciapService.postInstituicao(instituicao).subscribe({
       next: (res) => {
-        this._matSnackBar.open(`CIAP ${res?.id} cadastrada! :)`, "OK", { duration: 2000 });
+        this._matSnackBar.open(`Instituição parceira ${res?.id} cadastrada! :)`, "OK", { duration: 2000 });
         this._router.navigate([res.id]);
       },
       error: (error: HttpErrorResponse) => {
@@ -53,4 +52,5 @@ export class DetalheCiapComponent implements OnInit {
       }
     });
   }
+
 }

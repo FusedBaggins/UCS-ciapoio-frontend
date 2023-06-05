@@ -1,0 +1,10 @@
+<div class="row full-size container">
+    <ng-container *ngIf="instituicao$ | async as instituicao; else incluir">
+        <app-instituicao class="full-size" [tipo]="2" [instituicao]="instituicao" (instituicaoAtualizada)="onAtualizarInstituicao($event)">
+        </app-instituicao>
+    </ng-container>
+    <ng-template #incluir>
+        <app-instituicao class="full-size" [tipo]="2" (instituicaoAtualizada)="onAtualizarInstituicao($event)">
+        </app-instituicao>
+    </ng-template>
+</div>
