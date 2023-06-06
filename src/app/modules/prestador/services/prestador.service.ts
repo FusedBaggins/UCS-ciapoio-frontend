@@ -24,6 +24,10 @@ export class PrestadorService {
   getPrestadoresSelect(): Observable<SelectDefault[]> {
     return this._http.get<SelectDefault[]>(`${this._selectUrl}/prestador`);
   }
+  
+  getPrestador(id: number): Observable<Prestador> {
+    return this._http.get<Prestador>(`${this._url}/${id}`);
+  }
 
   addPrestadores(prestador: Prestador): Observable<void> {
     return this._http.post<void>(this._url, prestador);
