@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EnderecoComponent } from './endereco.component';
+import { SelectsModule } from '../selects/selects.module';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { EnderecoComponent } from './endereco.component';
 
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
+    SelectsModule
   ],
   exports: [
     EnderecoComponent

@@ -1,0 +1,8 @@
+<mat-form-field class="w-1">
+    <mat-label>Instituição</mat-label>
+    <mat-select [(ngModel)]="selectedCidade" (ngModelChange)="onChange()">
+        <mat-option *ngFor="let cidade of cidades$ | async as cidades" [value]="cidade.id">
+            {{ cidade.label }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

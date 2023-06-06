@@ -45,7 +45,7 @@ export class DetalheEntidadeParceiraComponent implements OnInit {
     this._entidadeParceira.postInstituicao(instituicao).subscribe({
       next: (res) => {
         this._matSnackBar.open(`Instituição parceira ${res?.id} cadastrada! :)`, "OK", { duration: 2000 });
-        this._router.navigate([res.id]);
+        this._router.navigate(['instituicao-parceira', res.id]);
       },
       error: (error: HttpErrorResponse) => {
         this._matSnackBar.open(httpErrorMessages[`${error.status}`], 'OK');

@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormModule } from '../form/form.module';
 import { SelectInstituicaoParceiraComponent } from './instituicao-parceira/select-instituicao-parceira/select-instituicao-parceira.component';
 import { SelectSituacaoVisitaComponent } from './visitas/select-situacao-visita/select-situacao-visita.component';
+import { SelectCidadeComponent } from './cidade/select-cidade/select-cidade.component';
 
 
 
@@ -22,6 +23,7 @@ import { SelectSituacaoVisitaComponent } from './visitas/select-situacao-visita/
     SelectPrestadorComponent,
     SelectInstituicaoParceiraComponent,
     SelectSituacaoVisitaComponent,
+    SelectCidadeComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { SelectSituacaoVisitaComponent } from './visitas/select-situacao-visita/
     SelectPrestadorComponent,
     SelectInstituicaoParceiraComponent,
     SelectSituacaoVisitaComponent,
+    SelectCidadeComponent
   ],
 })
 export class SelectsModule { }

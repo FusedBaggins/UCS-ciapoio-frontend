@@ -1,1 +1,47 @@
-<p>detalhe-usuario works!</p>
+<form [formGroup]="form" class="column full-height w-2">
+
+    <h2 class="mat-headline-6">Informações iniciais</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="" formControlName="nome">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="" formControlName="usuario">
+    </mat-form-field>
+    <mat-radio-group aria-label="Selecione o tipo de profissional" formControlName="tipo">
+        <mat-radio-button value="1">Profissional - CIAP</mat-radio-button>
+        <mat-radio-button value="2">Profissional - Entidade parceira</mat-radio-button>
+    </mat-radio-group>
+
+    <h2 class="mat-headline-6">Perfis</h2>
+    <mat-form-field>
+        <mat-label>Perfis</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Seleção de perfis">
+            <mat-chip-row *ngFor="let perfil of form?.controls?.['perfis']?.value">
+                {{perfil?.label}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+        </mat-chip-grid>
+        <input formControlName="perfilFiltro" [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+            (matChipInputTokenEnd)="onAdicionar($event)" #filtroInput />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelecionarOpcao($event)">
+            <mat-option *ngFor="let perfil of perfisFiltrados$ | async" [value]="perfil">
+                {{perfil?.value}} - {{perfil?.label}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <ng-container *ngIf="form.controls?.['tipo']?.value === '1'">
+        <h2 class="mat-headline-6">CIAP</h2>
+    </ng-container>
+
+    <ng-container *ngIf="form.controls?.['tipo']?.value === '2'">
+        <h2 class="mat-headline-6">Entidade parceira</h2>
+        <app-select-instituicao-parceira [selectedInstituicao]="form.controls['instituicao'].value" class="w-1"
+            (selectedInstituicaoChange)="onAtualizarPrestadorSelecionado($event)">
+        </app-select-instituicao-parceira>
+    </ng-container>
+</form>

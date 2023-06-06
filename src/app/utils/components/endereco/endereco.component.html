@@ -4,17 +4,8 @@
             <mat-label>CEP</mat-label>
             <input matInput placeholder="" formControlName="cep">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="field-margin-left">
-            <mat-label>Cidade</mat-label>
-            <mat-select name="cidade" formControlName="cidade">
-                <mat-option value="1">
-                    Cidade 1
-                </mat-option>
-                <mat-option value="2">
-                    Cidade 2
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <app-select-cidade [selectedCidade]="form.controls['cidadeId'].value" class="w-1"
+            (selectedCidadeChange)="onAtualizarCidadeSelecionada($event)"></app-select-cidade>
     </div>
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill" class="w-1">

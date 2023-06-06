@@ -7,5 +7,6 @@ export interface Endereco {
     numero: number;
     bairro: string;
     complemento?: string;
-    cidade: Cidade;
+    cidade?: Cidade;
+    cidadeId?:number;
 }

@@ -66,7 +66,7 @@ export class InstituicaoComponent implements OnInit, OnChanges, OnDestroy {
         numero: [null, [Validators.required]],
         bairro: [null, [Validators.required]],
         complemento: [null, []],
-        cidade: [null, [Validators.required]],
+        cidadeId: [null, [Validators.required]],
       })
     });
   }
