@@ -11,10 +11,6 @@ const routes: Routes = [
     {
         path: 'incluir',
         loadChildren: () => import('./components/incluir-prestador/incluir-prestador.module').then(m => m.IncluirPrestadorModule)
-    },
-    {
-        path: ':id',
-        component: DetalhePrestadorComponent
     }
 ];
 

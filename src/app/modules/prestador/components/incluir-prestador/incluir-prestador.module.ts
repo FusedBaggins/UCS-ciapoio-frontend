@@ -20,10 +20,15 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatListModule } from "@angular/material/list";
 import { CommonModule } from "@angular/common";
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DialogPenaAlternativaComponent } from "../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component";
 
 const routes: Routes = [
     {
         path: '',
+        component: IncluirPrestadorComponent
+    },
+    {
+        path: ':id',
         component: IncluirPrestadorComponent
     }
 ];
@@ -54,14 +59,16 @@ const routes: Routes = [
         DialogDrogaUtilizadaComponent,
         DialogExperienciaProfissionaComponent,
         DialogHabilidadeComponent,
-        DialogIntegranteComponent
+        DialogIntegranteComponent,
+        DialogPenaAlternativaComponent
     ],
     entryComponents: [
         DialogCursoComponent,
         DialogDrogaUtilizadaComponent,
         DialogExperienciaProfissionaComponent,
         DialogHabilidadeComponent,
-        DialogIntegranteComponent
+        DialogIntegranteComponent,
+        DialogPenaAlternativaComponent
     ]
 
 })

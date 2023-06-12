@@ -18,6 +18,8 @@ import { Trabalho } from 'src/app/utils/models/prestador/entidades/trabalho/trab
 import { PerguntaService } from 'src/app/modules/pergunta/services/pergunta.service';
 import { Pergunta } from 'src/app/utils/models/prestador/entidades/pergunta/pergunta';
 import { Resposta } from 'src/app/utils/models/prestador/entidades/resposta/resposta';
+import { DialogPenaAlternativaComponent } from '../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component';
+import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alternativa-penal/alternativa-penal';
 
 @Component({
   selector: 'app-incluir-prestador',
@@ -46,6 +48,7 @@ export class IncluirPrestadorComponent implements OnInit {
     this.prestador.habilidades = new Array<Habilidade>();
     this.prestador.cursos = new Array<Curso>();
     this.prestador.trabalhos = new Array<Trabalho>();
+    this.prestador.alternativasPenais = new Array<AlternativaPenal>();
   }
 
   ngOnInit(): void {
@@ -104,6 +107,16 @@ export class IncluirPrestadorComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.prestador.habilidades.push(result);
+      }
+    });
+  }
+
+  public abreDialogPenaAlternativa(): void {
+    const dialogRef = this.dialog.open(DialogPenaAlternativaComponent, { data: {}, });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.prestador.alternativasPenais.push(result);
       }
     });
   }

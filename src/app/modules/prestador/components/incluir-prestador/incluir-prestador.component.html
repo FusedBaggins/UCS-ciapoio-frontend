@@ -165,6 +165,24 @@
             </div>
     </mat-step>
     <mat-step>
+        <ng-template matStepLabel>
+            <div class="row align-items-center ">
+                <mat-icon>gavel</mat-icon>
+                <span>Penas alternativas</span>
+            </div>
+        </ng-template>
+        <mat-list>
+            <mat-list-item *ngFor="let alternativaPenal of prestador.alternativasPenais">
+                <div matListItemTitle>{{alternativaPenal.titulo}}</div>
+                <div matListItemLine>{{alternativaPenal.descricao}}</div>
+            </mat-list-item>
+        </mat-list>
+        <button mat-button type="button" (click)="abreDialogPenaAlternativa()">Adicionar</button>
+        <div>
+            <button mat-button matStepperNext type="button">Próximo</button>
+        </div>
+</mat-step>
+    <mat-step>
             <ng-template matStepLabel>
                 <div class="row align-items-center ">
                     <mat-icon>psychology_alt</mat-icon>
