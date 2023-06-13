@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'profissional', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: 'visita', loadChildren: () => import('./modules/visita/visita.module').then(m => m.VisitaModule) },
   { path: 'instituicao-parceira', loadChildren: () => import('./modules/entidade-parceira/entidade-parceira.module').then(m => m.EntidadeParceiraModule) },
+  { path: 'alternativa-penal', loadChildren: () => import('./modules/pena-alternativa/pena-alternativa.module').then(m => m.PenaAlternativaModule) },  
 ];
 
 @NgModule({

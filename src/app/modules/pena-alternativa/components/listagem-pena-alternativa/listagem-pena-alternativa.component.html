@@ -1,0 +1,31 @@
+<div class="column full-size container">
+    <app-form [formGroup]="filtros">
+        <mat-form-field class="field-margin-left">
+            <mat-label>Identificador</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field class="field-margin-left">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome">
+        </mat-form-field>
+    </app-form>
+
+    <app-lista-entidade [entidades]="penaAlternativa$" [rotaEntidade]="['alternativa-penal']" [config]="{
+        exibirAvatar: false,
+        exibirCarregamento: true,
+        exibirIdentificador: false,
+      }">
+        <ng-template #titulo>
+            <h2 class="mat-headline-6">Penas alternativas encontradas</h2>
+        </ng-template>
+        <ng-template #entidades let-entidade>
+            <span matListItemTitle>{{entidade.titulo}}</span>
+            <span matListItemLine>
+                {{entidade.descricao}}
+            </span>
+        </ng-template>
+        <ng-template #nenhumaEntidade>
+            Oops! Não encontramos nenhuma Visita agendada :(
+        </ng-template>
+    </app-lista-entidade>
+</div>
