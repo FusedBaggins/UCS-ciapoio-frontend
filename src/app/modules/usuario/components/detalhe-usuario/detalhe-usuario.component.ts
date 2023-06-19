@@ -21,7 +21,7 @@ import httpErrorMessages from 'src/app/utils/constants/http-error-messages';
 })
 export class DetalheUsuarioComponent implements OnInit {
 
-  @ViewChild('filtroInput') filtroInput!: ElementRef<HTMLInputElement>
+  @ViewChild('filtroInput') filtroInput!: ElementRef<HTMLInputElement>;
 
   perfis!: any[];
   form: FormGroup;
@@ -109,7 +109,7 @@ export class DetalheUsuarioComponent implements OnInit {
       }, error: (error: HttpErrorResponse) => {
         if (error.status === 404) this._router.navigate(['profissional', 'incluir']);
       }
-    })
+    });
   }
 
   onAdicionar(event: MatChipInputEvent): void {
