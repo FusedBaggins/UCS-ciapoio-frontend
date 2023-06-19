@@ -10,7 +10,7 @@
         </mat-form-field>
     </app-form>
 
-    <app-lista-entidade [entidades]="usuarios$" [rotaEntidade]="['usuario']" [config]="entidadeConfig">
+    <app-lista-entidade [entidades]="usuarios$" [rotaEntidade]="['profissional']" [config]="entidadeConfig">
         <ng-template #titulo>
             <h2 class="mat-headline-6">Usuários encontrados</h2>
         </ng-template>
@@ -19,7 +19,7 @@
             <span matListItemLine>Informações extras sobre o usuário</span>
         </ng-template>
         <ng-template #nenhumaEntidade>
-            Oops! Não encontramos nenhum usuário :(
+            Oops! Não encontramos nenhum profissional :(
         </ng-template>
     </app-lista-entidade>
     <div class="row fab-button">

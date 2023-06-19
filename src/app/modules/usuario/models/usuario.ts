@@ -5,6 +5,8 @@ import { Instituicao } from "src/app/utils/components/instituicao/models/institu
 export interface Usuario {
     id: number;
     nome: string;
+    senha?:string;
+    confirmacao_senha?:string;
     ativo: boolean;
     tipo?: number;
     data_inativacao: Date;

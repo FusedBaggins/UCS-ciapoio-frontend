@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="column full-height w-2">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
 
     <h2 class="mat-headline-6">Informações iniciais</h2>
     <mat-form-field appearance="fill">
@@ -8,6 +8,14 @@
     <mat-form-field appearance="fill">
         <mat-label>Usuário</mat-label>
         <input matInput placeholder="" formControlName="usuario">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="" formControlName="senha" type="password">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Confirmação da senha</mat-label>
+        <input matInput placeholder="" formControlName="confirmacao_senha" type="password">
     </mat-form-field>
     <mat-radio-group aria-label="Selecione o tipo de profissional" formControlName="tipo">
         <mat-radio-button value="1">Profissional - CIAP</mat-radio-button>
@@ -36,12 +44,25 @@
 
     <ng-container *ngIf="form.controls?.['tipo']?.value === '1'">
         <h2 class="mat-headline-6">CIAP</h2>
+        <app-select-instituicao-parceira [selectedInstituicao]="form.controls['instituicao'].value"
+            [tipoInstituicao]="1" class="w-1" (selectedInstituicaoChange)="onAtualizarPrestadorSelecionado($event)">
+        </app-select-instituicao-parceira>
     </ng-container>
 
     <ng-container *ngIf="form.controls?.['tipo']?.value === '2'">
         <h2 class="mat-headline-6">Entidade parceira</h2>
-        <app-select-instituicao-parceira [selectedInstituicao]="form.controls['instituicao'].value" class="w-1"
-            (selectedInstituicaoChange)="onAtualizarPrestadorSelecionado($event)">
+        <app-select-instituicao-parceira [selectedInstituicao]="form.controls['instituicao'].value"
+            [tipoInstituicao]="2" class="w-1" (selectedInstituicaoChange)="onAtualizarPrestadorSelecionado($event)">
         </app-select-instituicao-parceira>
     </ng-container>
+
+    <h2 class="mat-headline-6">Situação</h2>
+    <mat-slide-toggle formControlName="ativo">
+        Ativo
+    </mat-slide-toggle>
+    <div class="row fab-button">
+        <button mat-fab type="submit" color="primary" aria-label="Submit button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
 </form>
