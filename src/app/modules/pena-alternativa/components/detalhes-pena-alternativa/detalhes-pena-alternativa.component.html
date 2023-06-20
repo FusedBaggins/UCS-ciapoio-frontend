@@ -1,27 +1,20 @@
-<div>
-  <mat-form-field>
-    <mat-label>Título</mat-label>
-    <input matInput [(ngModel)]="alternativaPenal.titulo">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Duração</mat-label>
-    <input matInput [(ngModel)]="alternativaPenal.duracao">
-  </mat-form-field>
-</div>
-<mat-form-field>
-  <mat-label>Descrição</mat-label>
-  <input matInput [(ngModel)]="alternativaPenal.descricao">
-</mat-form-field>
+<div *ngIf="alternativaPenal">
+  <div>
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input matInput [(ngModel)]="alternativaPenal.titulo">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duração</mat-label>
+      <input matInput [(ngModel)]="alternativaPenal.duracao">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="alternativaPenal.descricao">
+    </mat-form-field>
+    <span>Prestador: {{ alternativaPenal.prestador.nome }}</span>
+  </div>
 
-<h2 class="mat-headline-6">Frequência</h2>
-
-<mat-list>
-  <mat-list-item *ngFor="let alternativaPenal of prestador.alternativasPenais">
-      <div matListItemTitle>{{alternativaPenal.titulo}}</div>
-      <div matListItemLine>{{alternativaPenal.descricao}}</div>
-  </mat-list-item>
-</mat-list>
-<button mat-button type="button" (click)="abreDialogPenaAlternativa()">Adicionar</button>
-<div>
-  <button mat-button matStepperNext type="button">Próximo</button>
 </div>

@@ -21,7 +21,7 @@
         <ng-template #entidades let-entidade>
             <span matListItemTitle>{{entidade.titulo}}</span>
             <span matListItemLine>
-                {{entidade.descricao}}
+                Prestador: {{ entidade.prestador.nome }}                 
             </span>
         </ng-template>
         <ng-template #nenhumaEntidade>
