@@ -20,4 +20,12 @@ export class UsuarioService {
     let queryParams: HttpParams = queryParamsSerializer(filtros);
     return this._http.get<Usuario[]>(this._url, { params: queryParams });
   }
+
+  getUsuario(usuarioId:number):Observable<Usuario>{
+    return this._http.get<Usuario>(`${this._url}/${usuarioId}`);
+  }
+
+  postUsuario(usuario: Usuario): Observable<any> {
+    return this._http.post<Usuario>(this._url, usuario);
+  }
 }

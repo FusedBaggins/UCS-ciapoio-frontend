@@ -10,13 +10,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { UsuarioRoutingModule } from './usuario-routing.module';
+import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 import { DetalheUsuarioComponent } from './components/detalhe-usuario/detalhe-usuario.component';
 import { ListagemUsuarioComponent } from './components/listagem-usuario/listagem-usuario.component';
 import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lista-entidade.module';
-import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
     MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatSlideToggleModule,
     MatAutocompleteModule,
 
     ListaEntidadeModule,

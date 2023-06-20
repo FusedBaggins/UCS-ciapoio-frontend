@@ -8,6 +8,7 @@ import { Instituicao as IInstituicao } from 'src/app/utils/components/instituica
 import { environment } from 'src/environments/environment.development';
 import { queryParamsSerializer } from 'src/app/utils/functions/query-params-serializer';
 import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
+import TipoInstituicao from 'src/app/utils/enums/tipo-instituicao';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,11 @@ export class EntidadeParceiraService {
     return this._http.post<any>(this._url, instituicao);
   }
 
-  public getInstituicoesSelect(): Observable<SelectDefault[]> {
-    return this._http.get<SelectDefault[]>(`${this._selectUrl}/instituicao-parceira`);
+  public getInstituicoesSelect(tipo?: TipoInstituicao): Observable<SelectDefault[]> {
+    let queryParams: HttpParams = new HttpParams();
+    if (tipo) queryParams = queryParams.append('tipo_instituicao', tipo);
+
+    return this._http.get<SelectDefault[]>(`${this._selectUrl}/instituicao-parceira`, { params: queryParams });
   }
 
 }

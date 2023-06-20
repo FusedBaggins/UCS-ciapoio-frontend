@@ -20,6 +20,7 @@ export class ListagemUsuarioComponent implements OnInit {
     exibirAvatar: true,
     exibirCarregamento: true,
     exibirIdentificador: false,
+    exibirEdicao:true,
   }
 
   constructor(

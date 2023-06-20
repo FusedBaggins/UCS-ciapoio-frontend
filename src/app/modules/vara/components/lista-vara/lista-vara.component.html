@@ -10,21 +10,20 @@
         </mat-form-field>
     </app-form>
 
-    <app-lista-entidade [entidades]="usuarios$" [rotaEntidade]="['profissional']" [config]="entidadeConfig">
+    <app-lista-entidade [entidades]="varas$" [rotaEntidade]="['vara-penal']" [config]="entidadeConfig">
         <ng-template #titulo>
-            <h2 class="mat-headline-6">Usuários encontrados</h2>
+            <h2 class="mat-headline-6">Varas penais encontradas</h2>
         </ng-template>
         <ng-template #entidades let-entidade>
             <span matListItemTitle>{{entidade.nome}}</span>
-            <span matListItemLine>Informações extras sobre o usuário</span>
         </ng-template>
         <ng-template #nenhumaEntidade>
-            Oops! Não encontramos nenhum profissional :(
+            Oops! Não encontramos nenhuma vara penal :(
         </ng-template>
     </app-lista-entidade>
     <div class="row fab-button">
         <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
-            (click)="onAdicionarNovoUsuario()">
+            (click)="onAdicionarNovaVaraPenal()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
