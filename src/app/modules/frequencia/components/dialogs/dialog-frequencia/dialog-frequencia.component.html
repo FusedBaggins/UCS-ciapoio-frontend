@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Adicionar frequência</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <mat-label>Data entrada</mat-label>
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="frequencia.dt_entrada">
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <!-- <mat-form-field>
+        <mat-label>Horário entrada</mat-label>
+        <input matInput>
+      </mat-form-field> -->
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Data saída</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="frequencia.dt_saida">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <!-- <mat-form-field>
+        <mat-label>Horário saída</mat-label>
+        <input matInput>
+      </mat-form-field> -->
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Observações</mat-label>
+      <input matInput [(ngModel)]="frequencia.observacoes">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+</div>

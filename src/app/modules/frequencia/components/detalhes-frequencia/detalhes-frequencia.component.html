@@ -1,0 +1,25 @@
+<div class="column full-size container">
+    <mat-list *ngIf="entidade">
+        <span matListItemTitle>Prestador: {{entidade.prestador.nome}}</span>
+        <span matListItemLine>
+            {{ totalCumprido(entidade.atestadosFrequencia) }} / {{ entidade.horas_cumprir }}
+        </span>
+    </mat-list>
+    <div>
+        <button mat-button type="button" (click)="abreDialogFrequencia()">Adicionar</button>
+    </div>
+    <app-lista-entidade [entidades]="frequencias$" [config]="entidadeConfig">
+        <ng-template #titulo>
+            <h2 class="mat-headline-6">Frequências por processo</h2>
+        </ng-template>
+        <ng-template #entidades let-entidade>
+            <span matListItemTitle>Data e hora de início: {{ formataHorario(entidade.dt_entrada) }}</span>
+            <span matListItemLine>
+                Quantidade de horas: {{ horasFrequencia(entidade) }} Observações: {{ entidade.observacoes }}
+            </span>
+        </ng-template>
+        <ng-template #nenhumaEntidade>
+            Oops! Não encontramos nenhuma vara penal :(
+        </ng-template>
+    </app-lista-entidade>
+</div>
