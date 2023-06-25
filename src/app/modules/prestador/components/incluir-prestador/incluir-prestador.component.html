@@ -204,6 +204,6 @@
 
     <button mat-raised-button extended color="primary" (click)="adicionaPrestador()">
         <mat-icon>add</mat-icon>
-        Adicionar
+        {{ edicao ? 'Editar' : 'Adicionar' }}
     </button>
 </div>

@@ -29,7 +29,7 @@ export class PrestadorService {
     return this._http.get<Prestador>(`${this._url}/${id}`);
   }
 
-  addPrestadores(prestador: Prestador): Observable<void> {
-    return this._http.post<void>(this._url, prestador);
+  addPrestadores(prestador: Prestador): Observable<{id: string}> {
+    return this._http.post<{id: string}>(this._url, prestador);
   }
 }

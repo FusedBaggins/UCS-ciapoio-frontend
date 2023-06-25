@@ -20,6 +20,7 @@ import { Pergunta } from 'src/app/utils/models/prestador/entidades/pergunta/perg
 import { Resposta } from 'src/app/utils/models/prestador/entidades/resposta/resposta';
 import { DialogPenaAlternativaComponent } from '../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component';
 import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alternativa-penal/alternativa-penal';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-incluir-prestador',
@@ -29,6 +30,8 @@ import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alter
 export class IncluirPrestadorComponent implements OnInit {
 
   public prestador = new Prestador();
+
+  public edicao = false;
 
   public deficiencias = [
     { id: 1, nome: 'Física' },
@@ -40,8 +43,10 @@ export class IncluirPrestadorComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private _activatedRoute: ActivatedRoute,
     private _prestadorService: PrestadorService,
-    private _perguntaService: PerguntaService) {
+    private _perguntaService: PerguntaService,
+    private _router: Router) {
     this.prestador.fichaMedica = new FichaMedica();
     this.prestador.fichaMedica.usoDrogas = new Array<UsoDroga>();
     this.prestador.familiares = new Array<Familiar>();
@@ -52,8 +57,24 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._activatedRoute.params.subscribe(params => {
+      if (params["id"]) {
+        this.edicao = true;
+        this._prestadorService.getPrestador(params["id"]).subscribe(result => {
+          this.prestador = (result as any).entidade;
+          if (!this.prestador.fichaMedica) {
+            this.prestador.fichaMedica = new FichaMedica();
+            this.prestador.fichaMedica.usoDrogas = new Array<UsoDroga>();
+          }
+        });
+      } else {
+        this.edicao = false;
+      }
+    });
+
+
     this._perguntaService.getPerguntas(new Pergunta()).subscribe(perguntas => {
-      this.prestador.respostas = perguntas.map(p =>  new Resposta(p));
+      this.prestador.respostas = perguntas.map(p => new Resposta(p));
     });
   }
 
@@ -122,7 +143,10 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public adicionaPrestador(): void {
-    this._prestadorService.addPrestadores(this.prestador).subscribe(() => { });
+    this._prestadorService.addPrestadores(this.prestador).subscribe(resultado => {
+      if (!this.edicao)
+        this._router.navigate(['prestador', resultado.id]);
+    });
   }
 
 }

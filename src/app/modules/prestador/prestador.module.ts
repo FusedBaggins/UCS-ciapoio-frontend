@@ -5,12 +5,16 @@ import { DetalhePrestadorComponent } from "./components/detalhe-prestador/detalh
 
 const routes: Routes = [
     {
-        path: '',
-        loadChildren: () => import('./components/listagem-prestador/listagem-prestador.module').then(m => m.ListagemPrestadorModule)
-    },    
-    {
         path: 'incluir',
         loadChildren: () => import('./components/incluir-prestador/incluir-prestador.module').then(m => m.IncluirPrestadorModule)
+    },
+    {
+        path: ':id',
+        loadChildren: () => import('./components/incluir-prestador/incluir-prestador.module').then(m => m.IncluirPrestadorModule)
+    },    
+    {
+        path: '',
+        loadChildren: () => import('./components/listagem-prestador/listagem-prestador.module').then(m => m.ListagemPrestadorModule)
     }
 ];
 
