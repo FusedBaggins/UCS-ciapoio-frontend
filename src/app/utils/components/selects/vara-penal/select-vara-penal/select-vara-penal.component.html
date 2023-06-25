@@ -1,0 +1,8 @@
+<mat-form-field class="w-1">
+    <mat-label>Vara penal</mat-label>
+    <mat-select [(ngModel)]="selectedVara" (ngModelChange)="onChange()">
+        <mat-option *ngFor="let vara of varas$ | async as varas" [value]="vara.id">
+            {{ vara.label }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

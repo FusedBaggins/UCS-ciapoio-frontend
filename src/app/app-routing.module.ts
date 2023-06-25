@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'instituicao-parceira', loadChildren: () => import('./modules/entidade-parceira/entidade-parceira.module').then(m => m.EntidadeParceiraModule) },
   { path: 'alternativa-penal', loadChildren: () => import('./modules/pena-alternativa/pena-alternativa.module').then(m => m.PenaAlternativaModule) },  
   { path: 'vara-penal', loadChildren: () => import('./modules/vara/vara.module').then(m => m.VaraModule) },  
+  { path: 'processo', loadChildren: () => import('./modules/processo/processo.module').then(m => m.ProcessoModule) },  
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Vara } from 'src/app/utils/models/vara';
 import { environment } from 'src/environments/environment.development';
 import { queryParamsSerializer } from 'src/app/utils/functions/query-params-serializer';
+import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { queryParamsSerializer } from 'src/app/utils/functions/query-params-seri
 export class VaraService {
 
   private readonly _url: string = `${environment.api}/vara-penal`;
+  private readonly _selectUrl: string = `${environment.api}/select`;
 
   constructor(private _http: HttpClient) { }
 
@@ -27,5 +29,9 @@ export class VaraService {
 
   postVara(vara: Vara): Observable<any> {
     return this._http.post<Vara>(this._url, vara);
+  }
+
+  public getSelectVaras(): Observable<SelectDefault[]> {
+    return this._http.get<SelectDefault[]>(`${this._selectUrl}/vara-penal`);
   }
 }

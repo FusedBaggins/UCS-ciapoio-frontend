@@ -1,0 +1,30 @@
+<div class="column full-size container">
+    <app-form [formGroup]="filtros">
+        <mat-form-field class="field-margin-left">
+            <mat-label>Identificador</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field class="field-margin-left">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome">
+        </mat-form-field>
+    </app-form>
+
+    <app-lista-entidade [entidades]="processos$" [rotaEntidade]="['processo']">
+        <ng-template #titulo>
+            <h2 class="mat-headline-6">Processos encontrados</h2>
+        </ng-template>
+        <ng-template #entidades let-entidade>
+            <span matListItemTitle>{{entidade?.nome}}</span>
+        </ng-template>
+        <ng-template #nenhumaEntidade>
+            Oops! Não encontramos nenhum processo :(
+        </ng-template>
+    </app-lista-entidade>
+    <div class="row fab-button">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+            (click)="onAdicionarNovoProcesso()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

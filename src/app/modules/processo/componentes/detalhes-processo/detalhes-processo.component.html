@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+    <h2 class="mat-headline-6">Informações inicias</h2>
+
+    <div class="row no-wrap w-1">
+        <app-select-vara-penal [selectedVara]="form.controls['vara'].value" class="w-2"
+            (selectedVaraChange)="onAtualizarPrestadorSelecionado($event)">
+        </app-select-vara-penal>
+        <mat-form-field appearance="fill" class="field-margin-left w-2">
+            <mat-label>Número do processo</mat-label>
+            <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+    </div>
+    <app-select-prestador [selectedPrestador]="form.controls['prestador'].value" class="w-1"
+        (selectedPrestadorChange)="onAtualizarPrestadorSelecionado($event)">
+    </app-select-prestador>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill" class="w-2">
+            <mat-label>Pena originária</mat-label>
+            <input matInput placeholder="" formControlName="vara">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left w-2">
+            <mat-label>Regime</mat-label>
+            <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Inciso</mat-label>
+        <input matInput placeholder="" formControlName="prestador">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Detalhamento</mat-label>
+        <input matInput placeholder="" formControlName="prestador">
+    </mat-form-field>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill" class="w-2">
+            <mat-label>PRD</mat-label>
+            <input matInput placeholder="" formControlName="vara">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left w-2">
+            <mat-label>PRD - Descrição</mat-label>
+            <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+    </div>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill" class="w-3">
+            <mat-label>Persecução penal</mat-label>
+            <input matInput placeholder="" formControlName="vara">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left w-3">
+            <mat-label>Horas à cumprir</mat-label>
+            <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left w-3">
+            <mat-label>Penas anteriores</mat-label>
+            <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+    </div>
+    <div class="row no-wrap w-1">
+        <div class="w-3">
+            <mat-checkbox formControlName="possui_multa">Possui multa</mat-checkbox>
+        </div>
+        <mat-form-field class="w-3" >
+            <mat-label>Valor</mat-label>
+            <input matInput type="text" forControlName="valor_a_pagar" [disabled]="form.controls['valor_a_pagar'].disabled">
+        </mat-form-field>
+    </div>
+    <div class="row fab-button">
+        <button mat-fab type="submit" color="primary" aria-label="Submit button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</form>
