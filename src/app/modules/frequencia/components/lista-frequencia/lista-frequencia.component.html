@@ -9,23 +9,18 @@
             <input matInput formControlName="nome">
         </mat-form-field>
     </app-form>
-
-    <app-lista-entidade [entidades]="penaAlternativa$" [rotaEntidade]="['alternativa-penal']" [config]="{
-        exibirAvatar: false,
-        exibirCarregamento: true,
-        exibirIdentificador: false,
-      }">
+    <app-lista-entidade [entidades]="frequencias$" [rotaEntidade]="['frequencia']" [config]="entidadeConfig">
         <ng-template #titulo>
-            <h2 class="mat-headline-6">Penas alternativas encontradas</h2>
+            <h2 class="mat-headline-6">Frequências</h2>
         </ng-template>
         <ng-template #entidades let-entidade>
-            <span matListItemTitle>{{entidade.titulo}}</span>
+            <span matListItemTitle>Prestador: {{entidade.prestador.nome}}</span>
             <span matListItemLine>
-                Prestador: {{ entidade.prestador.nome }}                 
+                {{ totalCumprido(entidade.atestadosFrequencia) }} / {{ entidade.horas_cumprir }}
             </span>
         </ng-template>
         <ng-template #nenhumaEntidade>
-            Oops! Não encontramos nenhuma Visita agendada :(
+            Oops! Não encontramos nenhuma vara penal :(
         </ng-template>
     </app-lista-entidade>
 </div>
