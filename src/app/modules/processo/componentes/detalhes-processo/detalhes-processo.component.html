@@ -2,12 +2,16 @@
     <h2 class="mat-headline-6">Informações inicias</h2>
 
     <div class="row no-wrap w-1">
-        <app-select-vara-penal [selectedVara]="form.controls['vara'].value" class="w-2"
-            (selectedVaraChange)="onAtualizarPrestadorSelecionado($event)">
+        <app-select-vara-penal [selectedVara]="form.controls['vara'].value" class="w-3"
+            (selectedVaraChange)="onAtualizarVaraCriminalSelecionado($event)">
         </app-select-vara-penal>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>Número do processo</mat-label>
             <input matInput placeholder="" formControlName="nro_processo">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="field-margin-left w-4">
+            <mat-label>Número artigo penal</mat-label>
+            <input matInput placeholder="" formControlName="nro_artigo_penal">
         </mat-form-field>
     </div>
     <app-select-prestador [selectedPrestador]="form.controls['prestador'].value" class="w-1"
@@ -16,29 +20,29 @@
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill" class="w-2">
             <mat-label>Pena originária</mat-label>
-            <input matInput placeholder="" formControlName="vara">
+            <input matInput placeholder="" formControlName="pena_originaria">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>Regime</mat-label>
-            <input matInput placeholder="" formControlName="nro_processo">
+            <input matInput placeholder="" formControlName="pena_originaria_regime">
         </mat-form-field>
     </div>
     <mat-form-field appearance="fill">
         <mat-label>Inciso</mat-label>
-        <input matInput placeholder="" formControlName="prestador">
+        <input matInput placeholder="" formControlName="inciso">
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Detalhamento</mat-label>
-        <input matInput placeholder="" formControlName="prestador">
+        <input matInput placeholder="" formControlName="detalhamento">
     </mat-form-field>
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill" class="w-2">
             <mat-label>PRD</mat-label>
-            <input matInput placeholder="" formControlName="vara">
+            <input matInput placeholder="" formControlName="prd">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>PRD - Descrição</mat-label>
-            <input matInput placeholder="" formControlName="nro_processo">
+            <input matInput placeholder="" formControlName="prd_descricao">
         </mat-form-field>
     </div>
     <div class="row no-wrap w-1">
@@ -48,11 +52,11 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-3">
             <mat-label>Horas à cumprir</mat-label>
-            <input matInput placeholder="" formControlName="nro_processo">
+            <input matInput placeholder="" formControlName="horas_cumprir">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-3">
             <mat-label>Penas anteriores</mat-label>
-            <input matInput placeholder="" formControlName="nro_processo">
+            <input matInput placeholder="" formControlName="qtd_penas_anteriores">
         </mat-form-field>
     </div>
     <div class="row no-wrap w-1">

@@ -82,7 +82,7 @@ export class DetalhesProcessoComponent {
     });
   }
 
-  private _atualizarUsuario(processo: Processo): void {
+  private _atualizarProcesso(processo: Processo): void {
     this._processoService.postProcesso(processo).subscribe({
       next: (res) => {
         const mensagem: string = (!this.form.get('id')?.value) ? 'cadastrado' : 'atualizado';
@@ -124,7 +124,7 @@ export class DetalhesProcessoComponent {
         throw new Error('Campos obrigatórios devem ser preenchidos!');
       }
 
-      this._atualizarUsuario(this.form.getRawValue());
+      this._atualizarProcesso(this.form.getRawValue());
 
     }
     catch (e: any) {
@@ -135,6 +135,10 @@ export class DetalhesProcessoComponent {
 
   onAtualizarPrestadorSelecionado(prestador: SelectDefault): void {
     this.form.get('prestador')?.patchValue(prestador);
+  }
+
+  onAtualizarVaraCriminalSelecionado(vara: SelectDefault): void {
+    this.form.get('vara')?.patchValue(vara);
   }
 
 }
