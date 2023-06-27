@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ToolbarModule } from './utils/components/toolbar/toolbar.module';
 import { SidenavModule } from './utils/components/sidenav/sidenav.module';
 import { HttpInterceptorService } from './utils/interceptors/http-interceptor.service';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,9 @@ import { HttpInterceptorService } from './utils/interceptors/http-interceptor.se
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true
+    },
+    {
+      provide:MAT_DATE_LOCALE, useValue:'pt-br'
     }
   ],
   bootstrap: [AppComponent]

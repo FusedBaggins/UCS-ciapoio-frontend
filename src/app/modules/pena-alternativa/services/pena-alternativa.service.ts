@@ -13,7 +13,7 @@ export class PenaAlternativaService {
   private readonly _url: string = `${environment.api}/alternativa-penal`;
 
   constructor(private _http: HttpClient) { }
-  
+
   public getAlternativasPenais(filtros: AlternativaPenal): Observable<AlternativaPenal[]> {
     let queryParams: HttpParams = queryParamsSerializer(filtros);
     return this._http.get<AlternativaPenal[]>(this._url, { params: queryParams })
@@ -25,5 +25,10 @@ export class PenaAlternativaService {
 
   public postAlternativaPenal(pergunta: AlternativaPenal): Observable<any> {
     return this._http.post<any>(this._url, pergunta);
+  }
+
+  public getDescricaoAlternativaPenal(prestadorId: number, processoId: number): Observable<any> {
+    let queryParams: HttpParams = queryParamsSerializer({ prestadorId, processoId });
+    return this._http.get<any>(`${this._url}/getDescricaoAlternativaPenal`, { params: queryParams });
   }
 }

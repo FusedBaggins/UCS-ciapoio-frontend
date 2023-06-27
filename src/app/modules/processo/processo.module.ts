@@ -37,6 +37,7 @@ import { DetalhesProcessoComponent } from './componentes/detalhes-processo/detal
     MatButtonModule,
     MatSnackBarModule,
     MatCheckboxModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     ListaEntidadeModule,
     MatDatepickerModule,

@@ -7,11 +7,11 @@
         </app-select-vara-penal>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>Número do processo</mat-label>
-            <input matInput placeholder="" formControlName="nro_processo">
+            <input matInput type="number" placeholder="" formControlName="nro_processo">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-4">
             <mat-label>Número artigo penal</mat-label>
-            <input matInput placeholder="" formControlName="nro_artigo_penal">
+            <input matInput type="number" placeholder="" formControlName="nro_artigo_penal">
         </mat-form-field>
     </div>
     <app-select-prestador [selectedPrestador]="form.controls['prestador'].value" class="w-1"
@@ -24,7 +24,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>Regime</mat-label>
-            <input matInput placeholder="" formControlName="pena_originaria_regime">
+            <input matInput type="number" placeholder="" formControlName="pena_originaria_regime">
         </mat-form-field>
     </div>
     <mat-form-field appearance="fill">
@@ -38,7 +38,7 @@
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill" class="w-2">
             <mat-label>PRD</mat-label>
-            <input matInput placeholder="" formControlName="prd">
+            <input matInput type="number" placeholder="" formControlName="prd">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-2">
             <mat-label>PRD - Descrição</mat-label>
@@ -52,7 +52,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-3">
             <mat-label>Horas à cumprir</mat-label>
-            <input matInput placeholder="" formControlName="horas_cumprir">
+            <input matInput type="number" placeholder="" formControlName="horas_cumprir">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left w-3">
             <mat-label>Penas anteriores</mat-label>
@@ -63,14 +63,24 @@
         <div class="w-3">
             <mat-checkbox formControlName="possui_multa">Possui multa</mat-checkbox>
         </div>
-        <mat-form-field class="w-3" >
+        <mat-form-field class="w-3">
             <mat-label>Valor</mat-label>
-            <input matInput type="text" forControlName="valor_a_pagar" [disabled]="form.controls['valor_a_pagar'].disabled">
+            <input matInput type="number" forControlName="valor_a_pagar"
+                [disabled]="form.controls['valor_a_pagar'].disabled">
         </mat-form-field>
     </div>
     <div class="row fab-button">
         <button mat-fab type="submit" color="primary" aria-label="Submit button">
             <mat-icon>add</mat-icon>
         </button>
+    </div>
+
+    <h2 class="mat-headline-6">Configuração pena alternativa</h2>
+    <div class="row no-wrap w-1">
+        <mat-form-field appearance="fill" class="w-1">
+            <mat-label>Nome de exibição da penal alternativa</mat-label>
+            <input matInput placeholder="" formControlName="descricao_alternativa_penal">
+            <mat-hint>Nome que será exibido em Alternativas penais juntamente com o nome do prestador</mat-hint>
+        </mat-form-field>
     </div>
 </form>

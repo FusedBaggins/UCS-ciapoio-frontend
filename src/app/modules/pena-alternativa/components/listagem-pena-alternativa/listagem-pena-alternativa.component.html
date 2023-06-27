@@ -10,7 +10,7 @@
         </mat-form-field>
     </app-form>
 
-    <app-lista-entidade [entidades]="penaAlternativa$" [rotaEntidade]="['alternativa-penal']" [config]="{
+    <app-lista-entidade [entidades]="penasAlternativas$" [rotaEntidade]="['alternativa-penal']" [config]="{
         exibirAvatar: false,
         exibirCarregamento: true,
         exibirIdentificador: false,
@@ -21,11 +21,11 @@
         <ng-template #entidades let-entidade>
             <span matListItemTitle>{{entidade.titulo}}</span>
             <span matListItemLine>
-                Prestador: {{ entidade.prestador.nome }}                 
+                {{ entidade.descricao }}
             </span>
         </ng-template>
         <ng-template #nenhumaEntidade>
-            Oops! Não encontramos nenhuma Visita agendada :(
+            Oops! Não encontramos nenhuma Pena alternativa :(
         </ng-template>
     </app-lista-entidade>
 </div>

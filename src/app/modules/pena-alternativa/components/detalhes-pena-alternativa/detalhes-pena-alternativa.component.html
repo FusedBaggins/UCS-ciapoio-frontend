@@ -1,20 +1,76 @@
-<div *ngIf="alternativaPenal">
-  <div>
-    <mat-form-field>
-      <mat-label>Título</mat-label>
-      <input matInput [(ngModel)]="alternativaPenal.titulo">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+  <h2 class="mat-headline-6">Informações inicias</h2>
+  <div class="row no-wrap w-1">
+    <mat-form-field class="w-3">
+      <mat-label>Data de início</mat-label>
+      <input matInput [matDatepicker]="datepicker" formControlName="data_inicial">
+      <mat-hint>DD/MM/AAAA</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancelar</button>
+          <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Duração</mat-label>
-      <input matInput [(ngModel)]="alternativaPenal.duracao">
+    <mat-form-field class="w-3 field-margin-left">
+      <mat-label>Horário de início</mat-label>
+      <input type="time" matInput>
+    </mat-form-field>
+    <mat-form-field class="w-3 field-margin-left">
+      <mat-label>Horário de término</mat-label>
+      <input type="time" matInput>
     </mat-form-field>
   </div>
-  <div>
-    <mat-form-field>
-      <mat-label>Descrição</mat-label>
-      <input matInput [(ngModel)]="alternativaPenal.descricao">
-    </mat-form-field>
-    <span>Prestador: {{ alternativaPenal.prestador.nome }}</span>
-  </div>
+  <div class="row no-wrap w-1">
+    <div class="column align-items-center justify-content-center">
+      <span>D</span>
+      <mat-checkbox formControlName="domingo"></mat-checkbox>
+    </div>
 
-</div>
+    <div class="column align-items-center justify-content-center">
+      <span>S</span>
+      <mat-checkbox formControlName="segunda"></mat-checkbox>
+    </div>
+
+    <div class="column align-items-center justify-content-center">
+      <span>T</span>
+      <mat-checkbox formControlName="terca"></mat-checkbox>
+    </div>
+
+    <div class="column align-items-center justify-content-center">
+      <span>Q</span>
+      <mat-checkbox formControlName="quarta"></mat-checkbox>
+    </div>
+
+    <div class="column align-items-center justify-content-center">
+      <span>Q</span>
+      <mat-checkbox formControlName="quinta"></mat-checkbox>
+    </div>
+
+    <div class="column align-items-center justify-content-center">
+      <span>S</span>
+      <mat-checkbox formControlName="sexta"></mat-checkbox>
+    </div>
+
+    <div class="column align-items-center justify-content-center">
+      <span>S</span>
+      <mat-checkbox formControlName="sabado"></mat-checkbox>
+    </div>
+  </div>
+  <h2 class="mat-headline-6">Frequências</h2>
+  <mat-list role="list" [disableRipple]="false">
+    <mat-list-item role="listitem" *ngFor="let frequencia of frequencias;">
+      <span matListItemTitle>{{frequencia.dt_entrada}}</span>
+      <span matListItemLine>{{frequencia?.observacoes}}</span>
+      <button mat-icon-button (click)="onExibirFrequencia()" matListItemMeta>
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item>
+      <div class="row w-1 flex justify-content-end">
+        <button mat-button (click)="onExibirFrequencia()">Adicionar</button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</form>

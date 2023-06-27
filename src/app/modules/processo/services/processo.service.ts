@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Processo } from 'src/app/utils/models/processo';
 import { environment } from 'src/environments/environment.development';
@@ -27,4 +27,5 @@ export class ProcessoService {
   public postProcesso(processo: Processo): Observable<any> {
     return this._http.post<any>(this._url, processo);
   }
+
 }

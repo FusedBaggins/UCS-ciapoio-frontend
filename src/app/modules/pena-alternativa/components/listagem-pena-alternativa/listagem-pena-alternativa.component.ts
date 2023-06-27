@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
+import { Observable, debounceTime, of, startWith, switchMap } from 'rxjs';
 import { Visita } from 'src/app/utils/models/visita';
 import * as moment from 'moment';
 import { ListaEntidadeConfiguracao } from 'src/app/utils/components/lista-entidade/models/lista-entidade-configuracao';
@@ -14,7 +14,7 @@ import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alter
 })
 export class ListagemPenaAlternativaComponent {
   public filtros: FormGroup;
-  public penaAlternativa$!: Observable<AlternativaPenal[]>;
+  public penasAlternativas$!: Observable<AlternativaPenal[]>;
 
   public entidadeConfig: ListaEntidadeConfiguracao = {
     exibirAvatar: false,
@@ -34,11 +34,16 @@ export class ListagemPenaAlternativaComponent {
   }
 
   ngOnInit(): void {
-    this.penaAlternativa$ = this.filtros.valueChanges.pipe(
+    this.penasAlternativas$ = this.filtros.valueChanges.pipe(
       startWith({}),
       debounceTime(500),
       switchMap((filtros: any) => {
-        return this._penaAlternativaService.getAlternativasPenais(filtros)
+        const alternativaPenal: AlternativaPenal = new AlternativaPenal();
+
+        alternativaPenal.id = 1;
+        alternativaPenal.titulo = 'Pena alternativa 01';
+        alternativaPenal.descricao = 'Jorge Muller'
+        return of([alternativaPenal]);
       })
     );
   }

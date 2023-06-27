@@ -12,6 +12,7 @@ import { ProcessoService } from '../../services/processo.service';
 import httpErrorMessages from 'src/app/utils/constants/http-error-messages';
 import { Prestador } from 'src/app/utils/models/prestador/prestador';
 import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
+import { PenaAlternativaService } from 'src/app/modules/pena-alternativa/services/pena-alternativa.service';
 
 @Component({
   selector: 'app-detalhes-processo',
@@ -21,7 +22,9 @@ import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefau
 export class DetalhesProcessoComponent {
   form!: FormGroup;
 
+  private _id!: number;
   private _destroyed$: Subject<void>;
+  private _descricaoAlternativaPenaldestroyed$: Subject<void>;
 
   constructor(
     private _router: Router,
@@ -29,19 +32,24 @@ export class DetalhesProcessoComponent {
     private _formBuilder: FormBuilder,
     private _activatedRoute: ActivatedRoute,
     private _processoService: ProcessoService,
+    private _penaAlternativaService: PenaAlternativaService
   ) {
     this._destroyed$ = new Subject();
+    this._descricaoAlternativaPenaldestroyed$ = new Subject();
   }
 
   ngOnInit(): void {
     this.criarForm();
+    this._verificarPrestador();
     this._verficiarPossuiMulta();
 
     this._activatedRoute.params.pipe(
       takeUntil(this._destroyed$),
       switchMap((params: Params) => {
-        if (params['id'])
+        if (params['id']) {
+          this._id = params['id'];
           return this._processoService.getProcesso(params['id']);
+        }
         return of(null);
       })
     ).subscribe({
@@ -59,6 +67,9 @@ export class DetalhesProcessoComponent {
   ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
+
+    this._descricaoAlternativaPenaldestroyed$.next();
+    this._descricaoAlternativaPenaldestroyed$.complete();
   }
 
   criarForm(): void {
@@ -74,11 +85,12 @@ export class DetalhesProcessoComponent {
       prd_descricao: [null, []],
       horas_cumprir: [null, []],
       qtd_penas_anteriores: [null, []],
-      possui_multa: [null, []],
-      valor_a_pagar: [{ value: false, disabled: true }, []],
+      possui_multa: [false, []],
+      valor_a_pagar: [{ value: null, disabled: true }, []],
       instituicao: [null, []],
       prestador: [null, []],
       vara: [null, []],
+      descricao_alternativa_penal: [null, []]
     });
   }
 
@@ -112,7 +124,25 @@ export class DetalhesProcessoComponent {
         }
 
         valorMultaControl?.updateValueAndValidity()
+      }
+    });
+  }
 
+  private _verificarPrestador(): void {
+    this.form.get('prestador')?.valueChanges.pipe(
+      takeUntil(this._destroyed$)
+    ).subscribe({
+      next: (prestadorId: number) => {
+        if (prestadorId) {
+          this._descricaoAlternativaPenaldestroyed$.next();
+          this._penaAlternativaService.getDescricaoAlternativaPenal(prestadorId, this._id).pipe(
+            takeUntil(this._descricaoAlternativaPenaldestroyed$)
+          ).subscribe({
+            next: (descricao: any) => {
+              console.log(descricao);
+            }
+          });
+        }
       }
     })
   }

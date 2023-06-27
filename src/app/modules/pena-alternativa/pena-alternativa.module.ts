@@ -12,17 +12,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 import { ListagemPenaAlternativaComponent } from './components/listagem-pena-alternativa/listagem-pena-alternativa.component';
 import { DetalhesPenaAlternativaComponent } from './components/detalhes-pena-alternativa/detalhes-pena-alternativa.component';
 import { PenaAlternativaRoutingModule } from './pena-alternativa-routing.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DialogFrequenciaComponent } from './components/detalhes-pena-alternativa/components/dialog-frequencia/dialog-frequencia.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     ListagemPenaAlternativaComponent,
-    DetalhesPenaAlternativaComponent
+    DetalhesPenaAlternativaComponent,
+    DialogFrequenciaComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +49,9 @@ import { PenaAlternativaRoutingModule } from './pena-alternativa-routing.module'
     FormModule,
     ListaEntidadeModule,
     SelectsModule,
+    MatCheckboxModule,
+    MatRippleModule,
+    MatDialogModule,
   ]
 })
 export class PenaAlternativaModule { }
