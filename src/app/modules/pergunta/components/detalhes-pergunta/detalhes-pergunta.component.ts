@@ -59,7 +59,7 @@ export class DetalhesPerguntaComponent {
     this.form = this._formBuilder.group({
       id: [null, []],
       pergunta: [null, [Validators.required]],
-      ativo: [true, [Validators.required]]
+      ativo: [true, []]
     })
   }
 

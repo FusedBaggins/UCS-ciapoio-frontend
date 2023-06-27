@@ -5,7 +5,7 @@
             <input matInput formControlName="id">
         </mat-form-field>
         <mat-form-field class="field-margin-left">
-            <mat-label>Nome</mat-label>
+            <mat-label>Detalhamento</mat-label>
             <input matInput formControlName="nome">
         </mat-form-field>
     </app-form>
@@ -15,7 +15,7 @@
             <h2 class="mat-headline-6">Processos encontrados</h2>
         </ng-template>
         <ng-template #entidades let-entidade>
-            <span matListItemTitle>{{entidade?.nome}}</span>
+            <span matListItemTitle>{{entidade?.detalhamento}}</span>
         </ng-template>
         <ng-template #nenhumaEntidade>
             Oops! Não encontramos nenhum processo :(
