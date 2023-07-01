@@ -57,6 +57,7 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this._activatedRoute.params.subscribe(params => {
       if (params["id"]) {
         this.edicao = true;
@@ -70,6 +71,21 @@ export class IncluirPrestadorComponent implements OnInit {
       } else {
         this.edicao = false;
       }
+
+      this._activatedRoute.queryParams.subscribe(params => {
+        const { nome, telefone, entrevistaId } = params;
+        if (nome) {
+          this.prestador.nome = nome;
+        }
+
+        if (telefone) {
+          this.prestador.telefone1 = telefone;
+        }
+
+        if (entrevistaId) {
+          this.prestador.entrevistaId = entrevistaId;
+        }
+      });
     });
 
 

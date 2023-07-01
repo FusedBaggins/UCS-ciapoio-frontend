@@ -1,0 +1,18 @@
+<app-lista-entidade [entidades]="entrevista$" [rotaEntidade]="['entrevistas']" [config]="entidadeConfig">
+  <ng-template #titulo>
+    <h2 class="mat-headline-6">Entrevistas agendadas</h2>
+  </ng-template>
+  <ng-template #entidades let-entidade>
+    <span matListItemLine>
+      <b>Prestador:</b> {{entidade.nome}} |  Contato: {{entidade.contato}}
+    </span>
+    <span matListItemLine>
+      Data: {{ exibirData(entidade.data) }}
+    </span>
+    <mat-icon *ngIf="entidade.entrevistaId">check_circle</mat-icon>
+
+  </ng-template>
+  <ng-template #nenhumaEntidade>
+    Oops! Não encontramos nenhuma entrevista :(
+  </ng-template>
+</app-lista-entidade>

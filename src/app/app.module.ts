@@ -9,6 +9,8 @@ import { ToolbarModule } from './utils/components/toolbar/toolbar.module';
 import { SidenavModule } from './utils/components/sidenav/sidenav.module';
 import { HttpInterceptorService } from './utils/interceptors/http-interceptor.service';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NgxMaskModule } from 'ngx-mask';
+import { AutenticacaoService } from './utils/services/autenticacao.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToolbarModule,
-    SidenavModule
+    SidenavModule,
   ],
   providers: [
     {
@@ -29,8 +31,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     },
     {
       provide:MAT_DATE_LOCALE, useValue:'pt-br'
-    }
+    },
+    AutenticacaoService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

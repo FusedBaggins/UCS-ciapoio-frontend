@@ -21,6 +21,7 @@ import { MatListModule } from "@angular/material/list";
 import { CommonModule } from "@angular/common";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DialogPenaAlternativaComponent } from "../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component";
+import { NgxMaskModule } from "ngx-mask";
 
 const routes: Routes = [
     {
@@ -51,7 +52,8 @@ const routes: Routes = [
         MatNativeDateModule,
         MatListModule,
         CommonModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        NgxMaskModule.forRoot()
     ],
     declarations: [
         IncluirPrestadorComponent,

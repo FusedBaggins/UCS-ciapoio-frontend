@@ -12,6 +12,7 @@ import { Trabalho } from "./entidades/trabalho/trabalho";
 
 export class Prestador {
     id!: number;
+    entrevistaId!: number;
     nome!: string;
     cpf!: string;
     nome_mae?: string;

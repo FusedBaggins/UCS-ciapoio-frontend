@@ -8,21 +8,21 @@
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill">
             <mat-label>CNPJ</mat-label>
-            <input matInput placeholder="" formControlName="cnpj">
+            <input matInput placeholder="" formControlName="cnpj" mask="00.000.000/0000-00">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left">
             <mat-label>E-mail</mat-label>
-            <input matInput placeholder="" formControlName="email">
+            <input type="email" matInput placeholder="" formControlName="email">
         </mat-form-field>
     </div>
     <div class="row no-wrap w-1">
         <mat-form-field appearance="fill">
             <mat-label>Telefone 1</mat-label>
-            <input matInput placeholder="" formControlName="telefone1">
+            <input matInput placeholder="" formControlName="telefone1" mask="(00) 00000-0000">
         </mat-form-field>
         <mat-form-field appearance="fill" class="field-margin-left">
             <mat-label>Telefone 2</mat-label>
-            <input matInput placeholder="" formControlName="telefone2">
+            <input matInput placeholder="" formControlName="telefone2" mask="(00) 00000-0000">
         </mat-form-field>
     </div>
     <mat-form-field appearance="fill">

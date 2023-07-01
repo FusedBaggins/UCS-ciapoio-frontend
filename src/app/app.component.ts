@@ -10,7 +10,7 @@ import { AutenticacaoService } from './utils/services/autenticacao.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'UCS-ciapoio-frontend';
+  title = 'CIAPoio';
 
   usuarioAutenticado$!: Observable<boolean>;
   constructor(private _autenticacaoService: AutenticacaoService) { }

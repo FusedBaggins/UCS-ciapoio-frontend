@@ -1,0 +1,45 @@
+<ng-container *ngIf="entidade$ | async as entidade">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+    <h2 class="mat-headline-6">Agendamento de entrevista</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="" formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput placeholder="" formControlName="telefone" mask="(00) 00000-0000">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Observações</mat-label>
+      <input matInput placeholder="" formControlName="observacoes">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data e hora</mat-label>
+      <input matInput type="datetime-local" placeholder="data" formControlName="data">
+    </mat-form-field>
+
+    <div class="row full-width justify-content-end align-items-center button-container" *ngIf="entidade.id && !entidade.prestadorId">
+      <button mat-raised-button extended color="primary"  type="button" (click)="onAbrirCadastroPrestador()">
+        <mat-icon>add</mat-icon>
+        Abrir cadastro de prestador
+      </button>
+    </div>
+
+    <div class="row full-width justify-content-end align-items-center button-container" *ngIf="entidade.prestadorId">
+      <button mat-raised-button extended color="primary"  type="button" (click)="onAbrirCadastroPrestador()">
+        <mat-icon>add</mat-icon>
+        Abrir prestador vinculado
+      </button>
+    </div>
+
+    <div class="row fab-button">
+      <button mat-fab type="submit" color="primary" aria-label="Submit button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+</ng-container>

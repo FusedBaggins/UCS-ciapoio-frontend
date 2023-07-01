@@ -12,6 +12,7 @@ import { InstituicaoComponent } from './components/instituicao/instituicao.compo
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    NgxMaskModule.forRoot(),
     EnderecoModule,
   ],
   exports: [InstituicaoComponent]

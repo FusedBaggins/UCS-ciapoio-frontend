@@ -13,7 +13,7 @@
         <div>
             <mat-form-field>
                 <mat-label>CPF</mat-label>
-                <input matInput [(ngModel)]="prestador.cpf">
+                <input matInput [(ngModel)]="prestador.cpf" mask="000.000.000-00">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Filiação materna</mat-label>
@@ -53,11 +53,11 @@
         <div>
             <mat-form-field>
                 <mat-label>Telefone 1</mat-label>
-                <input matInput [(ngModel)]="prestador.telefone1">
+                <input matInput [(ngModel)]="prestador.telefone1" mask="(00) 00000-0000">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Telefone 2</mat-label>
-                <input matInput [(ngModel)]="prestador.telefone2">
+                <input matInput [(ngModel)]="prestador.telefone2" mask="(00) 00000-0000">
             </mat-form-field>
             <div>
                 <button mat-button matStepperNext type="button">Próximo</button>

@@ -11,7 +11,7 @@ const routes: Routes = [
     {
         path: ':id',
         loadChildren: () => import('./components/incluir-prestador/incluir-prestador.module').then(m => m.IncluirPrestadorModule)
-    },    
+    },
     {
         path: '',
         loadChildren: () => import('./components/listagem-prestador/listagem-prestador.module').then(m => m.ListagemPrestadorModule)
@@ -24,4 +24,6 @@ const routes: Routes = [
 
 })
 
-export class PrestadorModule { }
+export class PrestadorModule {
+
+ }
