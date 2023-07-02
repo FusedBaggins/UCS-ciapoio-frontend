@@ -1,18 +1,18 @@
 <h1 mat-dialog-title>Adicionar curso</h1>
 <div mat-dialog-content>
-  <div>
+  <div fxLayout="column" fxLayoutGap="16px" fxFlexFill>
     <mat-form-field>
       <mat-label>Instituição</mat-label>
       <input matInput [(ngModel)]="curso.instituicao">
     </mat-form-field>
   </div>
-  <div>
+  <div fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
     <mat-form-field>
       <mat-label>Curso</mat-label>
       <input matInput [(ngModel)]="curso.curso">
     </mat-form-field>
   </div>
-  <div>
+  <div fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
     <mat-form-field>
       <mat-label>Observação</mat-label>
       <input matInput [(ngModel)]="curso.observacao">
@@ -20,6 +20,8 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="clickAdicionar()"  cdkFocusInitial>Adicionar</button>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <div class="w-1 flex justify-content-end">
+    <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+  </div>
 </div>

@@ -18,6 +18,7 @@ import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 import { DetalheUsuarioComponent } from './components/detalhe-usuario/detalhe-usuario.component';
 import { ListagemUsuarioComponent } from './components/listagem-usuario/listagem-usuario.component';
 import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lista-entidade.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lis
 
     ListaEntidadeModule,
     UsuarioRoutingModule,
-    SelectsModule
+    SelectsModule,
+    FlexLayoutModule,
   ]
 })
 export class UsuarioModule { }

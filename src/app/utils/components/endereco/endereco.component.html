@@ -1,27 +1,30 @@
-<div class="column full-width" [formGroup]="form">
-    <div class="row no-wrap w-1">
-        <mat-form-field appearance="fill">
+<div fxLayoutGap="16px" fxLayout="column" fxLayout.xs="column" fxFlexFill [formGroup]="form">
+    <div fxFlex="100" fxLayoutGap="16px" fxLayout="row" fxLayout.xs="column">
+        <mat-form-field appearance="fill" fxFlex="35" fxFlex.xs="100">
             <mat-label>CEP</mat-label>
             <input matInput placeholder="" formControlName="cep">
         </mat-form-field>
-        <app-select-cidade [selectedCidade]="form.controls['cidadeId'].value" class="w-1"
-            (selectedCidadeChange)="onAtualizarCidadeSelecionada($event)"></app-select-cidade>
+        <div fxFlex="65" fxFlex.xs="100">
+            <app-select-cidade [selectedCidade]="form.controls['cidadeId'].value" class="w-1"
+                (selectedCidadeChange)="onAtualizarCidadeSelecionada($event)">
+            </app-select-cidade>
+        </div>
     </div>
-    <div class="row no-wrap w-1">
-        <mat-form-field appearance="fill" class="w-1">
+    <div fxFlex="100" fxLayoutGap="16px" fxLayout="row" fxLayout.xs="column">
+        <mat-form-field appearance="fill" fxFlex="70" fxFlex.xs="100">
             <mat-label>Rua</mat-label>
             <input matInput placeholder="" formControlName="rua">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="w-3 field-margin-left">
+        <mat-form-field appearance="fill" fxFlex="30" fxFlex.xs="100">
             <mat-label>Número</mat-label>
             <input matInput placeholder="" formControlName="numero">
         </mat-form-field>
     </div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Bairro</mat-label>
         <input matInput placeholder="" formControlName="bairro">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field  fxFlex="100">
         <mat-label>Complemento</mat-label>
         <textarea matInput formControlName="complemento"></textarea>
     </mat-form-field>

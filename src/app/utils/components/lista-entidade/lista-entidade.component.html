@@ -2,12 +2,6 @@
     <ng-container [ngTemplateOutlet]="tituloTemplate"></ng-container>
     <mat-list>
         <mat-list-item *ngFor="let entidade of entidades; index as i" (click)="onEditarEntidade(entidade.id)">
-            <div matListItemAvatar *ngIf="config?.exibirIdentificador">
-                <!-- Faltar colocar a cor padrão do projeto -->
-                <div class="full-height row justify-content-center align-items-center">
-                    {{entidade.id}}
-                </div>
-            </div>
             <!-- Falta ajustar para o link da imagem correta -->
             <img *ngIf="config?.exibirAvatar" matListItemAvatar
                 src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" />

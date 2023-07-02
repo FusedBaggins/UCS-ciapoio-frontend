@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -25,17 +26,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    
+
     FormModule,
     VaraRoutingModule,
     ListaEntidadeModule,
 
     MatIconModule,
     MatListModule,
-    MatInputModule, 
-    MatButtonModule, 
+    MatInputModule,
+    MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    FlexLayoutModule,
   ]
 })
 export class VaraModule { }

@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EnderecoComponent } from './endereco.component';
 import { SelectsModule } from '../selects/selects.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SelectsModule } from '../selects/selects.module';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
 
     MatInputModule,
     MatSelectModule,

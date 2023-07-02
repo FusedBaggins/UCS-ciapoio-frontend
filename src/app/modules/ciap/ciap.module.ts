@@ -14,6 +14,7 @@ import { ListagemCiapComponent } from './components/listagem-ciap/listagem-ciap.
 import { ListaEntidadeModule } from "src/app/utils/components/lista-entidade/lista-entidade.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InstituicaoModule } from "src/app/utils/components/instituicao/instituicao.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { InstituicaoModule } from "src/app/utils/components/instituicao/institui
 
         FormModule,
         InstituicaoModule,
-        ListaEntidadeModule
+        ListaEntidadeModule,
+
+        FlexLayoutModule,
     ]
 })
 

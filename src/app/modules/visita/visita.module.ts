@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
     FormModule,
     ListaEntidadeModule,
     SelectsModule,
+    FlexLayoutModule,
   ]
 })
 export class VisitaModule { }

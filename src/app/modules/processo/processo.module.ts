@@ -17,6 +17,7 @@ import { SelectsModule } from 'src/app/utils/components/selects/selects.module';
 import { ListaProcessoComponent } from './componentes/lista-processo/lista-processo.component';
 import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lista-entidade.module';
 import { DetalhesProcessoComponent } from './componentes/detalhes-processo/detalhes-processo.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -42,6 +43,7 @@ import { DetalhesProcessoComponent } from './componentes/detalhes-processo/detal
     ListaEntidadeModule,
     MatDatepickerModule,
     MatSlideToggleModule,
+    FlexLayoutModule,
 
     SelectsModule
   ]

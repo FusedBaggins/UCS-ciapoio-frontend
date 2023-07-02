@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormModule } from 'src/app/utils/components/form/form.module';
@@ -14,6 +15,7 @@ import { InstituicaoModule } from 'src/app/utils/components/instituicao/institui
 import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lista-entidade.module';
 import { DetalheEntidadeParceiraComponent } from './components/detalhe-entidade-parceira/detalhe-entidade-parceira.component';
 import { ListagemEntidadeParceiraComponent } from './components/listagem-entidade-parceira/listagem-entidade-parceira.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { ListagemEntidadeParceiraComponent } from './components/listagem-entidad
   imports: [
     FormsModule,
     CommonModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
 
     EntidadeParceiraRoutingModule,
@@ -32,6 +35,7 @@ import { ListagemEntidadeParceiraComponent } from './components/listagem-entidad
     MatListModule,
     MatInputModule,
     MatButtonModule,
+    MatGridListModule,
     MatFormFieldModule,
 
     FormModule,

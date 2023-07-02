@@ -1,31 +1,31 @@
 <h1 mat-dialog-title>Adicionar familiar</h1>
 <div mat-dialog-content>
 
-  <div class="row no-wrap w-1 field-margin-top">
-    <mat-form-field class="w-1">
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+    <mat-form-field>
       <mat-label>Nome</mat-label>
       <input matInput [(ngModel)]="familiar.nome">
     </mat-form-field>
   </div>
 
-  <div class="row no-wrap w-1 field-margin-top">
-    <mat-form-field class="w-2">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+    <mat-form-field fxFlex="50" fxFlex.xs="100">
       <mat-label>Parentesco</mat-label>
       <input matInput [(ngModel)]="familiar.parentesco">
     </mat-form-field>
 
-    <mat-form-field class="w-2 field-margin-left">
+    <mat-form-field fxFlex="50" fxFlex.xs="100">
       <mat-label>Idade</mat-label>
       <input matInput [(ngModel)]="familiar.idade">
     </mat-form-field>
   </div>
 
-  <div class="row no-wrap w-1 field-margin-top">
-    <mat-form-field class="w-2">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+    <mat-form-field fxFlex="50" fxFlex.xs="100">
       <mat-label>Profissão</mat-label>
       <input matInput [(ngModel)]="familiar.profissao">
     </mat-form-field>
-    <mat-form-field class="w-2 field-margin-left">
+    <mat-form-field fxFlex="50" fxFlex.xs="100">
       <mat-label>telefone</mat-label>
       <input matInput [(ngModel)]="familiar.telefone" mask="(00) 00000-0000">
     </mat-form-field>
@@ -38,6 +38,8 @@
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <div class="w-1 flex justify-content-end">
+    <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+  </div>
 </div>

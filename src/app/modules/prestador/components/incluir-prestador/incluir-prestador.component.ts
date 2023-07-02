@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogDrogaUtilizadaComponent } from '../dialogs/dialog-droga-utilizada/dialog-droga-utilizada.component';
 import { DialogIntegranteComponent } from '../dialogs/dialog-integrante/dialog-integrante.component';
 import { DialogExperienciaProfissionaComponent } from '../dialogs/dialog-experiencia-profissiona/dialog-experiencia-profissiona.component';
@@ -30,6 +30,10 @@ import { Droga } from 'src/app/utils/models/prestador/entidades/droga/droga';
   styleUrls: ['./incluir-prestador.component.scss']
 })
 export class IncluirPrestadorComponent implements OnInit {
+
+  private dialogConfig: MatDialogConfig = {
+    width: '45vw',
+  };
 
   public prestador = new Prestador();
 
@@ -136,12 +140,13 @@ export class IncluirPrestadorComponent implements OnInit {
         .filter(x => !this.prestador.respostas.some(y => y.id === x.id));
 
       const novasRespostas = perguntasNaoRespondidas.map(p => new Resposta(p));
-      this.prestador.respostas = this.prestador.respostas.concat(novasRespostas);
+      this.prestador.respostas = this.prestador.respostas?.concat(novasRespostas) || [];
     });
   }
 
   public abreDialogDrogaUtilizada(usoDroga?: any): void {
-    const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, { data: { usoDroga }, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: { usoDroga } } };
+    const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -168,7 +173,8 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public abreDialogIntegrante(familiar?: Familiar): void {
-    const dialogRef = this.dialog.open(DialogIntegranteComponent, { data: { familiar }, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: { familiar } } };
+    const dialogRef = this.dialog.open(DialogIntegranteComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -184,7 +190,8 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public abreDialogExperienceiaProfissional(): void {
-    const dialogRef = this.dialog.open(DialogExperienciaProfissionaComponent, { data: {}, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: {} } };
+    const dialogRef = this.dialog.open(DialogExperienciaProfissionaComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -194,7 +201,8 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public abreDialogCurso(curso?: Curso): void {
-    const dialogRef = this.dialog.open(DialogCursoComponent, { data: { curso }, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: { curso } } };
+    const dialogRef = this.dialog.open(DialogCursoComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -210,7 +218,8 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public abreDialogHabilidade(habilidade?: any): void {
-    const dialogRef = this.dialog.open(DialogHabilidadeComponent, { data: { habilidade }, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: { habilidade } } };
+    const dialogRef = this.dialog.open(DialogHabilidadeComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -226,7 +235,8 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   public abreDialogPenaAlternativa(): void {
-    const dialogRef = this.dialog.open(DialogPenaAlternativaComponent, { data: {}, });
+    const config: MatDialogConfig = { ... this.dialogConfig, ...{ data: {} } };
+    const dialogRef = this.dialog.open(DialogPenaAlternativaComponent, config);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

@@ -20,6 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMatDatetimePickerModule } from '@angular-material-components/datetime-picker';
 import { NgxMaskModule } from 'ngx-mask';
 import { ListagemEntrevistaGridComponent } from './components/listagem-entrevista-grid/listagem-entrevista-grid.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { ListagemEntrevistaGridComponent } from './components/listagem-entrevist
         ListaEntidadeModule,
         NgxMatDatetimePickerModule,
         NgxMaskModule.forRoot(),
+        FlexLayoutModule
     ]
 })
 export class EntrevistaModule { }

@@ -1,28 +1,23 @@
 <ng-container *ngIf="entidade$ | async as entidade">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayout="column" fxLayoutGap="16px" fxFlexFill>
     <h2 class="mat-headline-6">Informações iniciais</h2>
 
-    <div class="row no-wrap w-1">
-      <app-select-prestador [selectedPrestador]="prestadorSelecionadoControl.value"
-        class="w-1"
-        (selectedPrestadorChange)="atualizarPrestadorSelecionado($event)"
-      >
-      </app-select-prestador>
-    </div>
-    <div class="row no-wrap w-1">
-      <app-select-instituicao-parceira
-        [selectedInstituicao]="instituicaoSelecionadaControl.value" class="w-1"
+    <app-select-prestador [selectedPrestador]="prestadorSelecionadoControl.value"
+      (selectedPrestadorChange)="atualizarPrestadorSelecionado($event)">
+    </app-select-prestador>
+    <div  fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+      <app-select-instituicao-parceira [selectedInstituicao]="instituicaoSelecionadaControl.value" fxFlex="70" fxFlex.xs="100"
         (selectedInstituicaoChange)="atualizarInstituicaoSelecionada($event)">
       </app-select-instituicao-parceira>
-
-      <mat-form-field appearance="fill" class="w-2 field-margin-left">
-        <mat-label>Prazo de aceite</mat-label>
-        <input matInput [matDatepicker]="prazoAceitePicker" formControlName="prazoAceite">
-        <mat-datepicker-toggle matIconSuffix [for]="prazoAceitePicker"></mat-datepicker-toggle>
-        <mat-datepicker #prazoAceitePicker></mat-datepicker>
-      </mat-form-field>
+      <div  fxFlex="30" fxFlex.xs="100">
+        <mat-form-field appearance="fill" class="w-1">
+          <mat-label>Prazo de aceite</mat-label>
+          <input matInput [matDatepicker]="prazoAceitePicker" formControlName="prazoAceite">
+          <mat-datepicker-toggle matIconSuffix [for]="prazoAceitePicker"></mat-datepicker-toggle>
+          <mat-datepicker #prazoAceitePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
     </div>
-
     <mat-form-field appearance="fill">
       <mat-label>Observação</mat-label>
       <input matInput placeholder="" formControlName="observacao">
@@ -30,20 +25,16 @@
 
     <h2 class="mat-headline-6">Situação</h2>
 
-    <div class="row no-wrap w-1">
-      <mat-form-field appearance="fill" class="w-1">
+      <mat-form-field appearance="fill">
         <mat-label>Data de visita</mat-label>
         <input matInput [matDatepicker]="dataVisitaPicker" formControlName="prazoAceite">
         <mat-datepicker-toggle matIconSuffix [for]="dataVisitaPicker"></mat-datepicker-toggle>
         <mat-datepicker #dataVisitaPicker></mat-datepicker>
       </mat-form-field>
-    </div>
 
-    <div class="row no-wrap w-1">
-      <app-select-situacao-visita [selectedSituacao]="situacaoSelecionadaControl.value" class="w-1"
+      <app-select-situacao-visita [selectedSituacao]="situacaoSelecionadaControl.value" 
         (selectedSituacaoChange)="atualizarSituacaoSelecionada($event)">
       </app-select-situacao-visita>
-    </div>
 
     <mat-form-field appearance="fill" *ngIf="form.controls['status'].value === 1">
       <mat-label>Motivo de reprovação</mat-label>

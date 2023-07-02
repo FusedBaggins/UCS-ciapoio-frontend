@@ -1,16 +1,15 @@
 <ng-container *ngIf="entidade$ | async as entidade">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-size">
         <h2 class="mat-headline-6">Pergunta</h2>
+        <div class="w-1" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+            <mat-form-field appearance="fill" fxFlex="80" fxFlex.xs="100">
+                <mat-label>Pergunta</mat-label>
+                <input matInput placeholder="" formControlName="pergunta">
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Pergunta</mat-label>
-            <input matInput placeholder="" formControlName="pergunta">
-        </mat-form-field>
-
-        <mat-label>Ativo</mat-label>
-        <mat-slide-toggle formControlName="ativo" color="primary"> </mat-slide-toggle>
-
-        <div class="row fab-button">
+            <mat-slide-toggle formControlName="ativo" color="primary" labelPosition="before">Ativo </mat-slide-toggle>
+        </div>
+        <div class="row fab-button" fxFlex="100">
             <button mat-fab type="submit" color="primary" aria-label="Submit button">
                 <mat-icon>add</mat-icon>
             </button>

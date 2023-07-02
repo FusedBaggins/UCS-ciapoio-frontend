@@ -12,8 +12,9 @@ import { ListaEntidadeModule } from 'src/app/utils/components/lista-entidade/lis
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { MatListModule } from '@angular/material/list';
     CommonModule,
     ReactiveFormsModule,
     PerguntaRoutingModule,
-        
+
     MatIconModule,
     MatInputModule,
     MatButtonModule,
@@ -35,7 +36,8 @@ import { MatListModule } from '@angular/material/list';
     MatDatepickerModule,
     MatSlideToggleModule,
     MatListModule,
-    ListaEntidadeModule
+    ListaEntidadeModule,
+    FlexLayoutModule,
   ]
 })
 export class PerguntaModule { }

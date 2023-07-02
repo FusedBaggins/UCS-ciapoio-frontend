@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxMaskModule } from 'ngx-mask';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NgxMaskModule } from 'ngx-mask';
   imports: [
     FormsModule,
     CommonModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
 
     MatIconModule,

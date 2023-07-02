@@ -1,13 +1,15 @@
 <div class="column full-size container">
     <app-form [formGroup]="filtros">
-        <mat-form-field class="field-margin-left">
-            <mat-label>Identificador</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field>
-        <mat-form-field class="field-margin-left">
-            <mat-label>Nome</mat-label>
-            <input matInput formControlName="nome">
-        </mat-form-field>
+        <div class="content full-size" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+            <mat-form-field fxFlex="30" fxFlex.xs="100">
+                <mat-label>Identificador</mat-label>
+                <input matInput formControlName="id">
+            </mat-form-field>
+            <mat-form-field fxFlex="30" fxFlex.xs="100">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome">
+            </mat-form-field>
+        </div>
     </app-form>
 
     <app-lista-entidade [entidades]="instituicoes$" [rotaEntidade]="['ciap']">

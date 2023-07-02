@@ -15,16 +15,17 @@ import { DialogExperienciaProfissionaComponent } from "../dialogs/dialog-experie
 import { DialogHabilidadeComponent } from "../dialogs/dialog-habilidade/dialog-habilidade.component";
 import { DialogIntegranteComponent } from "../dialogs/dialog-integrante/dialog-integrante.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from "@angular/material/list";
 import { CommonModule } from "@angular/common";
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogPenaAlternativaComponent } from "../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component";
 import { NgxMaskModule } from "ngx-mask";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { FormModule } from "src/app/utils/components/form/form.module";
 import { MatSelectModule } from "@angular/material/select";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 const routes: Routes = [
     {
@@ -56,6 +57,7 @@ const routes: Routes = [
         MatListModule,
         CommonModule,
         MatCheckboxModule,
+        FlexLayoutModule,
         NgxMaskModule.forRoot(),
 
 

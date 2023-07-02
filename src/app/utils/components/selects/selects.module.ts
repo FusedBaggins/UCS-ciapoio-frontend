@@ -18,6 +18,7 @@ import { SelectPrestadorComponent } from './prestador/select-prestador/select-pr
 import { SelectVaraPenalComponent } from './vara-penal/select-vara-penal/select-vara-penal.component';
 import { SelectSituacaoVisitaComponent } from './visitas/select-situacao-visita/select-situacao-visita.component';
 import { SelectInstituicaoParceiraComponent } from './instituicao-parceira/select-instituicao-parceira/select-instituicao-parceira.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -43,6 +44,8 @@ import { SelectInstituicaoParceiraComponent } from './instituicao-parceira/selec
     MatButtonModule,
     MatFormFieldModule,
     FormModule,
+
+    FlexLayoutModule
   ],
   exports: [
     SelectPrestadorComponent,

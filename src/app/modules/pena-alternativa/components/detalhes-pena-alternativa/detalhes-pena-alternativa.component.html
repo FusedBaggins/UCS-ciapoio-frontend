@@ -1,26 +1,29 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayoutGap="16px" fxLayout="column"
+  fxLayout.xs="column" fxFlexFill>
   <h2 class="mat-headline-6">Informações inicias</h2>
   <div class="row no-wrap w-1">
-    <mat-form-field class="w-3">
-      <mat-label>Data de início</mat-label>
-      <input matInput [matDatepicker]="datepicker" formControlName="data_inicial">
-      <mat-hint>DD/MM/AAAA</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker>
-        <mat-datepicker-actions>
-          <button mat-button matDatepickerCancel>Cancelar</button>
-          <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
-        </mat-datepicker-actions>
-      </mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="w-3 field-margin-left">
-      <mat-label>Horário de início</mat-label>
-      <input type="time" matInput>
-    </mat-form-field>
-    <mat-form-field class="w-3 field-margin-left">
-      <mat-label>Horário de término</mat-label>
-      <input type="time" matInput>
-    </mat-form-field>
+    <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+      <mat-form-field fxFlex="33" fxFlex.xs="100">
+        <mat-label>Data de início</mat-label>
+        <input matInput [matDatepicker]="datepicker" formControlName="data_inicial">
+        <mat-hint>DD/MM/AAAA</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancelar</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="33" fxFlex.xs="100">
+        <mat-label>Horário de início</mat-label>
+        <input type="time" matInput>
+      </mat-form-field>
+      <mat-form-field fxFlex="33" fxFlex.xs="100">
+        <mat-label>Horário de término</mat-label>
+        <input type="time" matInput>
+      </mat-form-field>
+    </div>
   </div>
   <div class="row no-wrap w-1">
     <div class="column align-items-center justify-content-center">

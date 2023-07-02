@@ -20,6 +20,7 @@ import { PenaAlternativaRoutingModule } from './pena-alternativa-routing.module'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogFrequenciaComponent } from './components/detalhes-pena-alternativa/components/dialog-frequencia/dialog-frequencia.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -52,6 +53,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatRippleModule,
     MatDialogModule,
+
+    FlexLayoutModule,
   ]
 })
 export class PenaAlternativaModule { }

@@ -1,46 +1,48 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="column full-height w-2">
-    <h2 class="mat-headline-6">Informações iniciais</h2>
-    <mat-form-field appearance="fill">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayoutGap="16px" fxLayout="column"
+    fxLayout.xs="column" fxFlexFill>
+    <h2 class="mat-headline-6" fxFlex="100">Informações iniciais</h2>
+    <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Nome</mat-label>
         <input matInput placeholder="" formControlName="nome">
     </mat-form-field>
-
-    <div class="row no-wrap w-1">
-        <mat-form-field appearance="fill">
+    <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>CNPJ</mat-label>
             <input matInput placeholder="" formControlName="cnpj" mask="00.000.000/0000-00">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="field-margin-left">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>E-mail</mat-label>
             <input type="email" matInput placeholder="" formControlName="email">
         </mat-form-field>
     </div>
-    <div class="row no-wrap w-1">
-        <mat-form-field appearance="fill">
+    <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>Telefone 1</mat-label>
             <input matInput placeholder="" formControlName="telefone1" mask="(00) 00000-0000">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="field-margin-left">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>Telefone 2</mat-label>
             <input matInput placeholder="" formControlName="telefone2" mask="(00) 00000-0000">
         </mat-form-field>
     </div>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Observações</mat-label>
         <textarea matInput></textarea>
     </mat-form-field>
-    <h2 class="mat-headline-6">Endereço</h2>
-    <app-endereco class="row full-width" [form]="this.form.controls['endereco']"></app-endereco>
-    <h2 class="mat-headline-6">Situação</h2>
-    <div class="row no-wrap full-width">
-        <mat-form-field appearance="fill" class="w-2 ">
+
+    <h2 class="mat-headline-6" fxFlex="100">Endereço</h2>
+    <app-endereco fxFlex="100" [form]="this.form.controls['endereco']"></app-endereco>
+
+    <h2 class="mat-headline-6" fxFlex="100">Situação</h2>
+    <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>Credenciamento</mat-label>
             <input matInput [matDatepicker]="credenciamentoPicker" formControlName="data_credenciamento">
             <mat-hint>DD/MM/AAAA</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="credenciamentoPicker"></mat-datepicker-toggle>
             <mat-datepicker #credenciamentoPicker></mat-datepicker>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="w-2 field-margin-left">
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
             <mat-label>Descredenciamento</mat-label>
             <input matInput [matDatepicker]="descredenciamentoPicker" formControlName="data_descredenciamento">
             <mat-hint>DD/MM/AAAA</mat-hint>
@@ -48,7 +50,7 @@
             <mat-datepicker #descredenciamentoPicker></mat-datepicker>
         </mat-form-field>
     </div>
-    <div class="row fab-button">
+    <div class="row fab-button" fxFlex="100">
         <button mat-fab type="submit" color="primary" aria-label="Submit button">
             <mat-icon>add</mat-icon>
         </button>

@@ -4,6 +4,7 @@ import { Instituicao } from "src/app/utils/models/instituicao";
 import { Prestador } from "src/app/utils/models/prestador/prestador";
 import { PrestadorService } from "../../services/prestador.service";
 import { Observable } from "rxjs";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'listagem-prestador-component',
@@ -13,37 +14,30 @@ import { Observable } from "rxjs";
 })
 
 export class ListagemPrestadorComponent implements OnInit {
-
+    
+    public filtros: FormGroup;
     public listaPrestadores!: Array<Prestador>;
 
     prestadores$!: Observable<Prestador[]>;
 
     constructor(
         private _router: Router,
-        private _prestadorService: PrestadorService
+        private _prestadorService: PrestadorService,
+        private _formBuilder: FormBuilder,
+
     ) {
+        this.filtros = this._formBuilder.group({
+            id: [null, []],
+            nome: [null, []]
+        });
     }
 
     ngOnInit(): void {
         this.prestadores$ = this._prestadorService.getPrestadores();
     }
 
-    public idade = (dataNascimento: Date): number => {
-        var today = new Date();
-        var idade = today.getFullYear() - dataNascimento.getFullYear();
-        var m = today.getMonth() - dataNascimento.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < dataNascimento.getDate())) {
-            idade--;
-        }
-        return idade;
+
+    onAdicionarNovoPrestador(): void {
+        this._router.navigate(['prestador', 'incluir']);
     }
-
-    onAdicionarNovaEntidade(): void {
-        this._router.navigate(['prestador', 'incluir'])
-    }
-
-    irDetalheEntidade(id: number): void {
-        this._router.navigate(['prestador', id]);
-      }
-
 }
