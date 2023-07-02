@@ -1,33 +1,37 @@
-<h1 mat-dialog-title>Adicionar integrante</h1>
+<h1 mat-dialog-title>Adicionar familiar</h1>
 <div mat-dialog-content>
 
-  <mat-form-field>
-    <mat-label>Nome</mat-label>
-    <input matInput [(ngModel)]="familiar.nome">
-  </mat-form-field>
-  <div>
-    <mat-form-field>
+  <div class="row no-wrap w-1 field-margin-top">
+    <mat-form-field class="w-1">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="familiar.nome">
+    </mat-form-field>
+  </div>
+
+  <div class="row no-wrap w-1 field-margin-top">
+    <mat-form-field class="w-2">
       <mat-label>Parentesco</mat-label>
       <input matInput [(ngModel)]="familiar.parentesco">
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field class="w-2 field-margin-left">
       <mat-label>Idade</mat-label>
       <input matInput [(ngModel)]="familiar.idade">
     </mat-form-field>
   </div>
 
-  <div>
-    <mat-form-field>
+  <div class="row no-wrap w-1 field-margin-top">
+    <mat-form-field class="w-2">
       <mat-label>Profissão</mat-label>
       <input matInput [(ngModel)]="familiar.profissao">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="w-2 field-margin-left">
       <mat-label>telefone</mat-label>
       <input matInput [(ngModel)]="familiar.telefone" mask="(00) 00000-0000">
     </mat-form-field>
   </div>
 
-  <mat-form-field>
+  <mat-form-field class="w-1">
     <mat-label>Observação</mat-label>
     <input matInput [(ngModel)]="familiar.observacao">
   </mat-form-field>

@@ -21,6 +21,8 @@ import { Resposta } from 'src/app/utils/models/prestador/entidades/resposta/resp
 import { DialogPenaAlternativaComponent } from '../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component';
 import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alternativa-penal/alternativa-penal';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SelectDefault } from 'src/app/utils/components/selectModels/selectDefault';
+import { Droga } from 'src/app/utils/models/prestador/entidades/droga/droga';
 
 @Component({
   selector: 'app-incluir-prestador',
@@ -32,14 +34,44 @@ export class IncluirPrestadorComponent implements OnInit {
   public prestador = new Prestador();
 
   public edicao = false;
+  public drogas = new Array<Droga>();
 
   public deficiencias = [
-    { id: 1, nome: 'Física' },
-    { id: 2, nome: 'Visual' },
-    { id: 3, nome: 'Auditiva' },
-    { id: 4, nome: 'Intelectual' },
-    { id: 5, nome: 'Psicossocial' }
+    { idDeficiencia: 1, nome: 'Física', selecionada: false },
+    { idDeficiencia: 2, nome: 'Visual', selecionada: false },
+    { idDeficiencia: 3, nome: 'Auditiva', selecionada: false },
+    { idDeficiencia: 4, nome: 'Intelectual', selecionada: false },
+    { idDeficiencia: 5, nome: 'Psicossocial', selecionada: false }
   ];
+
+  public estadoCivil = [
+    { id: 0, label: 'Solteiro' },
+    { id: 1, label: 'Casado' },
+    { id: 2, label: 'União Estável' },
+    { id: 3, label: 'Divorciado' },
+    { id: 4, label: 'Viúvo' }
+  ];
+
+  public etnia = [
+    { id: 0, label: 'Branco' },
+    { id: 1, label: 'Indígena' },
+    { id: 2, label: 'Negro' },
+    { id: 3, label: 'Amarelo' },
+    { id: 4, label: 'Pardo' },
+    { id: 5, label: 'Outro' }
+  ];
+
+  public escolaridade = [
+    { id: 0, label: 'Sem instrução' },
+    { id: 1, label: 'Fundamental incompleto' },
+    { id: 2, label: 'Fundamental completo' },
+    { id: 3, label: 'Ensino médio incompleto' },
+    { id: 4, label: 'Ensino médio completo' },
+    { id: 5, label: 'Superior incompleto' },
+    { id: 6, label: 'Superior completo' },
+    { id: 7, label: 'Outro' },
+  ];
+
 
   constructor(
     public dialog: MatDialog,
@@ -57,15 +89,26 @@ export class IncluirPrestadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this._activatedRoute.params.subscribe(params => {
       if (params["id"]) {
         this.edicao = true;
         this._prestadorService.getPrestador(params["id"]).subscribe(result => {
           this.prestador = (result as any).entidade;
+          this.drogas = (result as any).drogas;
+
           if (!this.prestador.fichaMedica) {
             this.prestador.fichaMedica = new FichaMedica();
             this.prestador.fichaMedica.usoDrogas = new Array<UsoDroga>();
+          }
+          else {
+            if (this.prestador.fichaMedica.deficiencias) {
+              this.prestador.fichaMedica.deficiencias.forEach(x => {
+                const deficienciaListagem = this.deficiencias.find(y => y.idDeficiencia == x.idDeficiencia);
+                if (deficienciaListagem) {
+                  deficienciaListagem.selecionada = true;
+                }
+              });
+            }
           }
         });
       } else {
@@ -88,32 +131,54 @@ export class IncluirPrestadorComponent implements OnInit {
       });
     });
 
-
     this._perguntaService.getPerguntas(new Pergunta()).subscribe(perguntas => {
-      this.prestador.respostas = perguntas.map(p => new Resposta(p));
+      const perguntasNaoRespondidas = perguntas
+        .filter(x => !this.prestador.respostas.some(y => y.id === x.id));
+
+      const novasRespostas = perguntasNaoRespondidas.map(p => new Resposta(p));
+      this.prestador.respostas = this.prestador.respostas.concat(novasRespostas);
     });
   }
 
-  public abreDialogDrogaUtilizada(): void {
-    const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, { data: {}, });
+  public abreDialogDrogaUtilizada(usoDroga?: any): void {
+    const dialogRef = this.dialog.open(DialogDrogaUtilizadaComponent, { data: { usoDroga }, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.prestador.fichaMedica.usoDrogas.push(result);
+        this.prestador.fichaMedica.usoDrogas = this.prestador.fichaMedica.usoDrogas || [];
+        const index = this.prestador.fichaMedica.usoDrogas.findIndex(t => t.id === result.id);
+        if (index !== -1) {
+          this.prestador.fichaMedica.usoDrogas[index] = result;
+        } else {
+          this.prestador.fichaMedica.usoDrogas.push(result);
+        }
       }
     });
   }
 
-  public deficienciaMudou(event: MatChipListboxChange): void {
-    this.prestador.fichaMedica.deficiencias = event.value;
+  public deficienciaMudou(deficiencia: any): void {
+    deficiencia.selecionada = !deficiencia.selecionada;
+
+    if (deficiencia.selecionada) {
+      const deficienciaEntity = new Deficiencia();
+      deficienciaEntity.id = deficiencia.id || null;
+      deficienciaEntity.idDeficiencia = deficiencia.idDeficiencia;
+      this.prestador.fichaMedica.deficiencias.push(deficienciaEntity);
+    }
   }
 
-  public abreDialogIntegrante(): void {
-    const dialogRef = this.dialog.open(DialogIntegranteComponent, { data: {}, });
+  public abreDialogIntegrante(familiar?: Familiar): void {
+    const dialogRef = this.dialog.open(DialogIntegranteComponent, { data: { familiar }, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.prestador.familiares.push(result);
+        this.prestador.familiares = this.prestador.familiares || [];
+        const index = this.prestador.familiares.findIndex(familiar => familiar.id === result.id);
+        if (index !== -1) {
+          this.prestador.familiares[index] = result;
+        } else {
+          this.prestador.familiares.push(result);
+        }
       }
     });
   }
@@ -128,22 +193,34 @@ export class IncluirPrestadorComponent implements OnInit {
     });
   }
 
-  public abreDialogCurso(): void {
-    const dialogRef = this.dialog.open(DialogCursoComponent, { data: {}, });
+  public abreDialogCurso(curso?: Curso): void {
+    const dialogRef = this.dialog.open(DialogCursoComponent, { data: { curso }, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.prestador.cursos.push(result);
+        this.prestador.cursos = this.prestador.cursos || [];
+        const index = this.prestador.cursos.findIndex(t => t.id === result.id);
+        if (index !== -1) {
+          this.prestador.cursos[index] = result;
+        } else {
+          this.prestador.cursos.push(result);
+        }
       }
     });
   }
 
-  public abreDialogHabilidade(): void {
-    const dialogRef = this.dialog.open(DialogHabilidadeComponent, { data: {}, });
+  public abreDialogHabilidade(habilidade?: any): void {
+    const dialogRef = this.dialog.open(DialogHabilidadeComponent, { data: { habilidade }, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.prestador.habilidades.push(result);
+        this.prestador.habilidades = this.prestador.habilidades || [];
+        const index = this.prestador.habilidades.findIndex(t => t.id === result.id);
+        if (index !== -1) {
+          this.prestador.habilidades[index] = result;
+        } else {
+          this.prestador.habilidades.push(result);
+        }
       }
     });
   }
@@ -163,6 +240,14 @@ export class IncluirPrestadorComponent implements OnInit {
       if (!this.edicao)
         this._router.navigate(['prestador', resultado.id]);
     });
+  }
+
+  getNomeDroga(droga: any) {
+    const drogaSelect = this.drogas.find(x => x.id == droga);
+    if (drogaSelect)
+      return drogaSelect.nome;
+
+    return "";
   }
 
 }

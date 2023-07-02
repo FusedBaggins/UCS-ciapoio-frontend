@@ -1,24 +1,29 @@
-<h1 mat-dialog-title>Adicionar droga utilizada</h1>
+<h1 mat-dialog-title>Utilização de drogas</h1>
 <div mat-dialog-content>
-  <div>
-    <mat-chip-listbox [(ngModel)]="usoDroga.droga">
-      <mat-chip-option value="1">Droga 1</mat-chip-option>
-      <mat-chip-option value="2">Droga 2</mat-chip-option>
-    </mat-chip-listbox>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-label>Frequência</mat-label>
-      <input matInput [(ngModel)]="usoDroga.frequencia">
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-label >Observação</mat-label>
-      <input matInput [(ngModel)]="usoDroga.observacao">
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="fill" class="w-1">
+    <mat-label>Droga</mat-label>
+    <mat-select [(ngModel)]="usoDroga.drogaId">
+      <mat-option *ngFor="let option of drogasSelect" [value]="option.id">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-1">
+    <mat-label>Frequência</mat-label>
+    <mat-select [(ngModel)]="usoDroga.frequencia">
+      <mat-option *ngFor="let option of frequencia" [value]="option.id">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-1">
+    <mat-label>Observação</mat-label>
+    <input matInput [(ngModel)]="usoDroga.observacao">
+  </mat-form-field>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
   <button mat-button (click)="clickCancelar()">Cancelar</button>

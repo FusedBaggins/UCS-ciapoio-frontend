@@ -22,6 +22,9 @@ import { CommonModule } from "@angular/common";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DialogPenaAlternativaComponent } from "../dialogs/dialog-pena-alternativa/dialog-pena-alternativa.component";
 import { NgxMaskModule } from "ngx-mask";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { FormModule } from "src/app/utils/components/form/form.module";
+import { MatSelectModule } from "@angular/material/select";
 
 const routes: Routes = [
     {
@@ -53,7 +56,12 @@ const routes: Routes = [
         MatListModule,
         CommonModule,
         MatCheckboxModule,
-        NgxMaskModule.forRoot()
+        NgxMaskModule.forRoot(),
+
+
+        MatSnackBarModule,
+        MatSelectModule,
+        FormModule,
     ],
     declarations: [
         IncluirPrestadorComponent,

@@ -7,5 +7,5 @@ export class UsoDroga {
     observacao!: string;
     frequencia!: UsoDrogaFrequencia;
     fichaMedia!: FichaMedica;
-    droga!: Droga;
+    drogaId!: number;
 }

@@ -1,209 +1,217 @@
 <mat-vertical-stepper>
-    <mat-step>
-        <ng-template matStepLabel>
-            <div class="row align-items-center ">
-                <mat-icon>face</mat-icon>
-                <span>Dados do prestador</span>
-            </div>
-        </ng-template>
-        <mat-form-field>
-            <mat-label>Nome</mat-label>
-            <input matInput [(ngModel)]="prestador.nome">
-        </mat-form-field>
-        <div>
-            <mat-form-field>
-                <mat-label>CPF</mat-label>
-                <input matInput [(ngModel)]="prestador.cpf" mask="000.000.000-00">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Filiação materna</mat-label>
-                <input matInput [(ngModel)]="prestador.nome_mae">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Data de nascimento</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="prestador.dt_nascimento">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Estado civil</mat-label>
-                <input matInput [(ngModel)]="prestador.estado_civil">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Etinia</mat-label>
-                <input matInput [(ngModel)]="prestador.etnia">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Religião</mat-label>
-                <input matInput [(ngModel)]="prestador.religiao">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Escolaridade</mat-label>
-                <input matInput [(ngModel)]="prestador.escolaridade">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Renda familiar</mat-label>
-                <input matInput [(ngModel)]="prestador.renda_familiar">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Telefone 1</mat-label>
-                <input matInput [(ngModel)]="prestador.telefone1" mask="(00) 00000-0000">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Telefone 2</mat-label>
-                <input matInput [(ngModel)]="prestador.telefone2" mask="(00) 00000-0000">
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-        </div>
-    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>face</mat-icon>
+        <span>Dados do prestador</span>
+      </div>
+    </ng-template>
 
-    <mat-step>
-        <ng-template matStepLabel>
-            <div class="row align-items-center ">
-                <mat-icon>medical_information</mat-icon>
-                <span>Ficha médica</span>
-            </div>
-        </ng-template>
-        <mat-chip-listbox [multiple]="true" (change)="deficienciaMudou($event)">
-            <mat-chip-option *ngFor="let deficiencia of deficiencias" [value]="deficiencia">{{ deficiencia.nome
-                }}</mat-chip-option>
-        </mat-chip-listbox>
-        <mat-form-field>
-            <mat-label>Observação</mat-label>
-            <input matInput [(ngModel)]="prestador.fichaMedica.descricao">
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <mat-list>
-            <mat-list-item *ngFor="let usoDroga of prestador.fichaMedica.usoDrogas">
-                <div matListItemTitle>{{usoDroga.droga}}</div>
-                <div matListItemLine>{{usoDroga.observacao}}</div>
-            </mat-list-item>
-        </mat-list>
-        <button mat-button type="button" (click)="abreDialogDrogaUtilizada()">Adicionar</button>
-        <div>
-            <button mat-button matStepperNext type="button">Próximo</button>
-        </div>
-    </mat-step>
-    <mat-step>
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>family_restroom</mat-icon>
-                    <span>Família</span>
-                </div>
-            </ng-template>
-            <mat-list>
-                <mat-list-item *ngFor="let familiar of prestador.familiares">
-                    <div matListItemTitle>{{familiar.nome}}</div>
-                    <div matListItemLine>{{familiar.observacao}}</div>
-                </mat-list-item>
-            </mat-list>
-            <button mat-button type="button" (click)="abreDialogIntegrante()">Adicionar</button>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-    </mat-step>
-    <mat-step>
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>work</mat-icon>
-                    <span>Experiência profissional</span>
-                </div>
-            </ng-template>
-            <mat-list>
-                <mat-list-item *ngFor="let trabalho of prestador.trabalhos">
-                    <div matListItemTitle>{{trabalho.descricao}}</div>
-                    <div matListItemLine>{{trabalho.observacao}}</div>
-                </mat-list-item>
-            </mat-list>
-            <button mat-button type="button" (click)="abreDialogExperienceiaProfissional()">Adicionar</button>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-    </mat-step>
-    <mat-step>
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>school</mat-icon>
-                    <span>Cursos</span>
-                </div>
-            </ng-template>
-            <mat-list>
-                <mat-list-item *ngFor="let curso of prestador.cursos">
-                    <div matListItemTitle>{{curso.curso}}</div>
-                    <div matListItemLine>{{curso.observacao}}</div>
-                </mat-list-item>
-            </mat-list>
-            <button mat-button type="button" (click)="abreDialogCurso()">Adicionar</button>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-    </mat-step>
-    <mat-step>
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>auto_stories</mat-icon>
-                    <span>Habilidades</span>
-                </div>
-            </ng-template>
-            <mat-list>
-                <mat-list-item *ngFor="let habilidade of prestador.habilidades">
-                    <div matListItemTitle>{{habilidade.descricao}}</div>
-                    <div matListItemLine>{{habilidade.observacao}}</div>
-                </mat-list-item>
-            </mat-list>
-            <button mat-button type="button" (click)="abreDialogHabilidade()">Adicionar</button>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>
-            <div class="row align-items-center ">
-                <mat-icon>gavel</mat-icon>
-                <span>Penas alternativas</span>
-            </div>
-        </ng-template>
-        <mat-list>
-            <mat-list-item *ngFor="let alternativaPenal of prestador.alternativasPenais">
-                <div matListItemTitle>{{alternativaPenal.titulo}}</div>
-                <div matListItemLine>{{alternativaPenal.descricao}}</div>
-            </mat-list-item>
-        </mat-list>
-        <button mat-button type="button" (click)="abreDialogPenaAlternativa()">Adicionar</button>
-        <div>
-            <button mat-button matStepperNext type="button">Próximo</button>
-        </div>
-</mat-step>
-    <mat-step>
-            <ng-template matStepLabel>
-                <div class="row align-items-center ">
-                    <mat-icon>psychology_alt</mat-icon>
-                    <span>Outras informações</span>
-                </div>
-            </ng-template>
-            <mat-form-field *ngFor="let resposta of prestador.respostas">
-                <mat-label>{{ resposta.pergunta.pergunta }}</mat-label>
-                <input matInput [(ngModel)]="resposta.descricao">
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext type="button">Próximo</button>
-            </div>
-    </mat-step>
+    <div class="row no-wrap w-1">
+      <mat-form-field appearance="fill" class="w-2">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="prestador.nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="field-margin-left w-4">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="prestador.dt_nascimento">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row no-wrap w-1">
+      <mat-form-field appearance="fill" class="w-4">
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="prestador.cpf" mask="000.000.000-00">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="field-margin-left w-2">
+        <mat-label>Filiação materna</mat-label>
+        <input matInput [(ngModel)]="prestador.nome_mae">
+      </mat-form-field>
+    </div>
+
+
+    <div class="row no-wrap w-1">
+      <mat-form-field appearance="fill" class="w-4">
+        <mat-label>Estado civil</mat-label>
+        <mat-select [(ngModel)]="prestador.estado_civil">
+          <mat-option *ngFor="let option of estadoCivil" [value]="option.id">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="field-margin-left w-4">
+        <mat-label>Etnia</mat-label>
+        <mat-select [(ngModel)]="prestador.etnia">
+          <mat-option *ngFor="let option of etnia" [value]="option.id">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="field-margin-left w-4">
+        <mat-label>Escolaridade</mat-label>
+        <mat-select [(ngModel)]="prestador.escolaridade">
+          <mat-option *ngFor="let option of escolaridade" [value]="option.id">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="w-4">
+        <mat-label>Religião</mat-label>
+        <input matInput [(ngModel)]="prestador.religiao">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="field-margin-left">
+        <mat-label>Renda familiar</mat-label>
+        <input matInput [(ngModel)]="prestador.renda_familiar" mask="separator.2" thousandSeparator="."
+          decimalSeparator=",">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone 1</mat-label>
+        <input matInput [(ngModel)]="prestador.telefone1" mask="(00) 00000-0000">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="field-margin-left">
+        <mat-label>Telefone 2</mat-label>
+        <input matInput [(ngModel)]="prestador.telefone2" mask="(00) 00000-0000">
+      </mat-form-field>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>medical_information</mat-icon>
+        <span>Ficha médica</span>
+      </div>
+    </ng-template>
+
+    <div class="row no-wrap w-1 field-margin-top">
+      <h2>Possui alguma deficiência?</h2>
+    </div>
+
+    <div class="row no-wrap w-1 field-margin-top">
+      <mat-chip-listbox [multiple]="true" >
+        <mat-chip-option *ngFor="let deficiencia of deficiencias" [selected]="deficiencia.selecionada" [value]="deficiencia" (click)="deficienciaMudou(deficiencia)">
+          {{ deficiencia.nome}}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="row no-wrap w-1 field-margin-top">
+      <mat-form-field>
+        <mat-label>Observações</mat-label>
+        <input matInput [(ngModel)]="prestador.fichaMedica.descricao">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="row no-wrap w-1 field-margin-top">
+      <h2>Utilização de drogas</h2>
+    </div>
+
+    <mat-list *ngIf="prestador.fichaMedica.usoDrogas && prestador.fichaMedica.usoDrogas.length">
+      <mat-list-item *ngFor="let usoDroga of prestador.fichaMedica.usoDrogas" (click)="abreDialogDrogaUtilizada(usoDroga)">
+        <div matListItemTitle *ngIf="usoDroga.drogaId">{{getNomeDroga(usoDroga.drogaId)}}</div>
+        <div matListItemLine>{{usoDroga.observacao}}</div>
+      </mat-list-item>
+    </mat-list>
+
+    <button mat-button type="button" (click)="abreDialogDrogaUtilizada()">Adicionar droga</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>family_restroom</mat-icon>
+        <span>Família</span>
+      </div>
+    </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let familiar of prestador.familiares" (click)="abreDialogIntegrante(familiar)">
+        <div matListItemTitle>{{familiar.nome}}</div>
+        <div matListItemLine>{{familiar.observacao}}</div>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button type="button" (click)="abreDialogIntegrante()">Adicionar</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>work</mat-icon>
+        <span>Experiência profissional</span>
+      </div>
+    </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let trabalho of prestador.trabalhos">
+        <div matListItemTitle>{{trabalho.descricao}}</div>
+        <div matListItemLine>{{trabalho.observacao}}</div>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button type="button" (click)="abreDialogExperienceiaProfissional()">Adicionar</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>school</mat-icon>
+        <span>Cursos</span>
+      </div>
+    </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let curso of prestador.cursos" (click)="abreDialogCurso(curso)">
+        <div matListItemTitle><b>{{curso.curso}}</b></div>
+        <div matListItemLine>{{curso.instituicao}}</div>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button type="button" (click)="abreDialogCurso()">Adicionar</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>auto_stories</mat-icon>
+        <span>Habilidades</span>
+      </div>
+    </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let habilidade of prestador.habilidades" (click)="abreDialogHabilidade(habilidade)">
+        <div matListItemTitle>{{habilidade.descricao}}</div>
+        <div matListItemLine>{{habilidade.observacao}}</div>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button type="button" (click)="abreDialogHabilidade()">Adicionar</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <div class="row align-items-center ">
+        <mat-icon>psychology_alt</mat-icon>
+        <span>Outras informações</span>
+      </div>
+    </ng-template>
+
+
+    <div *ngFor="let resposta of prestador.respostas" class="w-1 row field-margin-top">
+      <mat-form-field class="w-2">
+        <mat-label>{{ resposta.pergunta.pergunta }}</mat-label>
+        <input matInput [(ngModel)]="resposta.descricao" class="w-1">
+      </mat-form-field>
+    </div>
+  </mat-step>
 
 </mat-vertical-stepper>
 
 <div class="row full-width justify-content-end align-items-center button-container">
 
-    <button mat-raised-button extended color="primary" (click)="adicionaPrestador()">
-        <mat-icon>add</mat-icon>
-        {{ edicao ? 'Editar' : 'Adicionar' }}
-    </button>
+  <button mat-raised-button extended color="primary" (click)="adicionaPrestador()">
+    <mat-icon>add</mat-icon>
+    {{ edicao ? 'Editar' : 'Adicionar' }}
+  </button>
 </div>

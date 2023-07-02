@@ -24,7 +24,11 @@ export class PrestadorService {
   getPrestadoresSelect(): Observable<SelectDefault[]> {
     return this._http.get<SelectDefault[]>(`${this._selectUrl}/prestador`);
   }
-  
+
+  getDrogasSelect(): Observable<SelectDefault[]> {
+    return this._http.get<SelectDefault[]>(`${this._selectUrl}/droga`);
+  }
+
   getPrestador(id: number): Observable<Prestador> {
     return this._http.get<Prestador>(`${this._url}/${id}`);
   }
