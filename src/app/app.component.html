@@ -1,12 +1,8 @@
-<div class="full-size column">
-    <ng-container *ngIf="usuarioAutenticado$ | async as autenticado; else login">
-        <app-toolbar></app-toolbar>
-        <app-sidenav class="full-width flex sidenav-container">
-            <router-outlet></router-outlet>
-        </app-sidenav>
-    </ng-container>
-    <ng-template #login>
+<ng-container *ngIf="usuarioAutenticado$ | async as autenticado; else login">
+    <app-sidenav class="full-width flex sidenav-container">
         <router-outlet></router-outlet>
-    </ng-template>
-    <!-- -->
-</div>
+    </app-sidenav>
+</ng-container>
+<ng-template #login>
+    <router-outlet></router-outlet>
+</ng-template>

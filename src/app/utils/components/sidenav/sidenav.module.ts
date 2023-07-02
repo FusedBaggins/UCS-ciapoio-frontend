@@ -7,6 +7,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { SidenavComponent } from './sidenav.component';
 import { ItemMenuComponent } from './components/item-menu/item-menu.component';
+import { ToolbarModule } from '../toolbar/toolbar.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -18,8 +21,12 @@ import { ItemMenuComponent } from './components/item-menu/item-menu.component';
     CommonModule,
     HttpClientModule,
 
+    MatIconModule,
     MatListModule,
     MatSidenavModule,
+    MatButtonModule,
+
+    ToolbarModule,
   ],
   exports: [
     SidenavComponent

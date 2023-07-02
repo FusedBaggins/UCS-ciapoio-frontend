@@ -1,19 +1,34 @@
-import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
-import { SidenavService } from './services/sidenav.service';
-import { Observable, map } from 'rxjs';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+
+import { Observable, map, tap } from 'rxjs';
+
 import { ItemMenu } from './models/item-menu';
+import { SidenavService } from './services/sidenav.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, OnDestroy {
 
-  public links = [{ link: '', titulo: 'teste', isActive: true }];
+  @ViewChild('snav') sideNav!: MatSidenav;
+  public mobileQuery: MediaQueryList;
   public itensMenu$!: Observable<ItemMenu[]>;
 
-  constructor(private _sidenavService: SidenavService) {
+  private _mobileQueryListener: () => void;
+
+  constructor(
+    private _mediaMatcher: MediaMatcher,
+    private _sidenavService: SidenavService,
+    private _changeDetectorRef: ChangeDetectorRef,
+  ) {
+    this.mobileQuery = this._mediaMatcher.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => this._changeDetectorRef.detectChanges();
+    this.mobileQuery.addEventListener('change', () => this._mobileQueryListener);
 
   }
 
@@ -22,8 +37,18 @@ export class SidenavComponent implements OnInit {
       map((items: ItemMenu[]) => {
         items?.forEach((item: ItemMenu) => item.ativo = false)
         return items.filter((item: ItemMenu) => item.visivel);
+      }),
+      tap(() => {
+        if (!this.mobileQuery.matches) {
+          this.sideNav.open();
+          this._changeDetectorRef.detectChanges();
+        }
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
 
   onItemAtivoClicado(index: number, itens: ItemMenu[]): void {

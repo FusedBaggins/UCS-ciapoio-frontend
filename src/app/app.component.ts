@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   title = 'CIAPoio';
 
   usuarioAutenticado$!: Observable<boolean>;
-  constructor(private _autenticacaoService: AutenticacaoService) { }
+
+  constructor(private _autenticacaoService: AutenticacaoService) {}
 
   ngOnInit(): void {
     this.usuarioAutenticado$ = this._autenticacaoService.getUsuarioAutenticado();

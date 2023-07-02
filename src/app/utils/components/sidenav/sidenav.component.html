@@ -1,14 +1,20 @@
-<mat-drawer-container class="full-size" autosize>
-    <mat-drawer mode="side" opened>
-        <mat-nav-list>
-            <app-item-menu *ngFor="let item of itensMenu$ | async as itens; index as i" [index]="i" [item]="item"
-                (itemAtivo)="onItemAtivoClicado($event, itens)">
-            </app-item-menu>
-        </mat-nav-list>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div class="full-size default-padding sidenav-container">
-            <ng-content></ng-content>
-        </div>
-    </mat-drawer-content>
-</mat-drawer-container>
+<div class="full-size column">
+    <app-toolbar>
+        <button *ngIf="mobileQuery.matches" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <span>Ciapoio</span>
+    </app-toolbar>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" >
+            <mat-nav-list>
+                <app-item-menu *ngFor="let item of itensMenu$ | async as itens; index as i" [index]="i" [item]="item"
+                    (itemAtivo)="onItemAtivoClicado($event, itens)">
+                </app-item-menu>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="full-size default-padding sidenav-content-container">
+                <ng-content></ng-content>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

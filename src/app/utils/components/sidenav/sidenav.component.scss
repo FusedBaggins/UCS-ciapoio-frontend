@@ -1,4 +1,8 @@
-.sidenav-container{
+.sidenav-container {
+    flex: 1;
+}
+
+.sidenav-content-container{
     overflow-y: auto;
     box-sizing: border-box;
 }
