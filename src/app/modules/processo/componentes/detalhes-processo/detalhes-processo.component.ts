@@ -75,22 +75,22 @@ export class DetalhesProcessoComponent {
   criarForm(): void {
     this.form = this._formBuilder.group({
       id: [null, []],
-      nro_processo: [null, []],
+      nro_processo: [null, [Validators.required]],
       nro_artigo_penal: [null, []],
       pena_originaria: [null, []],
       pena_originaria_regime: [null, []],
       inciso: [null, []],
-      detalhamento: [null, []],
+      detalhamento: [null, [Validators.required]],
       prd: [null, []],
       prd_descricao: [null, []],
-      horas_cumprir: [null, []],
+      horas_cumprir: [null, [Validators.required]],
       qtd_penas_anteriores: [null, []],
       possui_multa: [false, []],
       valor_a_pagar: [{ value: null, disabled: true }, []],
       instituicao: [null, []],
-      prestador: [null, []],
-      vara: [null, []],
-      descricao_alternativa_penal: [null, []]
+      prestadorId: [null, []],
+      varaId: [null, [Validators.required]],
+      descricao_alternativa_penal: [null, [Validators.required]]
     });
   }
 
@@ -164,11 +164,11 @@ export class DetalhesProcessoComponent {
   }
 
   onAtualizarPrestadorSelecionado(prestador: SelectDefault): void {
-    this.form.get('prestador')?.patchValue(prestador);
+    this.form.get('prestadorId')?.patchValue(prestador);
   }
 
   onAtualizarVaraCriminalSelecionado(vara: SelectDefault): void {
-    this.form.get('vara')?.patchValue(vara);
+    this.form.get('varaId')?.patchValue(vara);
   }
 
 }

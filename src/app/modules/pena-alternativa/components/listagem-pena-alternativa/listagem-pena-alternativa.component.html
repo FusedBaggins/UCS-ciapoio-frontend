@@ -1,33 +1,35 @@
 <div class="column full-size container">
-    <app-form [formGroup]="filtros">
-        <div class="content full-size" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
-            <mat-form-field fxFlex="30" fxFlex.xs="100">
-                <mat-label>Identificador</mat-label>
-                <input matInput formControlName="id">
-            </mat-form-field>
-            <mat-form-field fxFlex="30" fxFlex.xs="100">
-                <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome">
-            </mat-form-field>
-        </div>
-    </app-form>
+  <app-form [formGroup]="filtros">
+    <div class="content full-size" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+      <mat-form-field fxFlex="30" fxFlex.xs="100">
+        <mat-label>Identificador</mat-label>
+        <input matInput formControlName="id">
+      </mat-form-field>
+      <mat-form-field fxFlex="30" fxFlex.xs="100">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome">
+      </mat-form-field>
+    </div>
+  </app-form>
 
-    <app-lista-entidade [entidades]="penasAlternativas$" [rotaEntidade]="['alternativa-penal']" [config]="{
+  <app-lista-entidade [entidades]="processo$" [rotaEntidade]="['agendamento-prestacao']" [config]="{
         exibirAvatar: false,
         exibirCarregamento: true,
         exibirIdentificador: false,
       }">
-        <ng-template #titulo>
-            <h2 class="mat-headline-6">Penas alternativas encontradas</h2>
-        </ng-template>
-        <ng-template #entidades let-entidade>
-            <span matListItemTitle>{{entidade.titulo}}</span>
-            <span matListItemLine>
-                {{ entidade.descricao }}
-            </span>
-        </ng-template>
-        <ng-template #nenhumaEntidade>
-            Oops! Não encontramos nenhuma Pena alternativa :(
-        </ng-template>
-    </app-lista-entidade>
+    <ng-template #titulo>
+      <h2 class="mat-headline-6">Penas alternativas encontradas</h2>
+    </ng-template>
+    <ng-template #entidades let-entidade>
+      <div>
+        <span matListItemTitle *ngIf="entidade.prestador">{{entidade.prestador.nome}}</span>
+        <span matListItemLine>
+          {{ entidade.descricao_alternativa_penal }}
+        </span>
+      </div>
+    </ng-template>
+    <ng-template #nenhumaEntidade>
+      Oops! Não encontramos nenhuma Pena alternativa :(
+    </ng-template>
+  </app-lista-entidade>
 </div>

@@ -19,4 +19,5 @@ export class Processo {
     prestador!: Prestador;
     instituicao!: Instituicao;
     vara!: Vara;
+    descricao_alternativa_penal!: string;
 }

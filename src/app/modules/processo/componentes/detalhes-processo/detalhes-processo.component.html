@@ -1,9 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayoutGap="16px" fxLayout="column"
     fxLayout.xs="column" fxFlexFill>
-    <h2 class="mat-headline-6">Informações inicias</h2>
+    <h2 class="mat-headline-6">Informações iniciais</h2>
 
     <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
-        <app-select-vara-penal [selectedVara]="form.controls['vara'].value" fxFlex="30" fxFlex.xs="100"
+        <app-select-vara-penal [selectedVara]="form.controls['varaId'].value" fxFlex="30" fxFlex.xs="100"
             (selectedVaraChange)="onAtualizarVaraCriminalSelecionado($event)">
         </app-select-vara-penal>
         <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
@@ -15,7 +15,7 @@
             <input matInput type="number" placeholder="" formControlName="nro_artigo_penal">
         </mat-form-field>
     </div>
-    <app-select-prestador [selectedPrestador]="form.controls['prestador'].value" fxFlex="100"
+    <app-select-prestador [selectedPrestador]="form.controls['prestadorId'].value" fxFlex="100"
         (selectedPrestadorChange)="onAtualizarPrestadorSelecionado($event)">
     </app-select-prestador>
     <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
@@ -47,10 +47,6 @@
         </mat-form-field>
     </div>
     <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
-        <mat-form-field appearance="fill" fxFlex="33" fxFlex.xs="100">
-            <mat-label>Persecução penal</mat-label>
-            <input matInput placeholder="" formControlName="vara">
-        </mat-form-field>
         <mat-form-field appearance="fill" fxFlex="33" fxFlex.xs="100">
             <mat-label>Horas à cumprir</mat-label>
             <input matInput type="number" placeholder="" formControlName="horas_cumprir">

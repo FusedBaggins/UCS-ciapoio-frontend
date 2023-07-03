@@ -9,8 +9,7 @@ export class AutenticacaoService {
 
 
   constructor() {
-    const autenticado = localStorage.getItem('autenticado') === 'true';
-    this._autenticado$ = new BehaviorSubject(autenticado);
+    this._autenticado$ = new BehaviorSubject(true);
   }
 
   setUsuarioAutenticado(autenticado: boolean): void {

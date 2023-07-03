@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Adicionar frequência</h2>
 <mat-dialog-content class="mat-typography">
-  <form class="full-size" fxLayoutGap="16px" fxLayout="column" fxLayout.xs="column" fxFlexFill>
+  <form class="full-size" [formGroup]="form" fxLayoutGap="16px" fxLayout="column" fxLayout.xs="column" fxFlexFill>
     <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
       <mat-form-field fxFlex="33" fxFlex.xs="100">
-        <mat-label>Data de início</mat-label>
+        <mat-label>Data</mat-label>
         <input matInput [matDatepicker]="datepicker" formControlName="data_inicial">
         <mat-hint>DD/MM/AAAA</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
@@ -16,22 +16,22 @@
       </mat-form-field>
       <mat-form-field fxFlex="33" fxFlex.xs="100">
         <mat-label>Horário de início</mat-label>
-        <input type="time" matInput>
+        <input type="time" matInput formControlName="horario_inicio">
       </mat-form-field>
       <mat-form-field fxFlex="33" fxFlex.xs="100">
         <mat-label>Horário de término</mat-label>
-        <input type="time" matInput>
+        <input type="time" matInput formControlName="horario_fim">
       </mat-form-field>
     </div>
     <mat-form-field appearance="fill" fxFlex="100">
       <mat-label>Observações</mat-label>
-      <input matInput placeholder="">
+      <input matInput placeholder="" formControlName="observacoes">
     </mat-form-field>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="w-1 row flex justify-content-end">
     <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Adicionar</button>
+    <button mat-button type="button" (click)="clickAdicionar()" cdkFocusInitial>Adicionar</button>
   </div>
 </mat-dialog-actions>

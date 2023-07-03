@@ -49,11 +49,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule,
     FormModule,
     ListaEntidadeModule,
-    SelectsModule,
     MatCheckboxModule,
     MatRippleModule,
     MatDialogModule,
-
     FlexLayoutModule,
   ]
 })

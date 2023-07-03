@@ -1,79 +1,90 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayoutGap="16px" fxLayout="column"
-  fxLayout.xs="column" fxFlexFill>
-  <h2 class="mat-headline-6">Informações inicias</h2>
-  <div class="row no-wrap w-1">
-    <div fxFlex="100" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
+<ng-container *ngIf="agendamentoPrestacao | async as entidade">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="full-size" fxLayoutGap="16px" fxLayout="column"
+    fxLayout.xs="column" fxFlexFill>
+
+    <div *ngIf="entidade.processo">
+      <h4><b>Pena alternativa: </b>{{ entidade.processo.descricao_alternativa_penal }}</h4>
+      <h4 *ngIf="entidade.processo.prestador">
+        <b>Prestador: </b>
+        {{ entidade.processo.prestador.nome }}
+      </h4>
+    </div>
+
+    <h2 class="mat-headline-6">Período de prestação de serviço</h2>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
       <mat-form-field fxFlex="33" fxFlex.xs="100">
         <mat-label>Data de início</mat-label>
         <input matInput [matDatepicker]="datepicker" formControlName="data_inicial">
         <mat-hint>DD/MM/AAAA</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancelar</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Confirmar</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
+        <mat-datepicker #datepicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field fxFlex="33" fxFlex.xs="100">
         <mat-label>Horário de início</mat-label>
-        <input type="time" matInput>
+        <input type="time" matInput formControlName="horario_inicio">
       </mat-form-field>
       <mat-form-field fxFlex="33" fxFlex.xs="100">
         <mat-label>Horário de término</mat-label>
-        <input type="time" matInput>
+        <input type="time" matInput formControlName="horario_fim">
       </mat-form-field>
     </div>
-  </div>
-  <div class="row no-wrap w-1">
-    <div class="column align-items-center justify-content-center">
-      <span>D</span>
-      <mat-checkbox formControlName="domingo"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>S</span>
-      <mat-checkbox formControlName="segunda"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>T</span>
-      <mat-checkbox formControlName="terca"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>Q</span>
-      <mat-checkbox formControlName="quarta"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>Q</span>
-      <mat-checkbox formControlName="quinta"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>S</span>
-      <mat-checkbox formControlName="sexta"></mat-checkbox>
-    </div>
-
-    <div class="column align-items-center justify-content-center">
-      <span>S</span>
-      <mat-checkbox formControlName="sabado"></mat-checkbox>
-    </div>
-  </div>
-  <h2 class="mat-headline-6">Frequências</h2>
-  <mat-list role="list" [disableRipple]="false">
-    <mat-list-item role="listitem" *ngFor="let frequencia of frequencias;">
-      <span matListItemTitle>{{frequencia.dt_entrada}}</span>
-      <span matListItemLine>{{frequencia?.observacoes}}</span>
-      <button mat-icon-button (click)="onExibirFrequencia()" matListItemMeta>
-        <mat-icon>info</mat-icon>
-      </button>
-    </mat-list-item>
-    <mat-list-item>
-      <div class="row w-1 flex justify-content-end">
-        <button mat-button (click)="onExibirFrequencia()">Adicionar</button>
+    <h4 class="field-margin-top">Dias da semana</h4>
+    <div class="row no-wrap w-1">
+      <div class="column align-items-center justify-content-center">
+        <span>D</span>
+        <mat-checkbox formControlName="domingo"></mat-checkbox>
       </div>
-    </mat-list-item>
-  </mat-list>
-</form>
+
+      <div class="column align-items-center justify-content-center">
+        <span>S</span>
+        <mat-checkbox formControlName="segunda"></mat-checkbox>
+      </div>
+
+      <div class="column align-items-center justify-content-center">
+        <span>T</span>
+        <mat-checkbox formControlName="terca"></mat-checkbox>
+      </div>
+
+      <div class="column align-items-center justify-content-center">
+        <span>Q</span>
+        <mat-checkbox formControlName="quarta"></mat-checkbox>
+      </div>
+
+      <div class="column align-items-center justify-content-center">
+        <span>Q</span>
+        <mat-checkbox formControlName="quinta"></mat-checkbox>
+      </div>
+
+      <div class="column align-items-center justify-content-center">
+        <span>S</span>
+        <mat-checkbox formControlName="sexta"></mat-checkbox>
+      </div>
+
+      <div class="column align-items-center justify-content-center">
+        <span>S</span>
+        <mat-checkbox formControlName="sabado"></mat-checkbox>
+      </div>
+    </div>
+    <h2 class="mat-headline-6 field-margin-top">Frequências</h2>
+    <mat-list role="list" [disableRipple]="false">
+      <mat-list-item role="listitem" *ngFor="let frequencia of frequencias;">
+        <span matListItemTitle>{{exibirData(frequencia.data_inicial)}}</span>
+        <span matListItemLine>{{frequencia.horario_inicio}} - {{frequencia.horario_fim}}</span>
+        <button mat-icon-button type="button" (click)="onExibirFrequencia(frequencia)" matListItemMeta>
+          <mat-icon>info</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="row w-1 flex justify-content-end">
+          <button mat-button (click)="onExibirFrequencia()" type="button">Adicionar</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <div class="row fab-button">
+      <button mat-fab type="submit" color="primary" aria-label="Submit button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+</ng-container>

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'profissional', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: 'visita', loadChildren: () => import('./modules/visita/visita.module').then(m => m.VisitaModule) },
   { path: 'instituicao-parceira', loadChildren: () => import('./modules/entidade-parceira/entidade-parceira.module').then(m => m.EntidadeParceiraModule) },
-  { path: 'alternativa-penal', loadChildren: () => import('./modules/pena-alternativa/pena-alternativa.module').then(m => m.PenaAlternativaModule) },
+  { path: 'agendamento-prestacao', loadChildren: () => import('./modules/pena-alternativa/pena-alternativa.module').then(m => m.PenaAlternativaModule) },
   { path: 'vara-penal', loadChildren: () => import('./modules/vara/vara.module').then(m => m.VaraModule) },
   { path: 'processo', loadChildren: () => import('./modules/processo/processo.module').then(m => m.ProcessoModule) },
   { path: 'frequencia', loadChildren: () => import('./modules/frequencia/frequencia.module').then(m => m.FrequenciaModule) },

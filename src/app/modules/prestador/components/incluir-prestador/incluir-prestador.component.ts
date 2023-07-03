@@ -195,7 +195,13 @@ export class IncluirPrestadorComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.prestador.trabalhos.push(result);
+        this.prestador.trabalhos = this.prestador.trabalhos || [];
+        const index = this.prestador.trabalhos.findIndex(t => t.id === result.id);
+        if (index !== -1) {
+          this.prestador.trabalhos[index] = result;
+        } else {
+          this.prestador.trabalhos.push(result);
+        }
       }
     });
   }

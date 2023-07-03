@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, debounceTime, of, startWith, switchMap } from 'rxjs';
-import { Visita } from 'src/app/utils/models/visita';
-import * as moment from 'moment';
 import { ListaEntidadeConfiguracao } from 'src/app/utils/components/lista-entidade/models/lista-entidade-configuracao';
 import { PenaAlternativaService } from '../../services/pena-alternativa.service';
-import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alternativa-penal/alternativa-penal';
+import { AgendamentoPrestacao } from 'src/app/utils/models/agendamento-prestacao';
+import { Processo } from 'src/app/utils/models/processo';
 
 @Component({
   selector: 'app-listagem-pena-alternativa',
@@ -14,7 +13,7 @@ import { AlternativaPenal } from 'src/app/utils/models/prestador/entidades/alter
 })
 export class ListagemPenaAlternativaComponent {
   public filtros: FormGroup;
-  public penasAlternativas$!: Observable<AlternativaPenal[]>;
+  public processo$!: Observable<Processo[]>;
 
   public entidadeConfig: ListaEntidadeConfiguracao = {
     exibirAvatar: false,
@@ -34,16 +33,11 @@ export class ListagemPenaAlternativaComponent {
   }
 
   ngOnInit(): void {
-    this.penasAlternativas$ = this.filtros.valueChanges.pipe(
+    this.processo$ = this.filtros.valueChanges.pipe(
       startWith({}),
       debounceTime(500),
       switchMap((filtros: any) => {
-        const alternativaPenal: AlternativaPenal = new AlternativaPenal();
-
-        alternativaPenal.id = 1;
-        alternativaPenal.titulo = 'Pena alternativa 01';
-        alternativaPenal.descricao = 'Jorge Muller'
-        return of([alternativaPenal]);
+        return this._penaAlternativaService.getProcessosPenaAlternativa(filtros)
       })
     );
   }
