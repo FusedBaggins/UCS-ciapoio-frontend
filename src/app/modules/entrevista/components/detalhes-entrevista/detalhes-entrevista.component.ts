@@ -64,6 +64,7 @@ export class DetalhesEntrevistaComponent {
       telefone: [null, [Validators.required]],
       data: [moment().format('YYYY-MM-DDTHH:mm'), [Validators.required]],
       observacoes: [null, [Validators.required]],
+      prestadorId: [null, []],
     })
   }
 
@@ -93,6 +94,9 @@ export class DetalhesEntrevistaComponent {
       entrevistaId: this.form.value.id
     };
     this._router.navigate(['prestador', 'incluir'], { queryParams: entrevista });
+  }
 
+  onAbrirEdicaoPrestador() {
+    this._router.navigate(['prestador', this.form.getRawValue().prestadorId]);
   }
 }

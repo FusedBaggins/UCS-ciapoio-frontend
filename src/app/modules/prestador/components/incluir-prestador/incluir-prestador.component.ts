@@ -136,6 +136,7 @@ export class IncluirPrestadorComponent implements OnInit {
     });
 
     this._perguntaService.getPerguntas(new Pergunta()).subscribe(perguntas => {
+      this.prestador.respostas = this.prestador.respostas || [];
       const perguntasNaoRespondidas = perguntas
         .filter(x => !this.prestador.respostas.some(y => y.id === x.id));
 
