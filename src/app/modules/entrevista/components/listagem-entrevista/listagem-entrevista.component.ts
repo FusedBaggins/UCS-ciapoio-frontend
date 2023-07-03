@@ -30,9 +30,9 @@ export class ListagemEntrevistaComponent {
     private _entrevistaService: EntrevistaService,
   ) {
     this.filtros = this._formBuilder.group({
-      id: [null, []],
       nome: [null, []],
-      observacoes: [null, []]
+      dataInicial: [new Date(), []],
+      dataFinal: [null, []],
     });
   }
 

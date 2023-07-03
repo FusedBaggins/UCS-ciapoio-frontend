@@ -13,40 +13,4 @@ import { EntrevistaService } from '../../services/entrevista.service';
   styleUrls: ['./listagem-entrevista-grid.component.scss']
 })
 export class ListagemEntrevistaGridComponent {
-  public filtros!: FormGroup;
-  public entrevista$!: Observable<AtestadoComparecimento[]>;
-
-  public entidadeConfig: ListaEntidadeConfiguracao = {
-    exibirAvatar: false,
-    exibirCarregamento: true,
-    exibirIdentificador: true,
-    exibirEdicao: true,
-  }
-
-  constructor(
-    private _router: Router,
-    private _formBuilder: FormBuilder,
-    private _entrevistaService: EntrevistaService,
-  ) {
-    this.filtros = this._formBuilder.group({
-      id: [null, []],
-      nome: [null, []],
-      observacoes: [null, []]
-    });
-  }
-
-  ngOnInit(): void {
-    this.entrevista$ = this.filtros.valueChanges.pipe(
-      startWith({}),
-      debounceTime(500),
-      switchMap((filtros: any) => {
-        return this._entrevistaService.getEntrevistas(filtros)
-      })
-    );
-  }
-
-  exibirData(data: Date) {
-    const dataMoment = moment(data);
-    return dataMoment.format('DD/MM/yyyy HH:mm');
-  }
 }

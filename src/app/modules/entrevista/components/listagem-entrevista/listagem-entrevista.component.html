@@ -2,17 +2,47 @@
   <app-form [formGroup]="filtros">
     <div class="content full-size" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxFlexFill>
       <mat-form-field fxFlex="30" fxFlex.xs="100">
-        <mat-label>Identificador</mat-label>
-        <input matInput formControlName="id">
-      </mat-form-field>
-      <mat-form-field fxFlex="30" fxFlex.xs="100">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
+        <mat-label>Data inicial</mat-label>
+        <input matInput [matDatepicker]="inicioPicker" formControlName="dataInicial">
+        <mat-hint>DD/MM/AAAA</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="inicioPicker"></mat-datepicker-toggle>
+        <mat-datepicker #inicioPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
+        <mat-label>Data final</mat-label>
+        <input matInput [matDatepicker]="fimPicker" formControlName="dataFinal">
+        <mat-hint>DD/MM/AAAA</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="fimPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fimPicker></mat-datepicker>
       </mat-form-field>
     </div>
   </app-form>
 
-  <app-listagem-entrevista-grid></app-listagem-entrevista-grid>
+  <app-lista-entidade [entidades]="entrevista$" [rotaEntidade]="['entrevistas']" [config]="entidadeConfig">
+    <ng-template #titulo>
+      <h2 class="mat-headline-6">Entrevistas agendadas</h2>
+    </ng-template>
+    <ng-template #entidades let-entidade>
+      <span matListItemLine>
+        <b>Prestador:</b> {{entidade.nome}}
+      </span>
+      <span matListItemLine>
+        Data: {{ exibirData(entidade.data) }}
+      </span>
+      <mat-icon *ngIf="entidade.entrevistaId">check_circle</mat-icon>
+
+    </ng-template>
+    <ng-template #nenhumaEntidade>
+      Oops! Não encontramos nenhuma entrevista :(
+    </ng-template>
+  </app-lista-entidade>
+
   <div class="row fab-button">
     <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
       (click)="onAdicionarNovaEntidade()">

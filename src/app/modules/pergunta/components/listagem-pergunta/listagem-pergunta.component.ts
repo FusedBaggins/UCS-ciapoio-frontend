@@ -20,15 +20,14 @@ export class ListagemPerguntaComponent {
     exibirCarregamento: true,
     exibirIdentificador: false,
   }
-  
+
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
     private _perguntaService: PerguntaService,
   ) {
     this.filtros = this._formBuilder.group({
-      id: [null, []],
-      nome: [null, []]
+      pergunta: [null, []]
     });
   }
 

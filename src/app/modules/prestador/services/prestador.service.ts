@@ -17,8 +17,8 @@ export class PrestadorService {
 
   constructor(private _http: HttpClient) { }
 
-  getPrestadores(): Observable<Prestador[]> {
-    return this._http.get<Prestador[]>(this._url);
+  getPrestadores(queryParams: any): Observable<Prestador[]> {
+    return this._http.get<Prestador[]>(this._url, { params: queryParams })
   }
 
   getPrestadoresSelect(): Observable<SelectDefault[]> {

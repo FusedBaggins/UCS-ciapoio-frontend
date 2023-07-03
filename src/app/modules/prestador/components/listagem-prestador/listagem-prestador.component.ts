@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { Instituicao } from "src/app/utils/models/instituicao";
 import { Prestador } from "src/app/utils/models/prestador/prestador";
 import { PrestadorService } from "../../services/prestador.service";
-import { Observable } from "rxjs";
+import { Observable, debounceTime, startWith, switchMap } from "rxjs";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 
 export class ListagemPrestadorComponent implements OnInit {
-    
+
     public filtros: FormGroup;
     public listaPrestadores!: Array<Prestador>;
 
@@ -33,7 +33,13 @@ export class ListagemPrestadorComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.prestadores$ = this._prestadorService.getPrestadores();
+        this.prestadores$ = this.filtros.valueChanges.pipe(
+          startWith({}),
+          debounceTime(500),
+          switchMap((filtros: any) => {
+            return this._prestadorService.getPrestadores(filtros)
+          })
+        );
     }
 
 
