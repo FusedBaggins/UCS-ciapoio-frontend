@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ListaVaraComponent },
   { path: 'incluir', component: DetalhesVaraComponent },
   { path: ':id', component: DetalhesVaraComponent },
-  { path: '*', redirectTo: '' },
 ];
 
 @NgModule({

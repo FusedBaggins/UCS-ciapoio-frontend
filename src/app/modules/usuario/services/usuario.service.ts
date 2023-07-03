@@ -28,4 +28,8 @@ export class UsuarioService {
   postUsuario(usuario: Usuario): Observable<any> {
     return this._http.post<Usuario>(this._url, usuario);
   }
+
+  getUsuarioLogado():Observable<any>{
+    return this._http.get<any>(`${environment.api}/usuario-logado`);
+  }
 }

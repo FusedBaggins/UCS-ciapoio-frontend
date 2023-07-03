@@ -1,7 +1,7 @@
 <div class="full-size column">
     <app-toolbar>
         <button *ngIf="mobileQuery.matches" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-        <span>Ciapoio</span>
+        <span (click)="onVoltarInicio()">Ciapoio</span>
     </app-toolbar>
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" >

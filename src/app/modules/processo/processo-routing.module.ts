@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ListaProcessoComponent },
   { path: 'incluir', component: DetalhesProcessoComponent },
   { path: ':id', component: DetalhesProcessoComponent },
-  { path: '*', redirectTo: '' },
 ];
 
 

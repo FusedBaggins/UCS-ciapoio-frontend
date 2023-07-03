@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ListagemEntrevistaComponent },
   { path: 'incluir', component: DetalhesEntrevistaComponent },
   { path: ':id', component: DetalhesEntrevistaComponent },
-  { path: '*', redirectTo: '' },
 ];
 
 @NgModule({

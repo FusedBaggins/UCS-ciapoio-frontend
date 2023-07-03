@@ -7,6 +7,7 @@ import { Observable, map, tap } from 'rxjs';
 
 import { ItemMenu } from './models/item-menu';
 import { SidenavService } from './services/sidenav.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,6 +23,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(
+    private _route:Router,
     private _mediaMatcher: MediaMatcher,
     private _sidenavService: SidenavService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -55,5 +57,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
     itens.forEach((item: ItemMenu, i: number) => {
       if (i !== index) item.ativo = false;
     });
+  }
+
+  onVoltarInicio():void{
+    console.log("Oi");
+    
+    this._route.navigate(['inicio'])
   }
 }

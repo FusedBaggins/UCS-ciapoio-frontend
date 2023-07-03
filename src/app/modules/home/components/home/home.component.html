@@ -1,1 +1,60 @@
-<p>home works!</p>
+<div class="flex column full-size" *ngIf="usuarioLogado$ | async as usuario">
+    <h2 class="mat-headline-4">Olá, {{usuario?.user?.nome | titlecase}}</h2>
+    <ng-container [ngSwitch]="usuario?.role">
+        <ng-container *ngSwitchCase="'Administrador'">
+            <h6 class="mat-headline-6">Ações rápidas</h6>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('profissional')">
+                    <mat-card-content class="full-height">
+                        <div class="flex full-height align-items-center">
+                            <span mat-card-title>Adicionar novo profissional</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('instituicao-parceira')">
+                    <mat-card-content class="full-height">
+                        <div class="flex full-height align-items-center">
+                            <span mat-card-title>Adicionar nova instituição parceira</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('ciap')">
+                    <mat-card-content class="full-height">
+                        <div class="flex full-height align-items-center">
+                            <span mat-card-title>Adicionar nova CIAP</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'usuarioEntidade'">
+
+        </ng-container>
+        <ng-container *ngSwitchCase="'usuarioCIAP'">
+            <h6 class="mat-headline-6">Ações rápidas</h6>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('entrevista')">
+                    <mat-card-content class="full-height">
+                        <div class="flex full-height align-items-center">
+                            <span mat-card-title>Adicionar nova entrevista</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('prestador')">
+                    <div class="flex align-items-center">
+                        <mat-card-content class="full-height">
+                            <span mat-card-title>Adicionar novo prestador</span>
+                        </mat-card-content>
+                    </div>
+                </mat-card>
+                <mat-card fxFlex="25" fxFlex.xs="100" (click)="onTrocarRota('processo')">
+                    <mat-card-content class="full-height">
+                        <div class="flex full-height align-items-center">
+                            <span mat-card-title>Adicionar novo processo</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

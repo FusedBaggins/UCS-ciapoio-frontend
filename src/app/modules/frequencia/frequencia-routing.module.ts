@@ -7,7 +7,6 @@ const routes: Routes = [
   { path: '', component: ListaFrequenciaComponent },
   { path: 'incluir', component: DetalhesFrequenciaComponent },
   { path: ':id', component: DetalhesFrequenciaComponent },
-  { path: '*', redirectTo: '' },
 ];
 
 @NgModule({

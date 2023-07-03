@@ -9,7 +9,6 @@ const routes: Routes = [
     { path: '', component: ListagemUsuarioComponent },
     { path: 'incluir', component: DetalheUsuarioComponent },
     { path: ':id', component: DetalheUsuarioComponent },
-    { path: '*', redirectTo: '' },
 ];
 
 @NgModule({

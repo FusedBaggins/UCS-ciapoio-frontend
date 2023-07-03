@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'processo', loadChildren: () => import('./modules/processo/processo.module').then(m => m.ProcessoModule) },
   { path: 'frequencia', loadChildren: () => import('./modules/frequencia/frequencia.module').then(m => m.FrequenciaModule) },
   { path: 'entrevistas', loadChildren: () => import('./modules/entrevista/entrevista.module').then(m => m.EntrevistaModule) },
+  {path: '**', redirectTo:''}
 ];
 
 @NgModule({
