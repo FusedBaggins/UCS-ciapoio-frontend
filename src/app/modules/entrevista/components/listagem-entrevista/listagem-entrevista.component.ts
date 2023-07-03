@@ -31,8 +31,7 @@ export class ListagemEntrevistaComponent {
   ) {
     this.filtros = this._formBuilder.group({
       nome: [null, []],
-      dataInicial: [new Date(), []],
-      dataFinal: [null, []],
+      data: [new Date(), []],
     });
   }
 

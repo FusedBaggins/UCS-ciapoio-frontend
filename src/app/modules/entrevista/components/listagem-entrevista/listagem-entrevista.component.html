@@ -7,19 +7,11 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
-        <mat-label>Data inicial</mat-label>
-        <input matInput [matDatepicker]="inicioPicker" formControlName="dataInicial">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="inicioPicker" formControlName="data">
         <mat-hint>DD/MM/AAAA</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="inicioPicker"></mat-datepicker-toggle>
         <mat-datepicker #inicioPicker></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="100">
-        <mat-label>Data final</mat-label>
-        <input matInput [matDatepicker]="fimPicker" formControlName="dataFinal">
-        <mat-hint>DD/MM/AAAA</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="fimPicker"></mat-datepicker-toggle>
-        <mat-datepicker #fimPicker></mat-datepicker>
       </mat-form-field>
     </div>
   </app-form>
